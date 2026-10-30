@@ -37,8 +37,7 @@
   .sky-hero { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); align-items: center; min-height: max(520px, calc(100vh - 86px)); min-height: max(520px, calc(100svh - 86px)); padding-block: 72px 40px; }
   .hero-copy { position: relative; z-index: 1; }
   .sky-hero h1 { font-size: clamp(22px, 4.75vw, 72px); line-height: 1.05; margin: 0; }
-  .hero-photo-wrapper { position: relative; display: inline-block; margin-bottom: 30px; }
-  .location-tag { position: absolute; left: 10px; bottom: -20px; transform: none; background: #1d1c1a; color: #fff; padding: 12px 16px; border-radius: 4px; font-size: 13px; font-weight: 600; text-align: center; line-height: 1.4; z-index: 10; }
+  .location-tag { position: absolute; right: clamp(180px, 24vw, 280px); bottom: 50%; transform: translateY(clamp(100px, 18vw, 150px)); background: #1d1c1a; color: #fff; padding: 12px 16px; border-radius: 4px; font-size: 13px; font-weight: 600; text-align: center; line-height: 1.4; z-index: 10; }
   .sky-hero h1 .nm1 { white-space: nowrap; }
   .hero-copy p { font-size: 16px; max-width: 30em; margin: 24px 0 0; color: #23303d; }
   .btns { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 32px; }
@@ -400,13 +399,11 @@
       <div class="availability"><span class="dot"></span><span>Available for work</span></div>
       <div class="btns"><a class="btn" href="projects.html">View my work</a><a class="btn" href="resume.html">Resume ↗</a></div>
     </div>
-    <div class="hero-photo-wrapper">
-      <img class="hero-cutout" src="img/hero-cutout.png" width="1600" height="2000" alt="Manyata Manocha">
-      <div class="location-tag">Based in<br>Bangalore</div>
-    </div>
+    <img class="hero-cutout" src="img/hero-cutout.png" width="1600" height="2000" alt="Manyata Manocha">
     <svg class="deco deco-1" width="32" height="32" viewBox="0 0 32 32"><path d="M16 2L20 12L30 12L22 18L26 28L16 22L6 28L10 18L2 12L12 12Z" fill="#e46f3a"/></svg>
     <svg class="deco deco-2" width="32" height="32" viewBox="0 0 32 32"><path d="M16 2L20 12L30 12L22 18L26 28L16 22L6 28L10 18L2 12L12 12Z" fill="#e46f3a"/></svg>
     <svg class="deco deco-3" width="32" height="32" viewBox="0 0 32 32"><path d="M16 2L20 12L30 12L22 18L26 28L16 22L6 28L10 18L2 12L12 12Z" fill="#e46f3a"/></svg>
+    <div class="location-tag">Based in<br>Bangalore</div>
     <a class="scroll-cue" href="#work" aria-label="Scroll down to projects"><svg class="scroll-art" width="56" height="56" viewBox="0 0 56 56" aria-hidden="true"><g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="5"><path d="M28 0V24M14 10L28 24L42 10" stroke="#111" transform="translate(3 3)"/><path class="arw" d="M28 0V24M14 10L28 24L42 10" stroke="#2563c4"/></g></svg></a>
   </header>
   
