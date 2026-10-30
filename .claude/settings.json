@@ -1,0 +1,9 @@
+{
+  "env": {
+    "VERCEL_TOKEN": "ADD_YOUR_TOKEN_HERE"
+  },
+  "permissions": [
+    "bash",
+    "npm"
+  ]
+}

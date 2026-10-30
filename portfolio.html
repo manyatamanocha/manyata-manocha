@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Manyata Manocha · Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @page { size: 297mm 210mm; margin: 0; }
+  :root {
+    --ink: #17132b;
+    --paper: #fff8ee;
+    --muted: #5d5770;
+    --line: #e9dfd0;
+    --adh: #f2622a;
+    --van: #2f55ff;
+    --shr: #7c2d5b;
+    --shr-accent: #f5a548;
+    --ham: #7a4dff;
+    --pay: #0b9c8a;
+    --pwc: #d9364f;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #ddd; }
+  body {
+    font-family: "Instrument Sans", system-ui, sans-serif;
+    color: var(--ink);
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  .page {
+    width: 297mm; height: 210mm; overflow: hidden; position: relative;
+    background: var(--paper); page-break-after: always; break-after: page;
+  }
+  .display { font-family: "Bricolage Grotesque", sans-serif; letter-spacing: -0.02em; }
+
+  /* ---------- Cover ---------- */
+  .cover { background: var(--ink); color: var(--paper); display: grid; grid-template-columns: 1fr 98mm; }
+  .cover-main { padding: 18mm 16mm 16mm 18mm; display: flex; flex-direction: column; }
+  .cover .kicker { font-size: 10pt; letter-spacing: .18em; text-transform: uppercase; color: #bdb5d6; font-weight: 600; }
+  .cover h1 { font-size: 64pt; line-height: .92; font-weight: 800; margin-top: 14mm; }
+  .cover h1 span { display: block; }
+  .cover .role { font-size: 22pt; font-weight: 500; margin-top: 7mm; color: var(--shr-accent); }
+  .cover .intro { font-size: 11.5pt; line-height: 1.5; max-width: 140mm; margin-top: 7mm; color: #ddd7ec; }
+  .cover .contact { margin-top: auto; display: grid; grid-template-columns: auto auto; column-gap: 6mm; row-gap: 1.6mm; font-size: 10pt; color: #ddd7ec; width: max-content; }
+  .cover .contact div { display: contents; }
+  .cover .contact b { color: var(--paper); font-weight: 600; }
+  .stripes { display: grid; grid-template-rows: repeat(6, 1fr); }
+  .stripe { padding: 0 9mm; display: flex; align-items: center; gap: 5mm; color: #fff; }
+  .stripe .n { font-family: "Bricolage Grotesque"; font-size: 26pt; font-weight: 800; opacity: .55; width: 13mm; }
+  .stripe .t { font-family: "Bricolage Grotesque"; font-size: 16pt; font-weight: 700; line-height: 1.05; }
+  .stripe .s { font-size: 8.5pt; opacity: .85; margin-top: 1mm; }
+
+  /* ---------- About ---------- */
+  .about { display: grid; grid-template-columns: 104mm 1fr; }
+  .about-left { background: var(--shr-accent); padding: 16mm 12mm 14mm 16mm; display: flex; flex-direction: column; }
+  .about-left .kicker, .proj .kicker { font-size: 8.5pt; letter-spacing: .18em; text-transform: uppercase; font-weight: 700; }
+  .about-left h2 { font-size: 34pt; line-height: 1; font-weight: 800; margin-top: 5mm; }
+  .about-left p { font-size: 10.5pt; line-height: 1.5; margin-top: 6mm; }
+  .about-left .bigstat { margin-top: auto; background: var(--ink); color: var(--paper); border-radius: 5mm; padding: 6mm; }
+  .bigstat .num { font-family: "Bricolage Grotesque"; font-size: 30pt; font-weight: 800; color: var(--shr-accent); line-height: 1; }
+  .bigstat .lbl { font-size: 9pt; line-height: 1.45; margin-top: 2.5mm; color: #ddd7ec; }
+  .about-right { padding: 16mm 16mm 14mm 13mm; display: grid; grid-template-rows: auto 1fr; gap: 9mm; }
+  .awards { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; }
+  .award { border-radius: 5mm; padding: 5.5mm 6mm; color: #fff; }
+  .award .badge { font-family: "Bricolage Grotesque"; font-size: 24pt; font-weight: 800; line-height: 1; }
+  .award .what { font-weight: 700; font-size: 10.5pt; margin-top: 2.5mm; }
+  .award .desc { font-size: 9.6pt; line-height: 1.45; margin-top: 1.5mm; opacity: .92; }
+  .cols3 { display: grid; grid-template-columns: 1.25fr 1fr; gap: 9mm; }
+  h3.sec { font-size: 8.5pt; letter-spacing: .16em; text-transform: uppercase; font-weight: 700; color: var(--muted); padding-bottom: 2mm; border-bottom: 1.5px solid var(--ink); margin-bottom: 3mm; }
+  .job { margin-bottom: 5mm; }
+  .job .h { display: flex; justify-content: space-between; font-weight: 700; font-size: 11pt; }
+  .job .h span { font-weight: 500; color: var(--muted); font-size: 9.4pt; }
+  .job .r { font-size: 9.6pt; color: var(--muted); margin-top: .4mm; }
+  .job ul { margin-top: 1.8mm; padding-left: 4mm; font-size: 9.6pt; line-height: 1.5; }
+  .list { list-style: none; font-size: 9.6pt; line-height: 1.45; }
+  .list li { margin-bottom: 3mm; }
+  .list b { display: block; font-size: 10.4pt; }
+  .chips { display: flex; flex-wrap: wrap; gap: 1.6mm; margin-top: 1mm; }
+  .chip { font-size: 8.8pt; font-weight: 600; padding: 1mm 2.6mm; border-radius: 10mm; background: #efe5d6; }
+
+  /* ---------- Project pages ---------- */
+  .proj { display: grid; grid-template-columns: 106mm 1fr; grid-template-rows: 210mm; }
+  .panel, .body { min-height: 0; overflow: hidden; }
+  .panel { color: #fff; padding: 13mm 11mm 11mm 14mm; display: flex; flex-direction: column; }
+  .panel h2 { font-size: 46pt; line-height: .95; font-weight: 800; margin-top: 4mm; }
+  .panel .one { font-size: 12pt; line-height: 1.45; margin-top: 4mm; font-weight: 500; }
+  .meta { margin-top: 5mm; display: grid; grid-template-columns: 22mm 1fr; row-gap: 1.8mm; font-size: 9.2pt; line-height: 1.35; }
+  .meta dt { opacity: .7; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; font-size: 7.4pt; padding-top: .5mm; }
+  .meta dd { font-weight: 500; }
+  .shot { margin: auto -11mm -11mm 0; border-radius: 4mm 0 0 0; overflow: hidden; background: #fff; box-shadow: 0 2mm 6mm rgba(0,0,0,.25); }
+  .shot .bar { height: 5mm; background: #f1ece4; display: flex; align-items: center; gap: 1.3mm; padding: 0 2.5mm; }
+  .shot .bar i { width: 1.6mm; height: 1.6mm; border-radius: 50%; background: #cfc6b8; display: block; }
+  .shot .bar span { font-size: 6.5pt; color: #7a7286; margin-left: 2mm; }
+  .shot img { display: block; width: 100%; }
+  .body { padding: 12mm 14mm 13mm 12mm; display: flex; flex-direction: column; gap: 7mm; }
+  .body > .note { margin-top: auto; }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3.5mm; }
+  .stat { border-radius: 4mm; padding: 4mm 4mm 3.5mm; background: #fff; border: 1.5px solid var(--ink); }
+  .stat.fill { color: #fff; border-color: transparent; }
+  .stat .num { font-family: "Bricolage Grotesque"; font-size: 24pt; font-weight: 800; line-height: 1; letter-spacing: -0.02em; }
+  .stat .lbl { font-size: 8.6pt; line-height: 1.35; margin-top: 1.8mm; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; column-gap: 8mm; row-gap: 5.5mm; align-content: start; }
+  .blk h4 { font-size: 9pt; letter-spacing: .15em; text-transform: uppercase; font-weight: 700; margin-bottom: 1.6mm; display: flex; align-items: center; gap: 2mm; }
+  .blk h4::before { content: ""; width: 3mm; height: 3mm; border-radius: 1mm; background: var(--c); display: inline-block; }
+  .blk p, .blk li { font-size: 9.7pt; line-height: 1.5; }
+  .blk ul { padding-left: 4mm; }
+  .blk li { margin-bottom: .7mm; }
+  .blk b { font-weight: 700; }
+  .note { border-left: 3px solid var(--c); background: #fff; padding: 3.5mm 4.5mm; border-radius: 0 3mm 3mm 0; font-size: 9.5pt; line-height: 1.45; }
+  .note b { font-weight: 700; }
+  a { color: inherit; text-decoration: none; }
+  a.ul { text-decoration: underline; text-underline-offset: 2px; text-decoration-thickness: 1px; }
+  .footer { position: absolute; bottom: 5.5mm; right: 14mm; font-size: 7.5pt; color: var(--muted); letter-spacing: .05em; }
+  .panel-foot { position: absolute; bottom: 5.5mm; left: 14mm; font-size: 7.5pt; color: rgba(255,255,255,.75); }
+
+  /* PwC page */
+  .ba { display: grid; grid-template-columns: 22mm 1fr 25mm; align-items: center; gap: 3mm; font-size: 9.6pt; margin-bottom: 3mm; }
+  .ba .track { height: 9mm; background: #efe5d6; border-radius: 2mm; overflow: hidden; }
+  .ba .track i { display: block; height: 100%; border-radius: 2mm; }
+  .ba b { font-family: "Bricolage Grotesque"; font-size: 15pt; white-space: nowrap; }
+  .loop { display: flex; align-items: stretch; gap: 2mm; }
+  .loop .box { flex: 1; border: 1.5px solid var(--ink); border-radius: 3mm; padding: 3mm; background: #fff; font-size: 9pt; line-height: 1.35; }
+  .loop .box b { display: block; font-size: 7.4pt; letter-spacing: .12em; text-transform: uppercase; color: var(--pwc); margin-bottom: 1mm; }
+  .loop .arr { align-self: center; font-weight: 700; color: var(--pwc); }
+  .mods { display: flex; flex-direction: column; gap: 2.5mm; margin-top: auto; }
+  .mods div { background: rgba(255,255,255,.14); border-radius: 3mm; padding: 3mm 4mm; font-size: 10pt; font-weight: 600; }
+  .mods div span { display: block; font-size: 8.4pt; font-weight: 400; opacity: .85; margin-top: .6mm; }
+
+  /* Paytm flow */
+  .flow { display: flex; align-items: stretch; gap: 2mm; }
+  .flow .box { flex: 1; border: 1.5px solid var(--ink); border-radius: 3mm; padding: 3mm; background: #fff; font-size: 8.8pt; line-height: 1.3; }
+  .flow .box b { display: block; font-size: 7pt; letter-spacing: .12em; text-transform: uppercase; color: var(--pay); margin-bottom: 1mm; }
+  .flow .box.dark { background: var(--ink); color: #fff; }
+  .flow .box.dark b { color: #7fe3d3; }
+  .flow .box.hot { background: var(--pay); color: #fff; border-color: var(--pay); }
+  .flow .box.hot b { color: #d4fff7; }
+  .flow .arr { align-self: center; font-weight: 700; color: var(--pay); }
+  .steps5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2mm; margin-top: 1mm; }
+  .steps5 div { font-size: 8.6pt; line-height: 1.35; border-top: 2px solid var(--ink); padding-top: 1.5mm; }
+  .steps5 div b { display: block; font-size: 9pt; }
+  .steps5 div:last-child { border-color: var(--pay); }
+  .row-label { font-size: 8.8pt; font-weight: 700; margin-top: 2.6mm; }
+
+  /* Score card (Shravan) */
+  .score { background: var(--ink); color: #fff; border-radius: 4mm; padding: 4.5mm 5mm; }
+  .score .sr { display: grid; grid-template-columns: 34mm 1fr 10mm; align-items: center; gap: 3mm; font-size: 10pt; margin-bottom: 4mm; }
+  .score { padding: 7mm 7mm; }
+  .score .bar2 { height: 2.2mm; background: rgba(255,255,255,.15); border-radius: 2mm; overflow: hidden; }
+  .score .bar2 i { display: block; height: 100%; background: var(--shr-accent); border-radius: 2mm; }
+  .score .fix { margin-top: 3.5mm; font-size: 10pt; color: #f8d7a8; }
+</style>
+</head>
+<body>
+
+<!-- 1. COVER -->
+<section class="page cover">
+  <div class="cover-main">
+    <div class="kicker">Product portfolio · 2026</div>
+    <h1 class="display"><span>Manyata</span><span>Manocha</span></h1>
+    <div class="role display">AI Product Manager</div>
+    <p class="intro">I find a narrow problem, talk to the people who have it, write the PRD, build the product with AI tools, and measure it honestly. My background is fraud investigation and risk at PwC, and retail banking at ICICI and HDFC.</p>
+    <div class="contact">
+      <div><b>Email</b> <a href="mailto:manyata126@gmail.com">manyata126@gmail.com</a></div>
+      <div><b>LinkedIn</b> <a href="https://www.linkedin.com/in/manyata-manocha/">linkedin.com/in/manyata-manocha</a></div>
+    </div>
+  </div>
+  <div class="stripes">
+    <div class="stripe" style="background:var(--pwc)"><div class="n">01</div><div><div class="t">Risk Screening Dashboard</div><div class="s">Product work at PwC</div></div></div>
+    <div class="stripe" style="background:var(--adh)"><div class="n">02</div><div><div class="t">Adhikaar</div><div class="s">Bank-deposit claims for families</div></div></div>
+    <div class="stripe" style="background:var(--van)"><div class="n">03</div><div><div class="t">Vantage</div><div class="s">AI judgment practice for consultants</div></div></div>
+    <div class="stripe" style="background:var(--shr)"><div class="n">04</div><div><div class="t">The Shravan's Round</div><div class="s">AI voice mock interviews for PMs</div></div></div>
+    <div class="stripe" style="background:var(--ham)"><div class="n">05</div><div><div class="t">Hamsty</div><div class="s">Voucher wallet with AI reading</div></div></div>
+    <div class="stripe" style="background:var(--pay)"><div class="n">06</div><div><div class="t">AI Teammates</div><div class="s">Paytm Build for India AI Hackathon</div></div></div>
+  </div>
+</section>
+
+<!-- 2. ABOUT -->
+<section class="page about">
+  <div class="about-left">
+    <div class="kicker">About me</div>
+    <h2 class="display">From fraud investigation to AI products</h2>
+    <p>At PwC Acceleration Centers I lead workstreams in fraud investigations and risk analytics, and I manage a team of 8. Before that I worked with customers in retail banking, including AML and KYC reviews.</p>
+    <p>That work trained me to check every claim against evidence. I use the same rule in my PRDs: each finding says how strong its evidence is, and each metric says what it can and cannot prove.</p>
+    <div class="bigstat">
+      <div class="num">Team of 8</div>
+      <div class="lbl">I review and mentor a team of 8 at PwC, and I led 2 long-term client engagements in compliance and forensic investigations.</div>
+    </div>
+  </div>
+  <div class="about-right">
+    <div class="awards">
+      <div class="award" style="background:var(--ink)">
+        <div class="badge display" style="color:var(--shr-accent)">Top Operator</div>
+        <div class="what">Certificate of Excellence · Rethink Systems</div>
+        <div class="desc">Given for product thinking, building, ownership, initiative and impact over the 9-week AI Product Management program (Cohort 8).</div>
+      </div>
+      <div class="award" style="background:var(--van)">
+        <div class="badge display">2nd place</div>
+        <div class="what">Rethink AI-First Buildathon</div>
+        <div class="desc">Team award for The Shravan's Round: execution, speed and go-to-market thinking in a 10-day build sprint with a live product and real users.</div>
+      </div>
+    </div>
+    <div class="cols3">
+      <div>
+        <h3 class="sec">Experience</h3>
+        <div class="job">
+          <div class="h">PwC Acceleration Centers <span>Aug 2023 – now</span></div>
+          <div class="r">Experienced Associate, Forensics and Risk · Bengaluru</div>
+          <ul>
+            <li>Worked with a risk-screening vendor to build a client dashboard; turned client needs into dashboard changes.</li>
+            <li>Analysed 40,000+ emails, financial records and bank statements in fraud investigations.</li>
+            <li>Led 2 long-term engagements; reviewed and mentored a team of 8.</li>
+          </ul>
+        </div>
+        <div class="job">
+          <div class="h">HDFC Bank <span>Dec 2019 – Sep 2020</span></div>
+          <div class="r">Personal Banker</div>
+        </div>
+        <div class="job">
+          <div class="h">ICICI Bank <span>Nov 2016 – Sep 2019</span></div>
+          <div class="r">Privilege Banker · AML monitoring, KYC reviews, MI reporting</div>
+        </div>
+      </div>
+      <div>
+        <h3 class="sec">Education and courses</h3>
+        <ul class="list">
+          <li><b>AI Product Management, Cohort 8</b>Rethink Systems · Jul – Sep 2026</li>
+          <li><b>PGDM, Finance and Big Data Analytics</b>FORE School of Management · 2023</li>
+          <li><b>B.Com (Honours)</b>University of Delhi · 2016</li>
+          <li><b>Business Data Analytics</b>National University of Singapore · 2022</li>
+        </ul>
+        <h3 class="sec" style="margin-top:3mm">How I build</h3>
+        <div class="chips">
+          <span class="chip">Claude Code</span><span class="chip">Next.js</span><span class="chip">TypeScript</span><span class="chip">Supabase</span><span class="chip">Groq LLM API</span><span class="chip">Expo</span><span class="chip">Vercel</span><span class="chip">Power BI</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. PWC DASHBOARD -->
+<section class="page proj" style="--c:var(--pwc)">
+  <div class="panel" style="background:var(--pwc)">
+    <div class="kicker">01 · Product work at my job</div>
+    <h2 class="display">Risk Screening Dashboard</h2>
+    <p class="one">A risk dashboard for a healthcare client of PwC, built with an external risk-screening technology vendor.</p>
+    <dl class="meta">
+      <dt>Where</dt><dd>PwC Acceleration Centers, Bengaluru</dd>
+      <dt>Client</dt><dd>Healthcare client (name withheld)</dd>
+      <dt>My role</dt><dd>Experienced Associate: requirements, vendor work, workflow improvements</dd>
+    </dl>
+    <div class="mods">
+      <div>Global risk and compliance screening</div>
+      <div>Continuous monitoring of entities</div>
+      <div>Case creation, data import, tracking and report delivery<span>The workflow I streamlined</span></div>
+    </div>
+  </div>
+  <div class="body">
+    <div class="stats" style="grid-template-columns: repeat(3, 1fr)">
+      <div class="stat fill" style="background:var(--pwc)"><div class="num">67%</div><div class="lbl">Less time per case, from 30 minutes to 10</div></div>
+      <div class="stat"><div class="num">30 → 10</div><div class="lbl">Minutes per case, end to end</div></div>
+      <div class="stat"><div class="num">Up to 25</div><div class="lbl">Cases a week</div></div>
+    </div>
+    <div class="blk"><h4>Time per case</h4>
+      <div class="ba"><span>Before</span><div class="track"><i style="width:100%;background:#b9ad9c"></i></div><b>~30 min</b></div>
+      <div class="ba"><span>After</span><div class="track"><i style="width:33%;background:var(--pwc)"></i></div><b>~10 min</b></div>
+    </div>
+    <div class="blk"><h4>How client needs became dashboard changes</h4>
+      <div class="loop">
+        <div class="box"><b>Client</b>States what the engagement needs from screening and reports</div><span class="arr">→</span>
+        <div class="box"><b>Me</b>Gathers the requirements and turns them into changes</div><span class="arr">→</span>
+        <div class="box"><b>Vendor</b>Builds the changes in its risk-screening technology</div><span class="arr">→</span>
+        <div class="box"><b>Regular calls</b>Client and vendor calls to check and adjust</div>
+      </div>
+    </div>
+    <div class="grid2">
+      <div class="blk"><h4>What I did</h4>
+        <ul>
+          <li>Gathered business requirements and prioritised workflow improvements</li>
+          <li>Aligned client stakeholders with the technology partner</li>
+          <li>Gave feedback during release testing and live rollout</li>
+          <li>Streamlined case creation, data import, tracking and report delivery</li>
+        </ul>
+      </div>
+      <div class="blk"><h4>Why it matters for a PM role</h4>
+        <p>This was a real product with a real client and an external vendor. I sat between the people who needed the product and the people who built it, and the result is measured in time saved per case.</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer">Manyata Manocha · AI PM portfolio · 3</div>
+</section>
+
+<!-- 3. ADHIKAAR -->
+<section class="page proj" style="--c:var(--adh)">
+  <div class="panel" style="background:var(--adh)">
+    <div class="kicker">02 · Government and public sector</div>
+    <h2 class="display">Adhikaar</h2>
+    <p class="one">Free guidance that helps a family claim the bank deposits of a person who has died, using the RBI's own rules.</p>
+    <dl class="meta">
+      <dt>Type</dt><dd>Individual case study, Rethink Systems</dd>
+      <dt>My role</dt><dd>Research, PRD, design, build, launch</dd>
+      <dt>Built with</dt><dd>Next.js, TypeScript, Supabase, Groq, Vercel</dd>
+      <dt>Live</dt><dd><a class="ul" href="https://adhikaar-gamma.vercel.app">adhikaar-gamma.vercel.app</a></dd>
+    </dl>
+    <a class="shot" href="https://adhikaar-gamma.vercel.app" style="display:block"><div class="bar"><i></i><i></i><i></i><span>adhikaar-gamma.vercel.app</span></div><img src="img/adhikaar.png" alt="Adhikaar home page"></a>
+  </div>
+  <div class="body">
+    <div class="stats">
+      <div class="stat fill" style="background:var(--adh)"><div class="num" style="font-size:18.5pt;white-space:nowrap">₹17k → ₹1k</div><div class="lbl">Estimated cost, court route against simplified route</div></div>
+      <div class="stat"><div class="num">7</div><div class="lbl">Interviews across 6 segments</div></div>
+      <div class="stat"><div class="num">8</div><div class="lbl">Verdict routes, each at a shareable link</div></div>
+      <div class="stat"><div class="num">53</div><div class="lbl">Automated tests, all passing</div></div>
+    </div>
+    <div class="grid2">
+      <div class="blk"><h4>The problem</h4>
+        <p>Since the RBI Directions of 2025, a bank usually may not demand a succession certificate for a deposit claim. Legal websites and ChatGPT still give the old answer. For a ₹4 lakh account with no nominee, court costs about ₹17,000–37,000 and 5–7 months. The simplified route costs about ₹1,000 and 4–6 weeks.</p>
+      </div>
+      <div class="blk"><h4>What research showed</h4>
+        <ul>
+          <li>Each interview began cold: "₹4 lakh in SBI, no nominee. What would you do?"</li>
+          <li>People read "no nominee" as "court".</li>
+          <li>Nobody reads RBI circulars, including people who could.</li>
+          <li>Trust depends on visible sources.</li>
+        </ul>
+      </div>
+      <div class="blk"><h4>Key insight</h4>
+        <p>The person who releases the money is the <b>branch officer</b>. Other guides speak only to the family. Adhikaar gives the family a page for the officer: the RBI paragraph, with its number, beside the bank's own published policy.</p>
+      </div>
+      <div class="blk"><h4>What I built</h4>
+        <ul>
+          <li>Up to 8 questions, then 1 of 8 verdicts</li>
+          <li>Document checklist with issuer, cost and time</li>
+          <li>Policy table for 8 banks, old rows flagged</li>
+          <li>Print or PDF by email, in 3 languages</li>
+          <li>"Ask Saathi" assistant; no login, no stored data</li>
+        </ul>
+      </div>
+      <div class="blk"><h4>How I measure it</h4>
+        <ul>
+          <li><b>North Star:</b> Weekly Resolved Journeys, a count</li>
+          <li><b>Guardrail:</b> Honest-Exit Rate, so a rising count cannot hide false confidence</li>
+          <li><b>Retention:</b> left out on purpose. A family claims once.</li>
+        </ul>
+      </div>
+      <div class="blk"><h4>Scope I cut</h4>
+        <p>Insurance, mutual funds, shares, EPF, NPS, property and heir disputes. I could verify every claim about bank deposits in the time available, but not the other seven areas.</p>
+      </div>
+    </div>
+    <div class="note"><b>Honest status:</b> the product is live with a public metrics page. Five interview participants used it. The live traffic so far is the team's own testing, so I report no user numbers yet.</div>
+  </div>
+  <div class="footer">Manyata Manocha · AI PM portfolio · 4</div>
+</section>
+
+<!-- 4. VANTAGE -->
+<section class="page proj" style="--c:var(--van)">
+  <div class="panel" style="background:var(--van)">
+    <div class="kicker">03 · Learning tech and AI</div>
+    <h2 class="display">Vantage</h2>
+    <p class="one">An AI learning app that trains client-facing consultants to judge which AI approach fits a client problem.</p>
+    <dl class="meta">
+      <dt>Type</dt><dd>Individual case study, Rethink Systems</dd>
+      <dt>My role</dt><dd>Interviews, PRD, design, build, pilot</dd>
+      <dt>Built with</dt><dd>Next.js, TypeScript, Supabase, Groq, Vercel</dd>
+      <dt>Live</dt><dd><a class="ul" href="https://vantage-app-zeta.vercel.app">vantage-app-zeta.vercel.app</a></dd>
+    </dl>
+    <a class="shot" href="https://vantage-app-zeta.vercel.app" style="display:block"><div class="bar"><i></i><i></i><i></i><span>vantage-app-zeta.vercel.app</span></div><img src="img/vantage.png" alt="Vantage login page"></a>
+  </div>
+  <div class="body">
+    <div class="stats">
+      <div class="stat fill" style="background:var(--van)"><div class="num">88%</div><div class="lbl">Testers who finished a meaningful activity with no help (15 of 17)</div></div>
+      <div class="stat"><div class="num">9</div><div class="lbl">Interviews across 8 roles</div></div>
+      <div class="stat"><div class="num">12 / 14</div><div class="lbl">Solutions rated helpful in the pilot</div></div>
+      <div class="stat"><div class="num">268</div><div class="lbl">Unit tests</div></div>
+    </div>
+    <div class="grid2">
+      <div class="blk"><h4>The problem</h4>
+        <p>Professionals in India use AI every week. They still cannot tell which AI approach fits a new client problem. Their confidence comes from repeating familiar tasks. Courses add more content, and free content is completed by fewer than 5% of learners.</p>
+      </div>
+      <div class="blk"><h4>Why this user</h4>
+        <p>I interviewed across 8 roles before I chose a persona. The client-facing consultant came out on top: the problem comes back every week, a wrong approach reaches a paying client, and "which approach fits" has an answer that can be graded.</p>
+      </div>
+      <div class="blk"><h4>What I built</h4>
+        <ul>
+          <li><b>Practice:</b> guess before reveal. The answer shows only after the learner commits, and the reveal explains why each other option loses.</li>
+          <li>90 scenarios, 120 concept questions, difficulty tiers, no repeats</li>
+          <li><b>Solve:</b> bring a real client problem, get a step-by-step approach</li>
+          <li><b>Review gate:</b> no AI-made question reaches a learner unchecked</li>
+        </ul>
+      </div>
+      <div class="blk"><h4>What I cut, and why</h4>
+        <ul>
+          <li><b>Share and invite:</b> no evidence for it, and it conflicts with privacy</li>
+          <li><b>Streaks and leaderboards:</b> a learner who is wrong must stay private</li>
+          <li><b>Payments:</b> the free version has nothing to protect</li>
+        </ul>
+      </div>
+      <div class="blk"><h4>How I measure it</h4>
+        <ul>
+          <li><b>North Star:</b> Weekly Engaged Learners, people with 3+ practice sessions in 7 days</li>
+          <li>A count, because a ratio can rise while users fall</li>
+          <li><b>Guardrails:</b> helpful rate, first-guess accuracy floor, rating coverage</li>
+        </ul>
+      </div>
+      <div class="blk"><h4>What the pilot taught me</h4>
+        <p>17 external testers used it without an onboarding call. Everyone who started a guess-then-reveal loop finished it. Only 2 of 17 found the scenario quiz, so I changed the navigation. Retention has no data yet.</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer">Manyata Manocha · AI PM portfolio · 5</div>
+</section>
+
+<!-- 5. SHRAVAN'S ROUND -->
+<section class="page proj" style="--c:var(--shr)">
+  <div class="panel" style="background:var(--shr)">
+    <div class="kicker">04 · Interview practice</div>
+    <h2 class="display">The Shravan's Round</h2>
+    <p class="one">A 20-minute AI voice mock interview for product manager candidates, with real Indian PM cases and a score card at the end.</p>
+    <dl class="meta">
+      <dt>Type</dt><dd>Team project, built with Shravan Tickoo</dd>
+      <dt>Award</dt><dd>2nd place, Rethink AI-First Buildathon</dd>
+      <dt>Live</dt><dd><a class="ul" href="https://shravans-round.vercel.app">shravans-round.vercel.app</a></dd>
+    </dl>
+    <a class="shot" href="https://shravans-round.vercel.app" style="display:block"><div class="bar"><i></i><i></i><i></i><span>shravans-round.vercel.app</span></div><img src="img/shravan.png" alt="The Shravan's Round home page"></a>
+  </div>
+  <div class="body">
+    <div class="stats">
+      <div class="stat fill" style="background:var(--shr)"><div class="num">20 min</div><div class="lbl">One mock interview, answered out loud</div></div>
+      <div class="stat"><div class="num">5</div><div class="lbl">Scores, each out of 5, plus one thing to fix</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">Logins or cards needed to start</div></div>
+      <div class="stat"><div class="num">4</div><div class="lbl">Indian case sources: Swiggy, Zepto, Flipkart, CRED</div></div>
+    </div>
+    <div class="grid2">
+      <div class="blk"><h4>What it does</h4>
+        <p>The candidate picks a role, experience level and focus. An AI interviewer in Shravan's style asks questions out loud. Each answer decides the next question, and loose answers get a cross-question. Mixed Hindi and English is accepted and scored on clarity.</p>
+      </div>
+      <div class="blk"><h4>How a mock works</h4>
+        <ul>
+          <li><b>Set up:</b> two choices, no forms</li>
+          <li><b>Interview:</b> Shravan asks, the candidate answers out loud</li>
+          <li><b>Score card:</b> five scores and the one line that cost the most</li>
+          <li><b>Transcript:</b> annotated, with every cross-question saved to practise again</li>
+        </ul>
+      </div>
+      <div class="blk" style="grid-column: span 2">
+        <h4>Sample score card, from the product</h4>
+        <div class="score">
+          <div class="sr"><span>Structure</span><div class="bar2"><i style="width:70%"></i></div><span>3.5</span></div>
+          <div class="sr"><span>Product sense</span><div class="bar2"><i style="width:80%"></i></div><span>4</span></div>
+          <div class="sr"><span>Metrics</span><div class="bar2"><i style="width:60%"></i></div><span>3</span></div>
+          <div class="sr"><span>Prioritisation</span><div class="bar2"><i style="width:70%"></i></div><span>3.5</span></div>
+          <div class="sr"><span>Communication</span><div class="bar2"><i style="width:80%"></i></div><span>4</span></div>
+          <div class="fix">Fix first: state the trade-off before the recommendation.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">Manyata Manocha · AI PM portfolio · 6</div>
+</section>
+
+<!-- 6. HAMSTY -->
+<section class="page proj" style="--c:var(--ham)">
+  <div class="panel" style="background:var(--ham)">
+    <div class="kicker">05 · Personal product · in build</div>
+    <h2 class="display">Hamsty</h2>
+    <p class="one">A voucher wallet. It collects vouchers from pictures and Gmail, reminds people before they expire, and lets them give unused ones away.</p>
+    <dl class="meta">
+      <dt>Type</dt><dd>Personal project</dd>
+      <dt>My role</dt><dd>Idea, design decisions, specs, build</dd>
+      <dt>Built with</dt><dd>Expo (React Native), Supabase, Groq, Vercel</dd>
+      <dt>Demo</dt><dd><a class="ul" href="https://hamsty.vercel.app">hamsty.vercel.app</a> (web, test data)</dd>
+    </dl>
+    <a class="shot" href="https://hamsty.vercel.app" style="display:block; width:44mm; margin:auto auto 0; border-radius:4mm;"><div class="bar"><i></i><i></i><i></i></div><img src="img/hamsty.png" alt="Hamsty welcome screen"></a>
+  </div>
+  <div class="body">
+    <div class="stats">
+      <div class="stat fill" style="background:var(--ham)"><div class="num">7 · 3 · 1</div><div class="lbl">Days before expiry when reminders go out, plus the last day</div></div>
+      <div class="stat"><div class="num">1 / day</div><div class="lbl">Most reminders a person gets, bundled</div></div>
+      <div class="stat"><div class="num">6</div><div class="lbl">Badges for people who give vouchers away</div></div>
+      <div class="stat"><div class="num">0</div><div class="lbl">Sign-up steps before a person can try it</div></div>
+    </div>
+    <div class="grid2">
+      <div class="blk"><h4>The problem</h4>
+        <p>Vouchers arrive in email and as screenshots. Most are unnamed codes, for example ₹250 off ₹2,500. People forget them until they expire, and they have no easy way to pass on the ones they will not use.</p>
+      </div>
+      <div class="blk"><h4>What I built</h4>
+        <ul>
+          <li><b>Stash:</b> all vouchers in one place; the code stays hidden until "Show code"</li>
+          <li><b>Snap:</b> AI reads a voucher picture and fills in the details</li>
+          <li><b>Gmail:</b> optional link to find voucher emails</li>
+          <li><b>Share board:</b> give vouchers away, with a weekly leaderboard</li>
+          <li><b>Nearby:</b> alerts near shops on the phone app</li>
+        </ul>
+      </div>
+      <div class="blk"><h4>Decisions I made</h4>
+        <ul>
+          <li><b>Guest account first.</b> People try the app before they give an email.</li>
+          <li><b>Picture reader on Groq.</b> It is free and keeps no copy by default. I rejected a free tier where the provider may read the content.</li>
+          <li><b>Privacy policy before launch.</b> Written alongside the build, shown in the app.</li>
+        </ul>
+      </div>
+      <div class="blk"><h4>How I work on it</h4>
+        <p>I split the product into parts (wallet, reminders, nearby alerts, sharing). For each part I write a spec, approve it, then build from a step-by-step plan with automated tests. Each part runs on a real Supabase back end with row-level security.</p>
+      </div>
+    </div>
+    <div class="note"><b>Status:</b> in build. The web demo is live with test data. Phone apps come after the web launch.</div>
+  </div>
+  <div class="footer">Manyata Manocha · AI PM portfolio · 7</div>
+</section>
+
+<!-- 7. PAYTM -->
+<section class="page proj" style="--c:var(--pay)">
+  <div class="panel" style="background:var(--pay)">
+    <div class="kicker">06 · Hackathon · Track 3</div>
+    <h2 class="display">AI Teammates</h2>
+    <p class="one">Two AI agents for a payments company: one turns a sales lead into a payment, one fixes a failed payment. Both hand off to a person at set limits.</p>
+    <dl class="meta">
+      <dt>Event</dt><dd>Paytm Build for India AI Hackathon, Bengaluru</dd>
+      <dt>Team</dt><dd>Team Rethinkers: Tushar Pathak, Manyata Manocha, Sundaram Sharma</dd>
+      <dt>Stage</dt><dd>Stage 1 pitch deck, October 2026. Finals on 31 October 2026.</dd>
+      <dt>Planned stack</dt><dd>Python, FastAPI, LLM with tool calling, Postgres audit log</dd>
+    </dl>
+    <p style="font-size:9.2pt;line-height:1.45;margin-top:5mm;"><b>Business model:</b> used inside the company to lower cost per case, or sold to merchants as a paid add-on. A small fee is charged per solved case or closed deal.</p>
+    <div class="bigstat" style="margin-top:auto; background:rgba(0,0,0,.18); border-radius:4mm; padding:5mm;">
+      <div class="num" style="color:#fff">24.07 bn</div>
+      <div class="lbl" style="color:#e2fffa">UPI payments in September 2026 (NPCI). About 0.8% fail for technical reasons. RBI Ombudsman complaints reached 1.33 mn in FY25, up 13.55%.</div>
+    </div>
+  </div>
+  <div class="body" style="gap:5.5mm; padding-top:11mm">
+    <div class="grid2" style="flex:0">
+      <div class="blk"><h4>The problem</h4>
+        <p>Sales teams score each lead by hand, and quotes and payment links go out slowly. Support teams check each failed payment by hand, then refund, retry or escalate it. Both jobs repeat the same three steps: look up, decide, act.</p>
+      </div>
+      <div class="blk"><h4>How it differs from a chatbot</h4>
+        <ul>
+          <li><b>It acts:</b> sends payment links and triggers reversals</li>
+          <li><b>It hands off:</b> large deals and hard cases go to a person</li>
+          <li><b>It is measured:</b> each teammate has outcome metrics</li>
+        </ul>
+      </div>
+    </div>
+    <div class="blk"><h4>How a case moves through the system</h4>
+      <div class="flow">
+        <div class="box"><b>Input</b>Lead or failed payment</div><span class="arr">→</span>
+        <div class="box dark"><b>AI agent</b>LLM with tool calling</div><span class="arr">→</span>
+        <div class="box"><b>Rules</b>Refund cap, deal-size limit. Over the limit: a person gets a case summary</div><span class="arr">→</span>
+        <div class="box"><b>Tools (mock)</b>Payment link, refund, reversal</div><span class="arr">→</span>
+        <div class="box hot"><b>Customer</b>WhatsApp or SMS</div>
+      </div>
+    </div>
+    <div class="blk"><h4>The same five steps for both teammates</h4>
+      <div class="row-label">Sales Teammate</div>
+      <div class="steps5">
+        <div><b>Understand</b>Reads history and lead source</div>
+        <div><b>Decide</b>Scores the lead, picks an offer</div>
+        <div><b>Act</b>Sends quote and payment link</div>
+        <div><b>Handoff</b>Books a human call for large deals</div>
+        <div><b>Outcome</b>Conversion rate, time to close</div>
+      </div>
+      <div class="row-label">Customer Service Teammate</div>
+      <div class="steps5">
+        <div><b>Understand</b>Pulls the failed payment and bank reference</div>
+        <div><b>Decide</b>Refund, retry or escalate</div>
+        <div><b>Act</b>Triggers reversal, tells the customer</div>
+        <div><b>Handoff</b>Escalates with a full case summary</div>
+        <div><b>Outcome</b>Solved without a person, handle time</div>
+      </div>
+    </div>
+    <div class="blk"><h4>Four numbers we will track</h4>
+      <div class="stats">
+        <div class="stat"><div class="lbl" style="margin:0 0 1mm">Sales · goes up</div><div class="num" style="font-size:13pt">Conversion rate</div><div class="lbl">Share of leads that become paid deals</div></div>
+        <div class="stat"><div class="lbl" style="margin:0 0 1mm">Sales · goes down</div><div class="num" style="font-size:13pt">Time to close</div><div class="lbl">First contact to payment link</div></div>
+        <div class="stat fill" style="background:var(--pay)"><div class="lbl" style="margin:0 0 1mm">Service · goes up</div><div class="num" style="font-size:13pt">Solved alone</div><div class="lbl">Failed payments fixed without a person</div></div>
+        <div class="stat"><div class="lbl" style="margin:0 0 1mm">Service · goes down</div><div class="num" style="font-size:13pt">Handle time</div><div class="lbl">Time a person spends on each escalated case</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">Manyata Manocha · AI PM portfolio · 8</div>
+</section>
+
+</body>
+</html>

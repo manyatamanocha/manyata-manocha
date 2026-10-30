@@ -1,0 +1,2711 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Adhikaar PRD</title><link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700&display=swap" rel="stylesheet"><style>
+:root { color-scheme: light; --bg: #f3ebdf; --bg-2: #e9dfcf; --text: #2b2118; --dim: #6e6255; --line: rgba(43,33,24,.14); --red: #c2562f; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 17px/1.65 "Nunito Sans", system-ui, sans-serif;
+  padding: 36px max(20px, env(safe-area-inset-right, 0px)) 72px max(20px, env(safe-area-inset-left, 0px)); }
+main { max-width: 860px; margin: 0 auto; }
+a { color: var(--text); }
+.back { display: inline-block; margin-bottom: 40px; font-weight: 700; text-decoration: none; border-bottom: 1px solid var(--line); padding-bottom: 4px; }
+main > p:nth-of-type(1) { font-size: 13px; letter-spacing: .2em; text-transform: uppercase; color: var(--red); }
+p { margin: 0 0 14px; } b { font-weight: 700; }
+.tbl { overflow-x: auto; margin: 18px 0 28px; border: 1px solid var(--line); border-radius: 12px; }
+table { border-collapse: collapse; width: 100%; min-width: 560px; font-size: 15px; line-height: 1.5; }
+td, th { border-bottom: 1px solid var(--line); padding: 10px 12px; vertical-align: top; }
+tr:first-child td { background: var(--bg-2); font-weight: 600; }
+td p { margin: 0; }
+figure { margin: 20px 0 8px; } figure img { display: block; width: 100%; height: auto; border: 2px solid #161616; box-shadow: 5px 5px 0 #161616; background: #fff; }
+ul, ol { padding-left: 22px; } li { margin-bottom: 6px; }
+</style></head><body><main><a class="back" href="./">← Back to portfolio</a>
+
+<p><b>THE CURIOUS CHARVAKAS</b></p>
+
+<p>Product Requirements Document</p>
+<p><b>Adhikaar · Government and public sector case study</b></p>
+<p>Prepared by Manyata Manocha</p>
+<p><b>Contents</b></p>
+<ol><li>The Chosen Problem — Case Summary</li><li>Stakeholder Mapping</li><li>The Current Claim Journey</li><li>Secondary Research</li><li>Existing Tools — and the Seam They Miss</li><li>Primary Research</li><li>Opportunity &amp; Prioritization</li><li>Product Strategy — User, Buyer, Problem Statement</li><li>Solution Ideation &amp; Direction</li><li>Product Detailing &amp; MVP Scope</li><li>UX &amp; Product Design</li><li>Analytics &amp; Event Tracking</li><li>Build &amp; Deployment</li><li>Launch, Growth Loop &amp; Iteration</li></ol>
+<p></p>
+<p><b>1. The Chosen Problem — Case Summary</b></p>
+<p>The brief set one constraint: a problem in the government or public sector, chosen narrow. The frame is that <b>the state registers a death and propagates nothing.</b> One thing happens automatically when someone dies in India — a death gets registered. Aadhaar, PAN, pension, bank accounts, EPF, insurance, shares and property are each a separate process at a separate authority, everyone started by a grieving family with no map.</p>
+<p>This document takes <b>one branch of that: the bank deposit.</b></p>
+<p><b>What makes it live now.</b> The RBI issued the <i>Settlement of Claims in respect of Deceased Customers of Banks</i> Directions, 2025 — <b>RBI/2025-26/82</b>, ref DoR.MCS.REC.50/01.01.003/2025-26, issued <b>26 September 2025</b>, implemented <b>not later than 31 March 2026</b>. Since that date a bank usually may not demand a <b>succession certificate</b> for a deposit claim. That certificate is not paperwork; it is a civil suit under the Indian Succession Act, 1925, ss. 372–373.</p>
+<div class="tbl"><table>
+  <tbody>
+    <tr>
+      <td>
+        <p><b>₹4,00,000 account · no nominee · heirs in agreement</b></p>
+      </td>
+      <td>
+        <p><b>Cost</b></p>
+      </td>
+      <td>
+        <p><b>Time</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Succession certificate (the pre-2026 answer, still the default advice)</p>
+      </td>
+      <td>
+        <p><b>₹17,000–37,000</b></p>
+      </td>
+      <td>
+        <p><b>5–7 months</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Simplified procedure (what the rule now prescribes)</p>
+      </td>
+      <td>
+        <p><b>~₹1,000</b></p>
+      </td>
+      <td>
+        <p><b>4–6 weeks</b></p>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p>Roughly 3% of asset value in court fees plus a lawyer, and of those months a <b>45-day newspaper objection period is fixed by the process itself</b>.</p>
+<p><b>The evidence rule that governs this document.</b> Every RBI paragraph quoted here is read from the notification itself, and every bank policy line from that bank's own published page. The cost and duration figures above cannot be sourced that way and are not claimed to be — no statute states what a court charges. They are estimates bound to the worked example. Where a bank field could not be read from a primary source it is blank here, and renders in the product as <i>"we haven't verified this — ask your bank"</i>, never as a plausible guess.</p>
+<p><b>Almost nobody knows the rule changed.</b> Two independent deep-research passes on 3 September 2026 both returned the pre-2025 answer. A live 2026 Indian legal site still states movable assets are "legally claimable only through this document." ChatGPT gives the same answer. The people advising families have no incentive to update, because a succession certificate is billable and the simplified procedure is not.</p>
+<p>A rule that would save a bereaved family ₹17,000 and five months exists, is in force, and is binding on every bank in India — and the family standing at the counter has no way to know it, no way to verify what the branch tells them, and nothing to hand across the counter that says otherwise.</p>
+<p><b>The question this PRD answers</b>, since the problem was chosen rather than handed over:</p>
+<p>What should the FIRST version solve for one specific family, and how will we know it worked once it is live?</p>
+<p><b>Adhikaar's answer.</b> A front door that recognizes the reader's situation, up to eight questions where the law still needs to know more, a verdict at a real URL, and a printable page carrying the RBI's own sentence with its paragraph number beside that bank's own published policy. The user does not argue their opinion against the bank's. <b>They show the bank its own rules.</b></p>
+<p><b>The claim is deliberately narrow.</b> Not <i>"this money is yours"</i> — that is succession law, and this product has no business answering it. The claim is: <b>you are entitled to be told the correct rule before spending ₹17,000 on a court document.</b></p>
+<p><b>Three tensions the case turns on:</b></p>
+<p><b>A rule that exists versus a rule that arrives.</b> The RBI has issued this instruction three times — 2005, January 2013, September 2025. A rule reissued three times in twenty years is not reaching the counter.</p>
+<p><b>Published policy versus the counter.</b> From 31 March 2026 every bank must publish its deceased-claim policy. SBI implemented three months early. Canara's own policy makes a third-party surety mandatory above ₹5 lakh — a third of the RBI's ₹15 lakh floor — and never mentions the 2025 Directions. The law is uniform; the practice is not.</p>
+<p><b>A vacuum filled by whoever shows up.</b> Where there is no free, authoritative answer, the people advising a grieving family are the ones with a financial interest in the answer.</p>
+<p><b>In scope:</b> bank deposit accounts and term deposits, claimed by an adult legal heir or registered nominee, where the family already knows the account exists.</p>
+<p><b>Out of scope, and it is a long list on purpose:</b> account discovery · insurance · mutual funds · shares · EPF · NPS · post office savings · property mutation · dispute resolution between heirs · any login · any stored claim data. Government savings schemes are excluded by the Directions themselves at para 6(b), and said so on every page. <b>Every claim about bank deposits can be verified in the time available; seven asset rails cannot.</b> Three factual errors were found in the bank material alone after two days on it. Every other rail gets one map page that points and never advises.</p>
+<p><b>2. Stakeholder Mapping</b></p>
+<p>§1 said the family has no way to verify what they are told. That only becomes fixable once every party who touches that verification is named.</p>
+<p><b>There is no buyer. Decided, not defaulted.</b> The claimant cannot be charged — they are bereaved, and charging a family to be told a rule the state already published is the precise behaviour this product exists to argue against. The bank will not pay for a tool built to constrain it. <b>User = beneficiary, free, no login.</b> §12 covers what that costs: no revenue means no revenue-based North Star, so the metric had to be adapted rather than borrowed.</p>
+<div class="tbl"><table>
+  <tbody>
+    <tr>
+      <td>
+        <p><b>Party</b></p>
+      </td>
+      <td>
+        <p><b>Cares most about</b></p>
+      </td>
+      <td>
+        <p><b>Where they help or block</b></p>
+      </td>
+      <td>
+        <p><b>Role</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>The claimant</b> — adult legal heir or registered nominee</p>
+      </td>
+      <td>
+        <p>Getting the money released without being sent to court, and not being made to feel stupid</p>
+      </td>
+      <td>
+        <p>Arrives already holding a demand and already believing it. No way to verify what the branch said</p>
+      </td>
+      <td>
+        <p><b>User</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>The branch officer</b></p>
+      </td>
+      <td>
+        <p>Not being the person who released money to the wrong claimant</p>
+      </td>
+      <td>
+        <p>The actual gatekeeper. Reads the sheet, decides. Caution is rational — insider fraud on deceased accounts is documented</p>
+      </td>
+      <td>
+        <p><b>Reader of the output</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>The bank's head office</b></p>
+      </td>
+      <td>
+        <p>Compliance, and a defensible written policy</p>
+      </td>
+      <td>
+        <p>Publishes the policy that becomes the claimant's ammunition. Also where policy and counter diverge</p>
+      </td>
+      <td>
+        <p>Source of evidence</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>The RBI</b></p>
+      </td>
+      <td>
+        <p>That the Directions are implemented</p>
+      </td>
+      <td>
+        <p>Wrote the rule, set the deadline, runs the Ombudsman. No line of sight to any counter — which is why it has issued this three times</p>
+      </td>
+      <td>
+        <p>Authority</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>Lawyers and CAs</b></p>
+      </td>
+      <td>
+        <p>Billable work</p>
+      </td>
+      <td>
+        <p><b>The incumbent adviser and the source of the misinformation.</b> A certificate is billable; the simplified procedure is not</p>
+      </td>
+      <td>
+        <p>Existing alternative</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>The other legal heirs</b></p>
+      </td>
+      <td>
+        <p>Their own share</p>
+      </td>
+      <td>
+        <p>Can convert a simplified claim into a disputed one, flipping the verdict entirely under para 11(b)</p>
+      </td>
+      <td>
+        <p>Affected party</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>Whoever the family asks next</b></p>
+      </td>
+      <td>
+        <p>Being helpful</p>
+      </td>
+      <td>
+        <p>The only distribution this product has. A family claims once, so the person they tell is the entire growth mechanism</p>
+      </td>
+      <td>
+        <p>Propagation</p>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p><b>Roles deliberately not listed:</b> no procurement, no IT or security review, no employer buyer, no vendor. Those exist in a B2B case and not in this one; listing them out of habit would be padding.</p>
+<p><b>The influence every existing tool ignores: the branch officer as a reader.</b> Every guide, article and chatbot answer on this subject is addressed to the claimant. Not one produces an artifact designed to be read by the person on the other side of the counter — the only person who can actually release the money.</p>
+<p>That gap drives three decisions that would otherwise look arbitrary:</p>
+<p><b>Quote and cite, never assert.</b> <i>"You are entitled"</i> is the claimant's opinion, and an officer can decline an opinion. Para 9 quoted with its number, beside the bank's own PDF, is the bank's own position — and declining that requires a written reason.</p>
+<p><b>Print is a first-class output</b>, not a stylesheet afterthought. The deliverable is paper in someone's hand, and it must survive being printed black-on-white with every URL expanded.</p>
+<p><b>Quoting the right paragraph is a safety rule, not a nicety.</b> The "shall not insist on production of legal documents" sentence is <b>para 9, covering nominee and survivorship claims only.</b> On a no-nominee page it is a misquote a branch officer can catch, and the moment they catch it the claimant has lost their credibility at the worst moment of their life. The no-nominee case runs on <b>para 10(a)</b>, which <i>mandates</i> settlement on a closed list of six documents — a stronger instrument than a prohibition.</p>
+<p><b>One thing the map is honest about.</b> The officer's caution is not irrational and the product does not treat it as villainy. Insider fraud on deceased accounts is real. Caution is not the problem; undocumented, unaccountable caution is — a demand made verbally, with no rule cited, that the family cannot check.</p>
+
+<p><b>3. The Current Claim Journey — How Families Claim a Deceased Relative's Deposit Today</b></p>
+<p>§2 named who is in the room. This section is what actually happens in that room — the real sequence a family goes through today, stage by stage, so the next sections can point to exactly where it breaks rather than describe the problem in general terms.</p>
+<p>Six stages. Four are addressable by information alone, and this product addresses all four.</p>
+<div class="tbl"><table>
+  <tbody>
+    <tr>
+      <td>
+        <p><b>Stage</b></p>
+      </td>
+      <td>
+        <p><b>What happens today</b></p>
+      </td>
+      <td>
+        <p><b>Fixable by software?</b></p>
+      </td>
+      <td>
+        <p><b>Failure</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>0</p>
+      </td>
+      <td>
+        <p>Register the death — 21 days at the municipal body, certificate 7–14 days later, multiple certified copies because every authority wants its own</p>
+      </td>
+      <td>
+        <p>❌ Physical process</p>
+      </td>
+      <td>
+        
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>1</p>
+      </td>
+      <td>
+        <p>Find out what accounts exist — no register. Papers, passbooks, SMS alerts. UDGAM covers only deposits already dormant 10+ years</p>
+      </td>
+      <td>
+        <p>❌ No register, no API</p>
+      </td>
+      <td>
+        
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2</p>
+      </td>
+      <td>
+        <p>Approach the bank — several banks now publish an online claim route, and SBI issues a claim reference number</p>
+      </td>
+      <td>
+        <p>❌ In-person by design</p>
+      </td>
+      <td>
+        
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>3</b></p>
+      </td>
+      <td>
+        <p><b>The branch tells you what documents you need</b></p>
+      </td>
+      <td>
+        <p>✅ <b>Pure information asymmetry</b></p>
+      </td>
+      <td>
+        <p><b>FAILURE 1</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>4</b></p>
+      </td>
+      <td>
+        <p><b>You go and procure those documents</b></p>
+      </td>
+      <td>
+        <p>✅ <b>Where the money is lost</b></p>
+      </td>
+      <td>
+        <p><b>FAILURE 2</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>5</b></p>
+      </td>
+      <td>
+        <p><b>You submit, and wait</b></p>
+      </td>
+      <td>
+        <p>✅ <b>No portal shows a deadline breach</b></p>
+      </td>
+      <td>
+        <p><b>FAILURE 3</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>6</p>
+      </td>
+      <td>
+        <p>Repeat at EPFO, LIC, the depository, the pension office. Nothing carries over</p>
+      </td>
+      <td>
+        <p>⚠️ Map page only — lists and points, never advises</p>
+      </td>
+      <td>
+        
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p><b>Stages 0, 1, 2 and 6 are not failures being ignored.</b> They are not information problems. Registering a death is physical. Finding the accounts has nothing to query. Walking into a branch is in-person by design. Stage 6 is a different institution with a different form each time, which is why it gets a page that points and never advises rather than guidance this document cannot verify.</p>
+<p><b>Failure 1 — the branch is the only source of truth, and it is not reliable</b></p>
+<p>The family has no way to verify what they are told. Requirements vary by staff member, not merely by bank. Nothing is given in writing. And <b>the published policy and the counter can disagree</b>: PNB's own website states <i>"No bond of surety from a third-party is to be insisted in case of claims up to the threshold limit"</i> — while a documented account describes a PNB branch demanding a surety, two witnesses and a family genealogy on a <b>₹46,000</b> claim (§6).</p>
+<p><i>Not claimed: that branch staff are broadly untrained. What is evidenced is the gap between a published policy and one counter.</i></p>
+<p><b>The bank's own page is the answer to its own counter, and nobody carries it in with them.</b> That sentence is the product.</p>
+<p><b>Failure 2 — the certificate confusion, and this is where the money goes</b></p>
+<p>Three documents, three issuers, and almost nobody knows which one they need.</p>
+<div class="tbl"><table>
+  <tbody>
+    <tr>
+      <td>
+        
+      </td>
+      <td>
+        <p><b>Issued by</b></p>
+      </td>
+      <td>
+        <p><b>Time</b></p>
+      </td>
+      <td>
+        <p><b>Cost</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Legal Heir Certificate</p>
+      </td>
+      <td>
+        <p>Tehsildar / revenue officer</p>
+      </td>
+      <td>
+        <p>30–45 days typical</p>
+      </td>
+      <td>
+        <p>₹20–200, varies by state</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Surviving Member Certificate</p>
+      </td>
+      <td>
+        <p>Local authority</p>
+      </td>
+      <td>
+        <p>2–4 weeks</p>
+      </td>
+      <td>
+        <p>Nominal</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>Succession Certificate</b></p>
+      </td>
+      <td>
+        <p><b>Civil court</b></p>
+      </td>
+      <td>
+        <p><b>5–7 months</b>, including a fixed 45-day objection period</p>
+      </td>
+      <td>
+        <p><b>~3% of asset value</b>, plus a lawyer</p>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p>A plain search still returns, from 2026 legal sites, <i>"a succession certificate is specifically required for bank claims."</i> That is the pre-March-2026 answer, and it is what families act on.</p>
+<p><b>Failure 3 — nobody knows the bank is on a clock</b><b></b></p>
+<p>The 2025 Directions do not only simplify the documents. They impose obligations on the bank that no family is told about:</p>
+<div class="tbl"><table>
+  <tbody>
+    <tr>
+      <td>
+        <p><b>Obligation</b></p>
+      </td>
+      <td>
+        <p><b>Where</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Settlement within <b>15 calendar days</b> of receiving complete documents</p>
+      </td>
+      <td>
+        <p>Para 31</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Delay compensation at <b>Bank Rate + 4% p.a.</b> (9.5% today)</p>
+      </td>
+      <td>
+        <p>Para 33</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>₹5,000 per day</b> for delays on lockers and safe custody</p>
+      </td>
+      <td>
+        <p>Para 33</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Term deposits terminate early on death <b>without penalty</b></p>
+      </td>
+      <td>
+        <p>—</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Post-death credits returned to the remitter marked <i>"Account holder deceased"</i></p>
+      </td>
+      <td>
+        <p>Para 12</p>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p>Several banks now publish an online claim portal, and SBI issues a reference number. <b>But a portal tells you where your file sits in the bank's own process. No bank portal tells you the 15-day deadline has passed, or what para 33 provides when it has.</b> A family being stonewalled holds a statutory entitlement to compensation and has effectively no chance of knowing it.</p>
+<p><b>What the wrong path actually is — the severity behind Failure 2</b></p>
+<p>A succession certificate is a <b>civil suit</b> under the Indian Succession Act, 1925, ss. 372–373. No RBI rule and no bank process sends anyone to court. <b>A bank sends you there by demanding a document only a court can issue. The demand is the mechanism.</b></p>
+<p>What s.373 sets in motion: notice to every other legal heir · a <b>newspaper advertisement</b> carrying a fixed 45-day wait · a hearing proving both the relationship and that the assets exist · and the court summoning whoever it needs, <b>which can include bank officials</b>.</p>
+<p><b>Primary research confirms it from the inside.</b> R2's family is two years in and unresolved. The court requires the branch manager of <i>each</i> branch where the deceased held an account to appear and testify the account exists. The managers frequently do not attend, and <b>nothing compels them</b> — no service standard, no deadline, no consequence. Each absence is another adjournment. That is how a 5–7 month process becomes two years.</p>
+<p>The simplified procedure replaces a civil case with a form.</p>
+<p>Court route: a petition, notice to every heir, a newspaper advertisement, hearings, and the deceased's own bank sending a person to a courtroom to confirm he banked there.</p>
+<p>Para 10(a): the bank shall settle on six documents. No court, no notice period, no witnesses.</p>
+<p><b>The one stage this version attacks</b></p>
+<p>Stage 3 into Stage 4 — the moment a family accepts a demand they cannot check, and leaves to procure the wrong document<span>.</span></p>
+<p>Everything in V1 exists to move that moment. It is the only stage where the family has no option at all, it is where the ₹17,000 and the five months are committed, and it is the last point at which the decision is reversible — once the petition is filed, the newspaper clock starts and the money is spent.</p>
+<p><b>There is no drop-off funnel here, and inventing one would be dishonest.</b> This journey happens offline, across institutions that publish nothing about it. The "drop-off" is not a user abandoning a screen; it is a family complying with a demand that should never have been made — an event nobody counts, which is part of why the problem has survived twenty years and three RBI circulars.</p>
+<p><b>Symptom versus root cause</b></p>
+<div class="tbl"><table>
+  <tbody>
+    <tr>
+      <td>
+        <p><b>Symptom</b></p>
+      </td>
+      <td>
+        <p><b>Root cause</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>"Banks are slow" · "the process is a nightmare"</p>
+      </td>
+      <td>
+        <p>The branch is the only source of truth, and its demand is <b>unverifiable</b>. A wrong demand and a right one look identical to the family receiving it</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>"People don't know their rights"</p>
+      </td>
+      <td>
+        <p>Knowing the right changes nothing on its own. The family already cannot argue with the counter — what they lack is not knowledge but <b>an artifact the officer has to answer to</b> (§2)</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>"The rules need to change"</p>
+      </td>
+      <td>
+        <p>The rule already changed, on 31 March 2026. It has now been issued three times in twenty years (§4). Another circular is not the missing piece</p>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p>A faster portal or a better circular treats the symptom. <b>The root cause is that the bank's own published rule is not in the room when the demand is made</b> — and that is a distribution problem, which is the one thing a website can actually fix.</p>
+
+<p><b>4. Secondary Research</b></p>
+<p>§3 named the root cause in a single family's own case. This section is the outside evidence that the same root cause holds at scale — how big the problem is, why the rule keeps failing to arrive, and where bank practice itself diverges from the law. Grouped by what each fact decides. Anything that changed no decision has been cut, and the numbers this research got <i>wrong</i> are listed at the end rather than quietly dropped.</p>
+<p><b>The pool — how much money is sitting unclaimed</b></p>
+<div class="tbl"><table>
+  <tbody>
+    <tr>
+      <td>
+        <p><b>Figure</b></p>
+      </td>
+      <td>
+        <p><b>Source</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>₹98,073 crore</b> of unclaimed deposits with the RBI as of <b>31 January 2026</b></p>
+      </td>
+      <td>
+        <p>Rajya Sabha Unstarred Question No. 2628, 11 August 2026</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>₹90,545 crore as of 30 June 2025</p>
+      </td>
+      <td>
+        <p>Same answer</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>₹17,415 crore</b> reimbursed from the DEA Fund for amounts paid to rightful claimants</p>
+      </td>
+      <td>
+        <p>Same answer</p>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p><b>So what:</b> ₹17,415 crore has flowed back to claimants against a stock of ₹98,073 crore. <b>Most of it is still sitting there.</b> This sizes the category, not the wedge; §7 sizes the wedge separately rather than borrowing this number.</p>
+<p><b>A number this research retracted.</b> An earlier draft claimed deposits were accumulating "four times faster" than they were paid out. That subtracted two totals whose dates were not comparable. Recomputed on a properly dated pair it is about <b>1.4×, not 4×</b> — and the multiplier is used nowhere in this document. One clean sourced figure, nothing derived from it.</p>
+
+<p><b>Why the rule has not reached the counter</b></p>
+<p><b>The RBI has issued this instruction three times: 2005, January 2013, and September 2025.</b></p>
+<p><b>So what:</b> this is the single most important fact in the document. A rule reissued three times in twenty years did not fail to exist — it failed to <i>arrive</i>. That rules out "wait for regulation" as a solution, because regulation has been tried three times. <b>The missing layer is distribution, not policy.</b></p>
+
+<p><b>The public information layer is actively wrong</b></p>
+<p>A plain search for what an heir needs still returns, from <b>2026</b> Indian legal sites, <i>"a succession certificate is specifically required for bank claims."</i> Two independent deep-research passes on 3 September 2026 both returned the pre-2025 answer, and ChatGPT gives the same.</p>
+<p><b>So what:</b> the family's most likely research paths all lead to the wrong answer, confidently. This is demonstrable live in ten seconds, which makes it the product's cleanest demo — and it explains the persistence: the information layer is not neutral, it is stale in the direction that costs money.</p>
+
+<p><b>Implementation is uneven, bank by bank — and this is verifiable</b></p>
+<p>Every bank must publish a board-approved deceased-claim policy. Read directly from those documents:</p>
+<div class="tbl"><table>
+  <tbody>
+    <tr>
+      <td>
+        <p><b>Bank</b></p>
+      </td>
+      <td>
+        <p><b>What its own policy says</b></p>
+      </td>
+      <td>
+        <p><b>Gap vs the RBI</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>SBI</b></p>
+      </td>
+      <td>
+        <p>Simplified procedure without surety up to ₹15 lakh. Revised <b>16 December 2025</b></p>
+      </td>
+      <td>
+        <p>Implemented <b>3 months early</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>PNB</b></p>
+      </td>
+      <td>
+        <p><i>"No bond of surety from a third-party is to be insisted in case of claims up to the threshold limit"</i></p>
+      </td>
+      <td>
+        <p>Matches</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>HDFC</b></p>
+      </td>
+      <td>
+        <p>Fast-track document list matches the RBI's six. But states <b>1 month</b> for a no-nominee claim</p>
+      </td>
+      <td>
+        <p>RBI para 31 says <b>15 days</b>, and does not distinguish nominee from no-nominee</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>ICICI</b></p>
+      </td>
+      <td>
+        <p>Surety only above <b>₹2 crore</b></p>
+      </td>
+      <td>
+        <p>13× above the ₹15 lakh floor — permitted under para 7(h)</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>Axis</b></p>
+      </td>
+      <td>
+        <p>Policy PDF dated <b>October 2023</b>; third-party surety once a no-nomination claim exceeds <b>₹10,000</b></p>
+      </td>
+      <td>
+        <p>Predates the Directions and never mentions them</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>Canara</b></p>
+      </td>
+      <td>
+        <p>Indemnity-cum-surety <b>mandatory above ₹5 lakh</b>; policy is Version 4.00 for FY2025-26</p>
+      </td>
+      <td>
+        <p>A third of the RBI's ₹15 lakh no-surety floor, and the Directions are not mentioned anywhere in 15 pages</p>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p><b>So what — and this is the finding the product's central feature depends on.</b> The law is uniform. The practice is not. <b>The answer genuinely depends on which bank you walk into</b>, which converts the bank-by-bank table from a reference feature into the argument for the product's existence (§7, §10). It also means a generic "the RBI says you don't need a succession certificate" page would be <i>insufficient</i>, not merely unhelpful — a Canara customer needs to know their own bank's policy contradicts the floor.</p>
+<p><b>A second-order finding:</b> from 31 March 2026, publishing that policy is mandatory. ICICI's board-approved policy could not be located at all — only individual claim forms. <b>A missing document is itself a documented gap</b>, which is why the product's bank table carries a "policy published" column.</p>
+<p><b>The escalation route exists, and is weaker than it sounds</b></p>
+<p>The current scheme is <b>RB-IOS 2026</b> (<span>cms.rbi.org.in</span>), free to use.</p>
+<p>In FY2024-25, <b>40.78%</b> of maintainable complaints were dismissed as showing no deficiency.</p>
+<p>Deposit-account complaints ran to <b>49,913</b>, 16.84% of the total. <b>Deceased-account claims are not reported as their own category.</b></p>
+<p><b>So what:</b> the product names the route and refuses to oversell it. It also explains why the escalation page leads with a written complaint to the branch's Grievance Redressal Officer and a 30-day clock, rather than sending people straight to the Ombudsman. And the missing category is a measurement gap in the regulator's own reporting — nobody, including the RBI, knows how often this specific failure happens.</p>
+<p><b>Adjacent facts that shape scope</b></p>
+<p><b>Death registration:</b> within 21 days at the municipal body or panchayat; the certificate issues 7–14 days after application. Late registration after one year needs a court order.</p>
+<p><b>UDGAM (RBI):</b> covers 30 banks and roughly 8.6 lakh registered users (July 2025). It is <b>search only</b> — it locates a dormant deposit and does not move money, and it requires its own registration with OTP and captcha.</p>
+<p><b>So what:</b> UDGAM defines the boundary. Discovery has a government answer; <b>execution does not.</b> Adhikaar starts where UDGAM stops, and says so on the homepage rather than competing with it.</p>
+<p><b>Statistics this research found to be wrong</b></p>
+<p>Listed because the discipline is the point, and because each of these felt strong enough to have shipped.</p>
+<div class="tbl"><table>
+  <tbody>
+    <tr>
+      <td>
+        <p><b>Claim that did not survive</b></p>
+      </td>
+      <td>
+        <p><b>What was wrong</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>"0.02% of unclaimed deposits are recovered"</p>
+      </td>
+      <td>
+        <p>Unsourceable, and roughly 75× off. ₹1,071 crore was settled in the 25 Sep–31 Oct 2025 window alone</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>"Unclaimed deposits accumulate 4× faster than payouts"</p>
+      </td>
+      <td>
+        <p>Endpoints a year apart, not five months. Recomputes to ~1.4×</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>"EPF has ₹16,600 crore unclaimed"</p>
+      </td>
+      <td>
+        <p>Two institutions added together and mislabelled — EPFO ₹9,330 cr <b>plus</b> LIC ₹7,318 cr</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>"Unclaimed EPF" as a category</p>
+      </td>
+      <td>
+        <p>The government told Parliament EPFO maintains no "unclaimed" accounts — only "inoperative"</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Three different unclaimed-insurance totals</p>
+      </td>
+      <td>
+        <p>Three incompatible definitions. <b>Not cited anywhere in this document</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>"Shall not insist on a Succession Certificate" applied to no-nominee claims</p>
+      </td>
+      <td>
+        <p>That sentence is <b>para 9 — nominee and survivorship only.</b> No-nominee runs on para 10(a)</p>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p><b>The pattern in all six is the same: a derived or aggregated number that felt strong.</b> Every figure that survived into this document is a single sourced value, used as published, with nothing computed from it.</p>
+
+<p><b>5. Existing Tools — and the Seam They Miss</b></p>
+<p>§4 established that the problem is real and large. The obvious next question is why nobody has already solved it — this section checks every tool that already exists against the same job a family actually needs done, rather than assuming a gap because no direct competitor was found. Organised by the job being done, not by brand. A family does not choose between "UDGAM and a lawyer" — it hits five different jobs in sequence, and different things serve each one.</p>
+<div class="tbl"><table>
+  <tbody>
+    <tr>
+      <td>
+        <p><b>Job to be done</b></p>
+      </td>
+      <td>
+        <p><b>What exists today</b></p>
+      </td>
+      <td>
+        <p><b>Where it stops</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>Find the account</b></p>
+      </td>
+      <td>
+        <p>UDGAM (RBI), <span>unclaimedassetsportal.in</span>, the Common Landing Portal</p>
+      </td>
+      <td>
+        <p>Genuinely solved, within limits. Search only — it locates a deposit and never moves money. <b>Not this product's job</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>Tell me what the rule is</b></p>
+      </td>
+      <td>
+        <p>The RBI Directions themselves; each bank's board-approved policy PDF</p>
+      </td>
+      <td>
+        <p>The rule is public and correct — and unreadable. It is a regulatory instrument addressed to banks, not a document written for a grieving family. The bank policies are scattered across eight different websites, some stale (Axis: 2023), one missing (ICICI)</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>Tell me what to do</b></p>
+      </td>
+      <td>
+        <p>Legal-advice sites, blogs, WhatsApp forwards, ChatGPT</p>
+      </td>
+      <td>
+        <p><b>Confidently wrong.</b> All return the pre-2026 answer (§4). This is the most-used route and the most damaging</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>Lodge the claim</b></p>
+      </td>
+      <td>
+        <p>Bank portals — SBI's CRCF, PNB, Union, BoI, Indian Bank, Central Bank</p>
+      </td>
+      <td>
+        <p>Tells you where your file sits inside the bank's own process. <b>Never tells you whether the demand made of you was legitimate, or that the 15-day clock has expired</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>Do it for me</b></p>
+      </td>
+      <td>
+        <p>Kustodian.life (~1,200 families, ₹20 crore recovered); Share Samadhan (shares only); Yellow (estate planning, pre-death)</p>
+      </td>
+      <td>
+        <p>Real, and paid, and done-for-you. Cannot lead with <i>"you don't need the certificate you are about to pay for"</i></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>Represent me</b></p>
+      </td>
+      <td>
+        <p>Lawyers and CAs</p>
+      </td>
+      <td>
+        <p><b>The actual incumbent, and the source of the misinformation.</b> A succession certificate is billable; the simplified procedure is not. No incentive to update</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>Escalate</b></p>
+      </td>
+      <td>
+        <p>RBI Ombudsman, RB-IOS 2026</p>
+      </td>
+      <td>
+        <p>Free and real. 40.78% of accepted complaints dismissed (§4). Deceased claims not even reported as a category</p>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p><b>The job none of them finishes</b></p>
+<p>Make the bank's own rule portable to the counter.</p>
+<p>Everything above either tells the family something (and is often wrong), or does the work for them (and charges for it). Nothing hands a family an artifact that the officer across the counter has to answer to — the rule, correctly attributed, beside that bank's own published words, in a form that survives being printed.</p>
+<p><b>Why this gap survives even though everyone has a chatbot</b></p>
+<p>A chatbot will answer instantly. What it cannot do is be <b>accountable for the paragraph number</b>. It has no obligation to quote verbatim, no mechanism to refuse to answer when the honest answer is "your heirs are in dispute, take advice," and — decisively — it produces a conversation, not a document. A ChatGPT conversation is not something a branch officer has to accept or put a written refusal against. A page quoting para 9 with a link to the bank's own PDF is.</p>
+<p>And the RBI's misquote trap makes this concrete: the "shall not insist" sentence belongs to para 9, nominee cases only. A generative tool asked about a no-nominee claim will reproduce that sentence, because every secondary source it learned from does. <b>A misquote a branch officer can catch is worse than no answer at all</b> — it destroys the family's credibility at the exact moment it matters (§2).</p>
+<p><b>Why nobody has built it</b></p>
+<p>Nobody is competing for the free public information layer, because there is no money in it. The family cannot be charged; the bank will not pay to be constrained; and the one commercial player cannot lead with the message that saves the most money, because its revenue depends on doing the work rather than removing the need for it.</p>
+<p>Stated plainly rather than as a weakness: <b>the absence of a competitor here is a finding about incentives, not a gap in the market waiting to be monetised.</b> It is also why this belongs in a public-sector case study.</p>
+
+<p><b>6. Primary Research</b></p>
+<p>Everything above is secondary evidence. This is the first primary evidence: real conversations with the people this product is for.</p>
+<p><b>How it was done</b></p>
+<p><b>Seven semi-structured interviews across six segments, conducted by me.</b> <b>Five product interviews</b>, each beginning with the same cold scenario — <i>"₹4 lakh in an SBI account, no nominee: what would you do?"</i> — answered <b>before</b> the participant saw anything, then worked through Adhikaar. The order matters: the belief is captured before the product can influence it. <b>Two experience interviews</b> with people who had dealt with a family member's estate, asked what happened rather than what they would do.</p>
+<p>Alongside these sit <b>three public forum accounts</b>, coded and dated. These are <b>not interviews</b>, are anonymous and unverifiable, and all pre-date the 2025 Directions — so they evidence <i>the problem the Directions were written to solve</i>, never current bank behaviour. Participants are described by role and segment only.</p>
+<div class="tbl"><table>
+  <tbody>
+    <tr>
+      <td>
+        <p><b>#</b></p>
+      </td>
+      <td>
+        <p><b>Role and segment</b></p>
+      </td>
+      <td>
+        <p><b>Why in scope</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>1</p>
+      </td>
+      <td>
+        <p>Salaried professional, urban — handles family paperwork, never a deceased claim</p>
+      </td>
+      <td>
+        <p>The most likely real user: capable, motivated, wrong about the rule</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2</p>
+      </td>
+      <td>
+        <p>Homemaker, urban — smartphone-comfortable, not with legal documents</p>
+      </td>
+      <td>
+        <p>The low-jargon-tolerance case</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>3</p>
+      </td>
+      <td>
+        <p>Working professional, digitally confident — knows UDGAM</p>
+      </td>
+      <td>
+        <p>Tests whether the gap survives digital confidence</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>4</p>
+      </td>
+      <td>
+        <p>Banking/finance professional</p>
+      </td>
+      <td>
+        <p><b>The deliberate contrast case</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>5</p>
+      </td>
+      <td>
+        <p>Small-business owner — prefers speaking to a person</p>
+      </td>
+      <td>
+        <p>Tests whether a website changes a branch-first user's behaviour</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>R1</p>
+      </td>
+      <td>
+        <p>Father died 2020</p>
+      </td>
+      <td>
+        <p><b>The control case.</b> The claim went smoothly (insurance, a different rail)</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>R2</p>
+      </td>
+      <td>
+        <p>Grandfather died 2024, <b>still unresolved in 2026</b></p>
+      </td>
+      <td>
+        <p>The spine. Two years in, in district court, no heir dispute</p>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p><b>What came out of it</b></p>
+<p>Labelled by how far the evidence travels: <b>SAW</b> — said in their own words · <b>THINK</b> — my interpretation · <b>ASSUME</b> — a hypothesis with no evidence behind it.</p>
+<div class="tbl"><table>
+  <tbody>
+    <tr>
+      <td>
+        <p><b>#</b></p>
+      </td>
+      <td>
+        <p><b>Finding</b></p>
+      </td>
+      <td>
+        <p><b>Evidence</b></p>
+      </td>
+      <td>
+        <p><b>Confidence</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>1</p>
+      </td>
+      <td>
+        <p><b>The default belief is the wrong one, and it is specific.</b> "No nominee" is read as "court"</p>
+      </td>
+      <td>
+        <p>P1, cold: <i>"maybe a succession certificate because there is no nominee."</i> After: <i>"I thought no nominee automatically meant we would have to go to court."</i></p>
+      </td>
+      <td>
+        <p><b>SAW — High.</b> The exact belief the product exists to correct</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2</p>
+      </td>
+      <td>
+        <p><b>Nobody reads the primary source, including people who could</b></p>
+      </td>
+      <td>
+        <p>P1: <i>"websites usually have a lot of PDFs, so I would probably end up calling someone or asking a lawyer."</i> P2: <i>"I wouldn't read RBI circulars myself."</i></p>
+      </td>
+      <td>
+        <p>SAW — High</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>3</p>
+      </td>
+      <td>
+        <p><b>Trust is conditional on visible sourcing — volunteered, not asked</b></p>
+      </td>
+      <td>
+        <p>P1: <i>"If you are telling me something different from what I believed, I need to see where it is coming from."</i> P3: <i>"I wouldn't trust a random AI answer. If it shows the RBI rule... then yes."</i></p>
+      </td>
+      <td>
+        <p><b>SAW — High.</b> The strongest validation of quote-and-cite</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>4</p>
+      </td>
+      <td>
+        <p><b>Discovery and claim are two different jobs</b></p>
+      </td>
+      <td>
+        <p>P3: <i>"UDGAM helps me find the deposit. Adhikaar tells me how to proceed... two different problems."</i></p>
+      </td>
+      <td>
+        <p>SAW — High</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>5</p>
+      </td>
+      <td>
+        <p><b>Plain wording beats correct terminology</b></p>
+      </td>
+      <td>
+        <p>P2: <i>"saying someone named in the bank records is easier for me than just saying nominee."</i></p>
+      </td>
+      <td>
+        <p>SAW — Medium-High</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>6</p>
+      </td>
+      <td>
+        <p><b>The action outranks the information</b></p>
+      </td>
+      <td>
+        <p>P2: <i>"I mainly want someone to tell me: okay, now collect these things and go here."</i></p>
+      </td>
+      <td>
+        <p><b>SAW — High.</b> Earned the "what to do today" box</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>7</p>
+      </td>
+      <td>
+        <p><b>The absence of a login was named as a positive</b>, unprompted</p>
+      </td>
+      <td>
+        <p>P2: <i>"I liked that I didn't have to upload documents or create an account before getting an answer."</i></p>
+      </td>
+      <td>
+        <p>SAW — Medium</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>8</p>
+      </td>
+      <td>
+        <p><b>The product prepares for the counter; it does not replace it</b></p>
+      </td>
+      <td>
+        <p>P5: <i>"I would still go to the branch. But maybe I would check this before going."</i> P1: <i>"instead of completely depending on whoever is sitting at the counter."</i></p>
+      </td>
+      <td>
+        <p><b>SAW — High.</b> Reframed the positioning</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>9</p>
+      </td>
+      <td>
+        <p><b>Domain-aware users get materially less, and said so</b></p>
+      </td>
+      <td>
+        <p>P4: <i>"Not much, because I already understand the basic process."</i></p>
+      </td>
+      <td>
+        <p>SAW — High. The contrast case behaved as one</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>10</p>
+      </td>
+      <td>
+        <p><b>Over-trust is the product's own risk</b></p>
+      </td>
+      <td>
+        <p>P4: <i>"I would be careful with users treating the output as a legal determination. Family disputes, wills and court orders can change the situation quickly."</i></p>
+      </td>
+      <td>
+        <p><b>SAW — High.</b> Maps onto para 11(b)</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>11</p>
+      </td>
+      <td>
+        <p><b>Staleness is the trust risk for anyone returning</b></p>
+      </td>
+      <td>
+        <p>P5: <i>"I would worry whether the information is updated."</i></p>
+      </td>
+      <td>
+        <p>SAW — Medium</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>12</p>
+      </td>
+      <td>
+        <p><b>The paper artifact is wanted</b>, for an unprompted reason</p>
+      </td>
+      <td>
+        <p>P2: <i>"when someone is dealing with a death in the family, remembering all these things is difficult."</i></p>
+      </td>
+      <td>
+        <p>SAW — Medium-High. A memory aid, not a convenience</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>13</p>
+      </td>
+      <td>
+        <p><b>There is no standard process and no list anywhere</b></p>
+      </td>
+      <td>
+        <p>R2: <i>"There is no standard process." "No website that can give them a list."</i></p>
+      </td>
+      <td>
+        <p><b>SAW — High.</b> The product's reason to exist, in a user's words</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>14</p>
+      </td>
+      <td>
+        <p><b>Information disclosed before death determines the outcome</b></p>
+      </td>
+      <td>
+        <p>R1's claim went smoothly because the father had given the family the details in advance</p>
+      </td>
+      <td>
+        <p>SAW — Medium. Kept because removing it would select for the story</p>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p><b>What this research does not prove</b></p>
+<p><b>None of the five product interviews was with a bereaved person.</b> They answered a scenario. The real user is grieving and doing this for the first time, and grief is the one condition never tested.</p>
+<p><b>The belief flip is documented once, not measured as a rate.</b> One observation, not a percentage.</p>
+<p><b>Nobody in this set had been refused at a counter.</b> R2 is a court case; the counter-refusal evidence comes from public accounts.</p>
+<p><b>The bank's operational side is unheard.</b> P4 understands policy — <b>not branch-counter staff who decide in the moment.</b> That is the most likely source of a finding that would complicate this document: if delays are mostly internal processing rather than families bringing wrong documents, correct information fixes <i>which document</i> and not <i>how long it sits</i>.</p>
+<p><b>The sample is urban, digitally able and English-speaking</b>, and nobody tested the Hindi or Kannada versions, which are shipped and unreviewed by a native speaker.</p>
+<p><b>I conducted every interview myself, on a product I built.</b> No blind, and social desirability runs one way. The two neutral readings are useful precisely because they cut against it.</p>
+<p><b>What it changed</b></p>
+<p><b>Finding 8 reframed the positioning, and it is the largest change this research made.</b> The product was conceived as the thing that tells a family the bank is wrong. Two participants independently described something narrower:</p>
+<p>Prepare me before I reach the counter, so I do not arrive completely unaware.</p>
+<p>A smaller claim and a more defensible one. It does not require the family to win an argument or the branch to be wrong.</p>
+<p><b>Finding 10 became an edge case rather than a footnote</b> — the real failure mode is a reader treating a verdict as a legal determination, which is why disputes, wills and court orders exit to review. <b>Findings 3 and 6 pull in opposite directions and the product serves both by ordering:</b> the verdict and next action come first and never require scrolling, with the RBI's own sentences directly beneath.</p>
+<p><b>Seven people confirm the problem. No interview can confirm the fix works</b>, because the only proof is a family that walked into a bank with this page and was not sent to court. That is §14's business, and this section does not lend it confidence it has not earned.</p>
+<p><b>7. Opportunity &amp; Prioritization</b></p>
+<p>Everything §3 to §6 surfaced, written as <b>FOR</b> whom / <b>THROUGH</b> what / <b>BECAUSE</b> the seam is still un-owned. The BECAUSE clause is the test: with no explanation for why the gap survives, it is not an opportunity.</p>
+<div class="tbl"><table>
+  <tbody>
+    <tr>
+      <td>
+        <p><b>ID</b></p>
+      </td>
+      <td>
+        <p><b>Opportunity</b></p>
+      </td>
+      <td>
+        <p><b>Value</b></p>
+      </td>
+      <td>
+        <p><b>Effort</b></p>
+      </td>
+      <td>
+        <p><b>Carry forward?</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>O-1</b></p>
+      </td>
+      <td>
+        <p><b>Say which rule applies to this specific claim</b> — THROUGH a deterministic question flow ending in a cited verdict, BECAUSE the rule is public, correct and unreadable, and every accessible source returns the pre-2026 answer (§4, §6 #2)</p>
+      </td>
+      <td>
+        <p><b>L</b></p>
+      </td>
+      <td>
+        <p>M</p>
+      </td>
+      <td>
+        <p><b>Yes — the thesis</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>O-2</b></p>
+      </td>
+      <td>
+        <p><b>Make that verdict portable to the counter</b> — THROUGH a printable page carrying the RBI's sentence beside the bank's own policy, BECAUSE no existing tool produces an artifact addressed to the officer (§2, §5)</p>
+      </td>
+      <td>
+        <p><b>L</b></p>
+      </td>
+      <td>
+        <p><b>S</b></p>
+      </td>
+      <td>
+        <p><b>Yes</b> — a property of O-1, not a separate build</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>O-3</b></p>
+      </td>
+      <td>
+        <p><b>Check what the branch demanded against what the RBI prescribes</b> — THROUGH a set difference with paragraph references, BECAUSE nothing is given in writing and the family has no baseline (§3 F1)</p>
+      </td>
+      <td>
+        <p><b>L</b></p>
+      </td>
+      <td>
+        <p><b>S</b></p>
+      </td>
+      <td>
+        <p><b>Yes</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>O-4</b></p>
+      </td>
+      <td>
+        <p><b>Compile the bank-by-bank published position</b> — THROUGH an aggregated table with per-row verification dates, BECAUSE banks have had to publish since 31 March 2026 and nobody has collected them (§4)</p>
+      </td>
+      <td>
+        <p>M-L</p>
+      </td>
+      <td>
+        <p>M</p>
+      </td>
+      <td>
+        <p><b>Yes</b> — §4 moved this from nice-to-have to essential</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>O-5</b></p>
+      </td>
+      <td>
+        <p><b>Name what documents to get, what each costs, and which to start today</b> — THROUGH per-document authority, cost, time and a link, BECAUSE the branch hands over a list and explains nothing (§3 F1, §6 #5)</p>
+      </td>
+      <td>
+        <p>M-L</p>
+      </td>
+      <td>
+        <p>M</p>
+      </td>
+      <td>
+        <p><b>Yes</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>O-6</b></p>
+      </td>
+      <td>
+        <p><b>Surface the 15-day clock and its compensation</b> — THROUGH a deadline tracker and a written escalation route, BECAUSE no bank portal reports a deadline breach (§3 F3)</p>
+      </td>
+      <td>
+        <p>M</p>
+      </td>
+      <td>
+        <p>S</p>
+      </td>
+      <td>
+        <p><b>Yes</b>, secondary</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>O-7</p>
+      </td>
+      <td>
+        <p><b>Find the accounts</b> — THROUGH a unified search across institutions</p>
+      </td>
+      <td>
+        <p>L</p>
+      </td>
+      <td>
+        <p><b>XL</b></p>
+      </td>
+      <td>
+        <p><b>No.</b> UDGAM covers discovery, and every authenticated rail needs consent from the account holder, who is dead</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>O-8</p>
+      </td>
+      <td>
+        <p><b>Do the claim for them</b> — THROUGH a paid done-for-you service</p>
+      </td>
+      <td>
+        <p>L</p>
+      </td>
+      <td>
+        <p><b>XL</b></p>
+      </td>
+      <td>
+        <p><b>No.</b> A service business — and it cannot lead with <i>"you do not need the certificate you are about to pay for"</i></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>O-9</p>
+      </td>
+      <td>
+        <p><b>Cover the other rails</b> — EPF, insurance, shares, pension</p>
+      </td>
+      <td>
+        <p>L</p>
+      </td>
+      <td>
+        <p>L</p>
+      </td>
+      <td>
+        <p><b>No.</b> Bank-deposit claims can be verified in the time available; seven rails cannot</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>O-10</p>
+      </td>
+      <td>
+        <p><b>Prompt nomination before the death</b> — THROUGH pre-death planning, BECAUSE R1 shows advance disclosure determines the outcome (§6 #14)</p>
+      </td>
+      <td>
+        <p>M</p>
+      </td>
+      <td>
+        <p>S</p>
+      </td>
+      <td>
+        <p><b>No for V1.</b> Different user, different moment. Helps nobody currently holding a demand</p>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p><b>How the scores were reached.</b> <b>Value = pain removed × how hard it is to copy.</b> O-1 to O-3 score <b>L</b> because they attack the one stage where the family has no option at all, and because correct paragraph attribution is something incumbent advisers have no incentive to produce and generative tools reliably get wrong. <b>Effort = build cost in a nine-day sprint</b>: O-2 and O-3 are <b>S</b> because neither needs logic. <b>Ties break toward the smaller build</b>, which is why O-2 ships as a property of O-1 — every verdict page <i>is</i> the printable artifact.</p>
+<p><b>8. Product Strategy — User, Buyer, Problem Statement</b></p>
+<p>This is the lock point. Everything after this section is detailing, not a change of direction.</p>
+<p><b>User and buyer</b></p>
+<p><b>User = the claimant. There is no buyer.</b> The reasoning is in §2 and is not repeated here. The consequences are: the product is free, there is no login, nothing about a family is stored, and §12 cannot use a revenue-linked North Star and says so rather than inventing one.</p>
+<p><b>Persona — the proxy</b></p>
+<p><b>An adult legal heir or registered nominee in India, handling a deceased parent's or grandparent's paperwork.</b> Frequently the family's designated proxy: the adult child who is best with forms, often acting for a surviving parent, often remotely, almost always on a phone.</p>
+<p><b>They have already had the counter conversation.</b> Discovery is done. They arrive holding a demand, usually for a succession certificate.</p>
+<p><b>They are recently bereaved</b>, doing admin they have never done before, in a state where reading is hard and being condescended to is intolerable.</p>
+<p><b>They are not a lawyer and have no intention of becoming one.</b> They need to know whether what they were told is correct, and what to do on Monday morning.</p>
+<p><b>They are not inexperienced.</b> P1 has handled family banking paperwork for years and still assumed "no nominee" meant court. The gap is not capability; the correct answer is not reachable.</p>
+<p><b>What "sorted" looks like to them:</b> walking into the branch knowing what the rule says, what to ask for by name, and what to hand over — instead of finding out one demand at a time.</p>
+<p><b>How the problem statement narrowed</b></p>
+<p>The starting frame, written before the research: <i>the state registers a death and propagates nothing.</i> Four narrowings, each traceable to a finding.</p>
+<div class="tbl"><table>
+  <tbody>
+    <tr>
+      <td>
+        <p><b>What changed</b></p>
+      </td>
+      <td>
+        <p><b>What forced it</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>"Everything that follows a death" → <b>one rail: bank deposits</b></p>
+      </td>
+      <td>
+        <p>Verifiability, not ambition. Three factual errors surfaced in the bank material after two days on it (§7 O-9)</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>"Bank deposits" → <b>the claim, not the discovery</b></p>
+      </td>
+      <td>
+        <p>UDGAM covers discovery, and no unified search is possible because every rail needs consent from a dead person. P3: <i>"those are two different problems"</i> (§6 #4)</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>"Help families claim" → <b>tell them which rule applies before they buy the wrong document</b></p>
+      </td>
+      <td>
+        <p>§3 locates the failure at stage 3 → 4 — where the ₹17,000 is committed and the last point it is reversible</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>"Tell them the bank is wrong" → <b>prepare them before they reach the counter</b></p>
+      </td>
+      <td>
+        <p>§6 #8. Two participants independently described something narrower than the product had claimed for itself</p>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p>What survived is the observation that the state records and does not execute. What changed is which single execution failure gets fixed.</p>
+
+<p><b>The locked problem statement</b></p>
+<p>For an adult legal heir or registered nominee or any related person in India who has a deceased relative's deposit in banks, the hold-up is that they cannot tell whether what they were asked for is what the rule actually requires  because the branch is the only source of truth available to them, nothing it says is given in writing, and the sources that would settle it are either unreadable or wrong — which matters because the default wrong answer is a succession certificate, costing roughly ₹17,000–37,000 and five to seven months on a ₹4 lakh claim, and once the petition is filed the decision is no longer reversible.</p>
+<p>Every clause is earned. The hold-up is P1's cold answer and R2's <i>"no website that can give them a list"</i> (§6 #1, #13). The "nothing in writing" clause is §3 Failure 1. The cost and duration carry §1's evidence-tier caveat. The irreversibility is §3's account of what s.373 sets in motion.</p>
+
+<p><b>The core bet, stated so it can be proven wrong</b></p>
+
+<p>If a family is handed the RBI's own sentence with its paragraph number, beside their own bank's published policy, in a form they can carry to a counter, then they will not buy a document they do not need — because the officer must either comply or put a refusal in writing that contradicts their own head office.</p>
+<p>The core bet only holds if four smaller beliefs underneath it are true. Each is numbered (H1–H4, "H" for hypothesis) so it can be pointed at individually. Four sub-bets, and what would kill each:</p>
+<div class="tbl"><table>
+  <tbody>
+    <tr>
+      <td>
+        
+      </td>
+      <td>
+        <p><b>Belief</b></p>
+      </td>
+      <td>
+        <p><b>Confirmed by</b></p>
+      </td>
+      <td>
+        <p><b>Killed by</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>H1</b></p>
+      </td>
+      <td>
+        <p>A cited page can outweigh what the counter said</p>
+      </td>
+      <td>
+        <p>A user arrives believing a succession certificate is required and leaves knowing it is not</p>
+      </td>
+      <td>
+        <p>Users say the bank's word settles it regardless of any source</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>H2</b></p>
+      </td>
+      <td>
+        <p>The evidence does the work, not the verdict</p>
+      </td>
+      <td>
+        <p>Users name visible sourcing as their condition for trusting an answer that contradicts them</p>
+      </td>
+      <td>
+        <p>Users skip the citations and want only the checklist — in which case the product is a to-do list, not an argument</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>H3</b></p>
+      </td>
+      <td>
+        <p>The artifact actually reaches the counter</p>
+      </td>
+      <td>
+        <p>Print and emailed-PDF export use, and users reporting they carried it</p>
+      </td>
+      <td>
+        <p>Nobody prints, emails or carries it, and the page is read once and closed</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>H4</b></p>
+      </td>
+      <td>
+        <p>It changes the outcome at the counter</p>
+      </td>
+      <td>
+        <p>A family reports the bank settled on the simplified route</p>
+      </td>
+      <td>
+        <p>Branches ignore the page regardless of what it cites</p>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p><b>Where each stands today, honestly.</b> H1 is supported by one observed belief flip (§6 #1) — one observation, not a rate. H2 is supported by two participants who volunteered sourcing as their trust condition (§6 #3), which is the strongest interview evidence in the document. <b>H3 has intent only</b> — P2 said she would take it to the bank; nobody has been observed doing it. <b>H4 is untested and cannot be tested by this product</b>, because Adhikaar has no account, no claim record, and no way to observe what happens after the tab closes (§12). §14 reports what the pilot actually measured.</p>
+<p><b>The success metric this is ultimately judged on</b></p>
+<p>A family completes the claim without buying a succession certificate they did not need.</p>
+<p>That is the true outcome, and the product <b>cannot observe it</b> — by design, since observing it would require the stored identity this product promises never to create. The observable proxy is the belief correction: arrived believing the certificate was required, left knowing it was not. §12 builds the metric stack on that limitation instead of pretending it away.</p>
+<p><b>Locked scope</b></p>
+<p><b>In:</b> bank deposit accounts and term deposits · lockers and safe custody · claimed by an adult legal heir or a registered nominee · discovery assumed done.</p>
+<p><b>Out:</b> account discovery · insurance · mutual funds · shares · EPF · NPS · post office savings · property mutation · dispute resolution between heirs · login · any stored claim data · document generation beyond the printable sheet. Government savings schemes (PPF, SCSS, MSSC, SSA) are excluded by para 6(b) and stated as excluded on every page.</p>
+<p><b>"No stored user data" narrowed to "no stored claim data," 9 September 2026, because two shipped changes made the broader phrasing inaccurate.</b> Emailing a verdict now takes an address, and counting distinct people now takes a persistent browser id. Neither stores a claim, and both are stated precisely in §10 and §12 rather than argued away. The scope line is corrected to what the build actually guarantees: no claim answer set is ever written to a server, and no identifier is ever joined to one.</p>
+<p><b>Locked 3 September 2026</b> — name, scope, flow and safety rules. The positioning refinement in §6 #8 (<i>prepare, do not replace</i>) is a sharpening of the same claim, not a pivot: nothing in the build changed because of it, only what the product says it is for.</p>
+<p><b>The decision spine</b></p>
+<div class="tbl"><table>
+  <tbody>
+    <tr>
+      <td>
+        <p><b>#</b></p>
+      </td>
+      <td>
+        <p><b>Decision</b></p>
+      </td>
+      <td>
+        <p><b>What forced it</b></p>
+      </td>
+      <td>
+        <p><b>What would reverse it</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>1</p>
+      </td>
+      <td>
+        <p>One rail — bank deposits only</p>
+      </td>
+      <td>
+        <p>Verifiability. Three errors found in the bank material alone in two days</p>
+      </td>
+      <td>
+        <p>Nothing this sprint</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>2</p>
+      </td>
+      <td>
+        <p>The claim, not the discovery</p>
+      </td>
+      <td>
+        <p>UDGAM exists; no APIs exist; users draw the same boundary (§6 #4)</p>
+      </td>
+      <td>
+        <p>A consented data rail for deceased accounts</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>3</p>
+      </td>
+      <td>
+        <p>User = beneficiary, no buyer, free, no login</p>
+      </td>
+      <td>
+        <p>Nobody can be charged, and the bank will not pay to be constrained (§2)</p>
+      </td>
+      <td>
+        <p>An institution offers to fund it</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>4</p>
+      </td>
+      <td>
+        <p>Quote and cite, never assert</p>
+      </td>
+      <td>
+        <p>An opinion can be declined at no cost; a cited rule cannot. Two participants named sourcing as their trust condition (§6 #3)</p>
+      </td>
+      <td>
+        <p>Users report the citations get in the way (H2 falsified)</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>5</p>
+      </td>
+      <td>
+        <p>A registered nominee skips the amount questions</p>
+      </td>
+      <td>
+        <p>Para 9 resolves nominee and survivorship at any amount</p>
+      </td>
+      <td>
+        <p>Nothing — this is the structure of the law</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>6</p>
+      </td>
+      <td>
+        <p>Bank asked second, not after the verdict</p>
+      </td>
+      <td>
+        <p>Only then can the reader's own bank's policy show beside every later question</p>
+      </td>
+      <td>
+        <p>A bank's policy is found to change a <i>verdict</i> rather than its evidence</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>7</p>
+      </td>
+      <td>
+        <p>Print is a first-class output</p>
+      </td>
+      <td>
+        <p>The deliverable is paper in a hand at a counter (§2)</p>
+      </td>
+      <td>
+        <p>Print and email usage stay at zero across a real cohort</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>8</p>
+      </td>
+      <td>
+        <p>A null renders as "not verified", never a guess</p>
+      </td>
+      <td>
+        <p>A wrong bank row sends someone to a branch with a false document</p>
+      </td>
+      <td>
+        <p>Nothing. This is the honesty rule the product rests on</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>9</p>
+      </td>
+      <td>
+        <p>No login, and no claim answer set written to a server</p>
+      </td>
+      <td>
+        <p>The answers are the family's private circumstances (§6 #7)</p>
+      </td>
+      <td>
+        <p>Nothing in this scope</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>10</p>
+      </td>
+      <td>
+        <p>Disputes, wills and court orders exit to review, and out-of-scope exits before any verdict</p>
+      </td>
+      <td>
+        <p>Para 11(b) overrides everything, and the one domain expert named over-trust as the real risk (§6 #10). A pension claimant reaching a bank verdict is the clearest harm path</p>
+      </td>
+      <td>
+        <p>Nothing — these are safety rules</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>11</p>
+      </td>
+      <td>
+        <p>The metric is belief correction, not money recovered</p>
+      </td>
+      <td>
+        <p>Nothing settles inside a pilot window, and the product cannot observe an outcome it deliberately does not store</p>
+      </td>
+      <td>
+        <p>A follow-up research channel exists</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>12</p>
+      </td>
+      <td>
+        <p>Retention declared inapplicable, not faked</p>
+      </td>
+      <td>
+        <p>A family claims once. Optimising for return visits to a bereavement product would be harmful</p>
+      </td>
+      <td>
+        <p>Nothing</p>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p><b>9. Solution Ideation &amp; Direction</b></p>
+<p>Three genuinely different shapes, not one idea written three ways.</p>
+<div class="tbl"><table>
+  <tbody>
+    <tr>
+      <td>
+        
+      </td>
+      <td>
+        <p><b>Direction</b></p>
+      </td>
+      <td>
+        <p><b>User value</b></p>
+      </td>
+      <td>
+        <p><b>Effort</b></p>
+      </td>
+      <td>
+        <p><b>Risk</b></p>
+      </td>
+      <td>
+        <p><b>Verdict</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>A</b></p>
+      </td>
+      <td>
+        <p><b>An AI assistant.</b> Describe your situation; it explains what applies</p>
+      </td>
+      <td>
+        <p>Immediate, familiar, handles messy input</p>
+      </td>
+      <td>
+        <p>S</p>
+      </td>
+      <td>
+        <p><b>It cannot be accountable for a paragraph number.</b> Asked about a no-nominee claim it reproduces the para 9 sentence, because every secondary source it learned from does — the one misquote a branch officer can catch</p>
+      </td>
+      <td>
+        <p><b>Rejected</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>B</b></p>
+      </td>
+      <td>
+        <p><b>A content site.</b> Articles explaining the Directions, the lists and the thresholds</p>
+      </td>
+      <td>
+        <p>Fills the knowledge gap; cheap; ranks in search</p>
+      </td>
+      <td>
+        <p>S</p>
+      </td>
+      <td>
+        <p>The internet is already full of guidance and it is wrong (§4). Content cannot tell a family which rule applies to <i>their</i> claim, and produces nothing to carry</p>
+      </td>
+      <td>
+        <p><b>Rejected</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>C</b></p>
+      </td>
+      <td>
+        <p><b>A deterministic question flow ending in a cited, printable verdict.</b> Up to eight questions, one answer, the RBI's own sentence and the bank's own policy on a page built to be printed</p>
+      </td>
+      <td>
+        <p>Answers <i>this</i> family's case, and hands them an artifact the officer must respond to</p>
+      </td>
+      <td>
+        <p>M</p>
+      </td>
+      <td>
+        <p>Will people trust a machine answer about money? Can a handful of questions cover the law without over-simplifying?</p>
+      </td>
+      <td>
+        <p><b>Chosen</b></p>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p><b>Decided on a fourth axis the other cases do not need: can it be wrong safely?</b> A wrong answer here is a grieving family at a counter with a false document, or a family abandoning a valid claim. <b>A</b> fails outright — a generative answer cannot be verified before it is shown, and its failure mode is a confident misquote. <b>B</b> fails softly: an article cannot be wrong about <i>your</i> case because it never addresses it, which is also why it does not help. <b>C</b> can be audited end to end: every branch follows only from the answers given, every citation is a record in one file with a verbatim flag, and an unverified bank field renders as <i>"we haven't verified this"</i>.</p>
+<p><b>C is also the only direction that produces a document rather than an answer</b>, and the only one that can refuse. Where the honest answer is <i>"your heirs are in dispute — get advice"</i>, C says so, because that is a branch in the logic rather than a reluctance to answer. A chatbot has no reason to withhold and no correct answer to withhold.</p>
+<p><b>The rejected direction, returned in a bounded form.</b> Direction A lost as the <b>spine</b> and came back as a <b>layer</b>. Saathi is a floating assistant grounded entirely in the product's own FAQ, so it can only answer from content this document controls and only link to pages the app owns. It cannot invent a citation because it is never asked to produce one. <b>A generative model is not trusted with the legal answer, and is trusted with helping someone find their way to it.</b></p>
+<p><b>End-to-end user flow</b></p>
+
+<p>LANDING  ── what Google says vs what the rule says<br>
+   ▼<br>
+SITUATIONS FRONT DOOR — three real choices, one smaller link<br>
+   ├─ I'm starting a claim ───────────────► the wizard, from question 1<br>
+   ├─ I've already started ──────────────► a 5-way stage menu:<br>
+   │                                          not submitted yet → the wizard<br>
+   │                                          waiting for the bank → /start/waiting<br>
+   │                                          a bank demand → /what-were-you-asked-for<br>
+   │                                          refused / delayed → /bank-refused<br>
+   │                                          already in court → /already-in-court<br>
+   ├─ I don't know where the money is ───► /start/find/where — official search tools<br>
+   └─ (small link) Need other help? ─────► /contact<br>
+   ▼<br>
+Q1 What are you claiming?         ── the scope gate<br>
+   ├─ Something else / not sure ───────────► /out-of-scope<br>
+   ▼<br>
+Q2 Which bank?                    ── asked early so the bank's own policy shows<br>
+   ▼                                  beside every later question<br>
+Q3 Was someone named in the bank records?<br>
+   ├─ I don't know ────────────────────────► /unknown-nominee<br>
+   ▼<br>
+Q4 Is there a court order stopping payment?   ── asked on every path<br>
+   ├─ Yes / unsure ────────────────────────► review<br>
+   ▼<br>
+Q5 Do all heirs entitled to inherit agree?    ── asked on EVERY path<br>
+   ├─ Dispute, with a nominee ─────────────► review   (para 9 may still pay the nominee, in trust — Sarbati Devi)<br>
+   ├─ Dispute, no nominee ─────────────────► /dispute (para 11(b) overrides)<br>
+   ▼<br>
+   ├─ Nominee ─────────────────────────────► /nominee       para 9 · any amount<br>
+   ├─ Joint holder survives ───────────────► /survivorship  para 9 · any amount<br>
+   └─ No nominee<br>
+        ▼<br>
+      Q6 Was there a will?   →   Q7 What kind of bank?   →   Q8 Total at that bank?<br>
+        ▼<br>
+      /no-nominee/under-threshold   (para 10(a) · six documents · no surety)<br>
+      /no-nominee/over-threshold    (a certificate may genuinely be required)<br>
+<br>
+VERDICT PAGE — top section, then five tabs:<br>
+   the answer + Print/email → the bank's own gap → hard caveats → steps<br>
+   then: Documents | Your bank | The law | If refused | More<br>
+   printing forces every tab open, so the paper sheet is never partial<br>
+        ▼<br>
+   "The bank refused anyway" ──► GRO letter · 30-day clock · RB-IOS 2026</p>
+<p><b>Three ordering decisions carry real weight, and all three come from the law rather than layout preference.</b></p>
+<p><b>The heirs question is asked on every path, before the questions can end early.</b> It moved ahead of the nominee shortcut on 7 Sep 2026, closing a real gap: before the change, a registered nominee whose family was contesting the money reached <i>"you should not be asked for a succession certificate"</i> without ever being asked whether anyone was contesting it. Para 11(b) overrides para 9 exactly there.</p>
+<p><b>The bank is chosen second, not after the verdict.</b> This reverses an earlier decision. Asking early is the only way to show the reader's own bank's published policy beside every question that follows, including the warning shown when a bank asks for more than the RBI requires. It never changes which verdict is reached.</p>
+<p><b>The court question is asked on every path, and used not to be.</b> A reader who had not been to a bank skipped it, and the verdict page carried the assumption forward as a caveat instead. That box explained the product's own routing rather than helping the reader. One more screen removes a caveat from every verdict behind that door.</p>
+<p><b>Today versus tomorrow</b></p>
+<div class="tbl"><table>
+  <tbody>
+    <tr>
+      <td>
+        <p><b>Today</b></p>
+      </td>
+      <td>
+        <p><b>With Adhikaar</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>The branch names documents; nothing is in writing and there is no way to check</p>
+      </td>
+      <td>
+        <p>The rule that applies is on a page with its paragraph number, beside the bank's own published words</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>"No nominee" is heard as "go to court"</p>
+      </td>
+      <td>
+        <p>Para 9 or para 10(a) is named, and the certificate question is answered before any money is spent</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>A list of documents with no explanation of what they are or where to get them</p>
+      </td>
+      <td>
+        <p>Each document with its issuing authority, real cost, real time, and which to start today</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>A demand for a surety or a family genealogy is accepted, because who would know</p>
+      </td>
+      <td>
+        <p>"What were you asked for?" splits the demand into prescribed and not prescribed, each with its paragraph reference</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Nobody knows the bank is on a 15-day clock</p>
+      </td>
+      <td>
+        <p>The clock, the compensation rate, and a written escalation route with an honest note on its odds</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>The family argues its opinion against the bank's</p>
+      </td>
+      <td>
+        <p><b>The family shows the bank its own rules</b></p>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p><b>10. Product Detailing &amp; MVP Scope</b></p>
+<p>What was actually built, checked against the repository and — where it depends on production — the live URL.</p>
+<p><b>Features — each tied to a flow step</b></p>
+<div class="tbl"><table>
+  <tbody>
+    <tr>
+      <td>
+        <p><b>Feature</b></p>
+      </td>
+      <td>
+        <p><b>Traces to</b></p>
+      </td>
+      <td>
+        <p><b>Status</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Wizard — up to 8 questions, heirs asked on every path, nominee and joint-holder answers ending the questions early</p>
+      </td>
+      <td>
+        <p>Flow Q1–Q8</p>
+      </td>
+      <td>
+        <p><b>Shipped</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>8 verdict routes, each a real linkable URL</p>
+      </td>
+      <td>
+        <p>O-1</p>
+      </td>
+      <td>
+        <p><b>Shipped</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Situations front door — three real situations plus a catch-all link</p>
+      </td>
+      <td>
+        <p>§9</p>
+      </td>
+      <td>
+        <p><b>Shipped.</b> The 7-card picker it replaced is deleted, not just unreachable</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Verdict page: top section plus five tabs (Documents · Your bank · The law · If refused · More)</p>
+      </td>
+      <td>
+        <p>O-2</p>
+      </td>
+      <td>
+        <p><b>Shipped.</b> Answer, bank gap, hard caveats and steps stay above; the rest moves into tabs that printing forces open</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Readiness engine — per-document authority, cost, time, link</p>
+      </td>
+      <td>
+        <p>O-5</p>
+      </td>
+      <td>
+        <p><b>Shipped</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>"What were you asked for?" — the demand against the prescribed list</p>
+      </td>
+      <td>
+        <p>O-3</p>
+      </td>
+      <td>
+        <p><b>Shipped</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Bank table — each bank's threshold, surety position, forms, verification date</p>
+      </td>
+      <td>
+        <p>O-4</p>
+      </td>
+      <td>
+        <p><b>Shipped, 8 banks</b>, up from the 4 scoped. Flags a row stale past 182 days. Every bank records no documented conflict, including PNB, where interview evidence exists but the branch-visit date is unconfirmed</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><span>BankGapAlert</span> — the reader's own bank's gap against the RBI floor, above the fold</p>
+      </td>
+      <td>
+        <p>O-4</p>
+      </td>
+      <td>
+        <p><b>Shipped</b>, after Canara's ₹5 lakh surety line proved too easy to miss inside a fold</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Print, and the verdict emailed as a PDF</p>
+      </td>
+      <td>
+        <p>O-2</p>
+      </td>
+      <td>
+        <p><b>Both shipped and live</b>, verified with a real production send</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Downloadable GRO complaint letter, every bracketed field left blank</p>
+      </td>
+      <td>
+        <p>O-6</p>
+      </td>
+      <td>
+        <p><b>Shipped.</b> Only the paragraph numbers and the 15-/30-day figures are fixed</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Escalation page — GRO letter, 30-day clock, RB-IOS 2026</p>
+      </td>
+      <td>
+        <p>O-6</p>
+      </td>
+      <td>
+        <p><b>Shipped</b>, with an uncollapsible note that escalation is real but not a guarantee</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>/documents<span>, </span>/start/waiting<span>, </span>/other-assets<span>, </span>/learn<span> (5 articles)</span></p>
+      </td>
+      <td>
+        <p>O-5, §9, O-9, §14</p>
+      </td>
+      <td>
+        <p><b>Shipped</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Localisation — Hindi and Kannada across the product</p>
+      </td>
+      <td>
+        <p>Persona</p>
+      </td>
+      <td>
+        <p><b>Shipped</b>, unreviewed by a native speaker</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Saathi — assistant grounded in the product's own FAQ</p>
+      </td>
+      <td>
+        <p>§9</p>
+      </td>
+      <td>
+        <p><b>Shipped and kept.</b> Not trusted with the legal answer, only with navigation to it</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Public <span>/metrics</span>, password-gated <span>/admin</span></p>
+      </td>
+      <td>
+        <p>§12</p>
+      </td>
+      <td>
+        <p><b>Shipped</b></p>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p><b>Information architecture</b></p>
+<p>/ (homepage — positions Adhikaar against UDGAM)<br>
+├── /start          front door, then the wizard<br>
+│     ├── /start/started · /start/waiting · /start/find/where<br>
+│     └── /needs-review   reached only when an answer needs individual judgement<br>
+├── VERDICT PAGES — 8 routes. Seven share one shape (top section + five tabs);<br>
+│     /out-of-scope is the exception — verdict plus two doors, nothing else<br>
+├── SUPPORT — /guide · /banks · /faq · /what-were-you-asked-for · /documents<br>
+│             /other-assets · /learn · /metrics · /privacy · /contact<br>
+├── ESCALATION — /bank-refused<br>
+└── API — /api/saathi · /api/events · /api/metrics · /api/export-email · /api/admin/login</p>
+<p><b>Why the verdict pages are flat, not nested under `/start`:</b> every outcome is a real, linkable, printable address, and nesting would make a shared verdict look like an unfinished wizard. <b>Why support pages sit outside the wizard:</b> they answer "what does the rule say in general" rather than "what applies to my claim", and merging the two would turn a decision flow into a content site — the direction §9 rejected.</p>
+<p><b>Edge cases and failure states</b></p>
+<p>Not the rarest inputs — the ones where a wrong answer costs the most. Each is a branch in the code, not a caveat in the copy.</p>
+<div class="tbl"><table>
+  <tbody>
+    <tr>
+      <td>
+        <p><b>Edge case</b></p>
+      </td>
+      <td>
+        <p><b>What the product does</b></p>
+      </td>
+      <td>
+        <p><b>Why</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>A nominee is registered, and the family is fighting about the money</b></p>
+      </td>
+      <td>
+        <p>Routes to <span>/needs-review</span>, however the nominee question was answered</p>
+      </td>
+      <td>
+        <p>Para 11(b) overrides para 9 exactly here. This was a real bug: one scenario card preset the heirs answer to "in dispute", and the nominee question was still asked next — answering it "yes" jumped straight to the nominee outcome, silently dropping the dispute. <b>The code and the product's own stated rule disagreed.</b> Found because the product states its rules as text on the page, which makes them checkable against the code</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>The claim is not a bank deposit</b> — a pension, insurance, a minor's account</p>
+      </td>
+      <td>
+        <p>Exits at question one to <span>/out-of-scope</span>, before any other question. That page carries no steps, no checklist, no print button</p>
+      </td>
+      <td>
+        <p>A pension claimant reaching a bank-deposit verdict is the clearest way this product could do harm. The scope gate is question one for that reason</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>The reader does not know whether a nominee exists</b></p>
+      </td>
+      <td>
+        <p>Routes to <span>/unknown-nominee</span>, which resolves to a written instruction — ask the branch in writing — rather than guessing</p>
+      </td>
+      <td>
+        <p>"I don't know" is frequently the true answer, and it is given the same visual weight as every other option. A product that pushes people to guess produces a confident verdict built on a guess</p>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p>Two more are handled the same way: a court order stopping payment routes to review on every path, and an amount at or above the threshold reaches a verdict saying a certificate may genuinely be required. <b>In all five the product routes somewhere honest rather than answering anyway.</b></p>
+<p><b>Deliberately not building</b></p>
+<p><b>Cut, and why:</b> the pre-death nomination page (O-10) serves a different user at a different moment and helps nobody holding a demand. The map page stayed a pointer and never gained advice content. Counter mode was built on 6 September and removed on 9 September, together with the "proceed with your claim" button — neither was honest evidence a reader was acting.</p>
+<p><b>The build boundary, narrower than the legal one:</b> no account can be created, no claim answer set is ever written to a server, and nothing stored anywhere records that a specific family asked a specific question.</p>
+<div class="tbl"><table>
+  <tbody>
+    <tr>
+      <td>
+        <p><b>What exists</b></p>
+      </td>
+      <td>
+        <p><b>What it holds</b></p>
+      </td>
+      <td>
+        <p><b>What it cannot do</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>The <span>events</span> table</p>
+      </td>
+      <td>
+        <p>An event name and a few properties from fixed lists</p>
+      </td>
+      <td>
+        <p>Hold a claim, or anything identifying a family</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>session_id<span> · </span>visitor_id</p>
+      </td>
+      <td>
+        <p>A per-page-load id in memory; a persistent browser id read for one count</p>
+      </td>
+      <td>
+        <p>Link two visits; be joined to a journey's answers</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>The email export</p>
+      </td>
+      <td>
+        <p>An address, for the length of one send</p>
+      </td>
+      <td>
+        <p>Be written to any table</p>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p><b>One phrase from an earlier draft was wrong and is corrected here.</b> Every page is server-rendered, so a web address carrying the answers reaches the server on every request. What is true is that it is <b>never persisted</b>. The weaker, accurate claim is the one the architecture can keep.</p>
+<p><b>11. UX &amp; Product Design</b></p>
+<p>The persona (§8) and the question flow (§9) were locked before any colour was chosen, so the visual identity below dresses a decision already made rather than making one.</p>
+<p><b>Visual identity</b></p>
+<p>Cream, navy and terracotta. <span>#16233F</span> carries every headline and all body text; <span>#E2653B</span> is used for fills, icons and rules and never as text on its own, because a warm orange at reading size fails contrast on the cream ground; <span>#FAF5EC</span> is the working background, with white kept for cards that need to lift off it.</p>
+<p><b>Headline face: Spectral.</b> An earlier pass used Merriweather because a reference portal did — which the team's own code comment names as <i>not a reason</i>. Spectral holds up at 11.5pt on the printed counter sheet, the size that decides whether an officer reads it at all. <b>Body: Source Sans 3</b>, because it has to render three scripts; Hindi runs on Noto Sans Devanagari and Kannada on Noto Sans Kannada, which needed its own face because the fallback renders as empty boxes on most Windows machines.</p>
+<p><b>The mark is an illustrated badge.</b> Two rules were set before any drawing began: <b>no tricolour, and nothing resembling an RBI seal.</b> The product's whole argument is <i>"here is what the regulator actually wrote."</i> Borrowing the regulator's authority in the logo would make exactly the claim the writing is careful never to make.</p>
+<p><b>The screens</b></p>
+<p>Captured from the live production site. Every number and citation in them is what the product actually renders.</p>
+
+<figure><a href="img/prd-adhikaar-1.webp"><img src="img/prd-adhikaar-1.webp" alt="Adhikaar homepage" loading="lazy"></a></figure><p><i>The homepage. The claim journey is the primary action; the documents list is a quieter second door.</i></p>
+
+<figure><a href="img/prd-adhikaar-2.webp"><img src="img/prd-adhikaar-2.webp" alt="Adhikaar nominee verdict page" loading="lazy"></a></figure><p><i>A nominee verdict — the answer in plain words, the bank's own policy beside it, then the steps. This is the page that gets printed or emailed.</i></p>
+<p><b>What the persona sees, thinks and does</b></p>
+<p>The persona from §8 is an adult legal heir who has been to a branch and been handed a demand. Walking the nominee verdict in her terms:</p>
+<div class="tbl"><table>
+  <tbody>
+    <tr>
+      <td>
+        
+      </td>
+      <td>
+        
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>Sees</b></p>
+      </td>
+      <td>
+        <p>A sentence in plain English saying she should not be asked for a succession certificate, the RBI's paragraph number under it, and SBI's own published policy beside it</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>Thinks</b></p>
+      </td>
+      <td>
+        <p><i>"The bank told me the opposite. Which is right, and can I show this to them?"</i> — which is why the citation is verbatim and attributed rather than paraphrased</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>Does</b></p>
+      </td>
+      <td>
+        <p>Prints it or emails it to herself, and takes it back to the counter. Those two actions are the only ones the product counts as intent (§12)</p>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p><b>What she does not do is decide whether to trust us.</b> She checks whether the paragraph number is real. That is why §2's safety rule exists, and why an unverified bank field renders as <i>"we haven't verified this"</i>.</p>
+<p><b>Design decisions enforced in the interface, not just the copy</b></p>
+<p><b>"I don't know yet" gets the same visual weight as every other answer</b> — same size, same hit target, its own accent rather than a muted one. On the nominee question it is frequently the true answer, and an interface that makes it look like a failure state pushes people toward guessing, which is the one input error that can make the verdict wrong.</p>
+<p><b>The verdict page has one shape across 7 of the 8 routes</b>: the answer with Print and email beside it, the conditions that qualify it, then what to do today. Everything else sits below in five tabs. Three separate reviews produced this: an advisor review found secondary tools competing with the main journey; an internal review concluded the page could not usefully get shorter, because length was not the problem and finding things in it was; and by 8 September the resulting fold had accumulated ten stacked blocks with the bank panel rendering second on every page. <b>A collapsible section has no limit on what can be put inside it. Five named tabs do.</b></p>
+<p><b>The tabs work with no JavaScript</b>, as five radio buttons shown and hidden by hand-written CSS. Printing forces every panel open, because the page <i>is</i> the artifact handed across a counter and a tab that hides content on paper would ship an incomplete document.</p>
+<p><b>Focus is visible</b> — a 3px outline on every focusable element — and the back link's tap target is enlarged past its text, because back is the control a confused reader reaches for first.</p>
+<p><b>A real mobile bug was found by testing at a true device viewport</b>, not a resized window: the assistant's launcher covered the footer's Terms and Privacy links. The same pass ruled out a suspected footer-gap bug as an artefact of the test script, which is recorded because a false alarm chased down is still evidence the page was checked rather than assumed.</p>
+<p><b>Six components of great UX — self-check</b></p>
+<p>Scored against what has been observed. <b>No external tester has used this product</b>, so most rows draw on the five people who used it during interviews (§6) or on direct measurement. Where nothing has been measured, the row says so.</p>
+<div class="tbl"><table>
+  <tbody>
+    <tr>
+      <td>
+        <p><b>Component</b></p>
+      </td>
+      <td>
+        <p><b>How it is judged</b></p>
+      </td>
+      <td>
+        <p><b>Evidence</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>Usability</b></p>
+      </td>
+      <td>
+        <p>Share who reach an answer unaided</p>
+      </td>
+      <td>
+        <p><b>Not measured on strangers.</b> Five people reached a verdict during interviews; that is a demonstration, not a rate. The 83.3% on <span>/metrics</span> is the team's own traffic</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>Efficiency</b></p>
+      </td>
+      <td>
+        <p>Steps to the outcome</p>
+      </td>
+      <td>
+        <p><b>Short.</b> A registered nominee resolves in four questions, because para 9 settles that branch at any amount. The longest path is eight</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>Perceived effort</b></p>
+      </td>
+      <td>
+        <p>How heavy it feels</p>
+      </td>
+      <td>
+        <p>One question per screen, a step count, a 2–3 minute estimate before the first question. Nothing is asked that the answer does not depend on</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>Credibility</b></p>
+      </td>
+      <td>
+        <p>Trust cues, no invented data</p>
+      </td>
+      <td>
+        <p><b>The strongest row.</b> Every citation carries a verbatim flag; unverified bank fields say so; <span>/metrics</span> is public so the product's claims about itself can be checked without a login</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>Delight</b></p>
+      </td>
+      <td>
+        <p>One moment of unexpected value</p>
+      </td>
+      <td>
+        <p><span>BankGapAlert</span>: when the reader's own bank publishes a rule stricter than the RBI floor, the page says so before the steps</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>Simplicity</b></p>
+      </td>
+      <td>
+        <p>Clicks from landing to the printable answer</p>
+      </td>
+      <td>
+        <p>Six on the nominee path</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>Accessibility</b></p>
+      </td>
+      <td>
+        <p>Usable on a real device</p>
+      </td>
+      <td>
+        <p>Verified at a true 390px device viewport. Focus outlines, enlarged tap targets, and the whole flow works with JavaScript off</p>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p><b>The weak row is Usability, for one reason: nobody outside the team has used this.</b> Every other row can be checked by opening the product; that one cannot be answered until real claimants arrive.</p>
+<p><b>Localization</b></p>
+<p>Content is held in separate dictionaries by role rather than one shared one. The separation matters because the two kinds of text are different: the questions and homepage copy are the product's own words and are translated, while the RBI clauses quoted on verdict pages are law, and <b>a translated quote is no longer a quote.</b> The rule, applied everywhere: a translation sits above the English clause, never in place of it.</p>
+<p>A full page-by-page audit on 9 September found <span>/learn</span> untranslated with no language mechanism at all — since fixed — and two components hardcoded to English on otherwise-translated pages. No key can silently go missing, because every dictionary is typed so that a missing translation fails the build.</p>
+<p><b>Stated honestly:</b> none of the Hindi or Kannada has been reviewed by a native speaker.</p>
+<p><b>12. Analytics &amp; Event Tracking</b></p>
+<p>Full derivation and every rejected candidate are in the metric design spec. This section states the result.</p>
+<p><b>North Star</b></p>
+<p>Weekly Resolved Journeys — unique journeys per week receiving a valid, situation-appropriate resolution: either a resolved claim route, or a resolved "here is what to find out next."</p>
+<p><b>A count, not a rate</b> — 60% of 1,000 families helped is more families helped than 80% of 100. <b>Retention does not apply</b>: a family claims once in a lifetime, so Referral substitutes for Retention and Propagation for Frequency.</p>
+<p><b>Journeys, not families.</b> A journey is approximated within a browsing session. Since 9 September a persistent <span>visitor_id</span> also counts distinct people, once and coarsely — without it "168 visits" and "168 visitors" are indistinguishable, and a launch is judged on the second. It is never joined to a journey's answers and never leaves this app's server. <b>This is a real change to the privacy posture and is recorded as one</b>; an earlier draft claimed persistence was disabled outright, and that is no longer true.</p>
+<p><b>The full loop — acquisition to referral</b></p>
+<div class="tbl"><table>
+  <tbody>
+    <tr>
+      <td>
+        <p><b>Stage</b></p>
+      </td>
+      <td>
+        <p><b>Where Adhikaar stands</b></p>
+      </td>
+      <td>
+        <p><b>Instrumented?</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>Acquisition</b></p>
+      </td>
+      <td>
+        <p>Five <span>/learn</span> articles target the exact searches this problem produces. No paid acquisition</p>
+      </td>
+      <td>
+        <p>Partly — arrivals are counted, the search term is not, and will not be</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>Activation</b></p>
+      </td>
+      <td>
+        <p>Answering question one</p>
+      </td>
+      <td>
+        <p><span>Yes (</span>flow_started<span>)</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>Retention</b></p>
+      </td>
+      <td>
+        <p><b>Deliberately does not exist.</b> A family claims once; optimising for return visits to a bereavement product would be harmful</p>
+      </td>
+      <td>
+        <p>No, by decision</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>Referral</b></p>
+      </td>
+      <td>
+        <p>Every journey is already a shareable link, because the answers live in the web address</p>
+      </td>
+      <td>
+        <p>Yes — currently 7 of 168 arrivals</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>Revenue</b></p>
+      </td>
+      <td>
+        <p><b>None, and none planned.</b> §2 establishes there is no buyer</p>
+      </td>
+      <td>
+        <p>No</p>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p><b>Two empty stages are the correct reading, not missing instrumentation.</b> Both refusals are argued in §8 rather than assumed.</p>
+<div class="tbl"><table>
+  <tbody>
+    <tr>
+      <td>
+        <p><b>Funnel stage</b></p>
+      </td>
+      <td>
+        <p><b>Rate to the next</b></p>
+      </td>
+      <td>
+        <p><b>Status</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Landing visitors</p>
+      </td>
+      <td>
+        <p>Journey Start Rate</p>
+      </td>
+      <td>
+        <p>landing_viewed</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Journey starters, by branch</p>
+      </td>
+      <td>
+        <p>Resolution Rate — <b>the OMTM</b></p>
+      </td>
+      <td>
+        <p>flow_started<span>, </span>question_answered</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>★ Resolved journeys</b></p>
+      </td>
+      <td>
+        <p>Next-Step Action Rate</p>
+      </td>
+      <td>
+        <p><span><b>North Star</b> — </span>actionable_result_viewed</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Showing intent to act</p>
+      </td>
+      <td>
+        <p>Claim Initiation Rate</p>
+      </td>
+      <td>
+        <p>sheet_printed<span>, </span>exported_to_email</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Claim initiated · money recovered</p>
+      </td>
+      <td>
+        <p>—</p>
+      </td>
+      <td>
+        <p><b>Research-measured.</b> No account, no persisted identity</p>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p><b>Guardrails</b></p>
+<p>Honest-Exit Rate = journeys ending in a dispute, above-threshold, out-of-scope or needs-review outcome ÷ journeys reaching any verdict or review page.</p>
+<p>If resolution is the target, the product is rewarded for a confident answer where the honest one is <i>"your heirs are in dispute — take advice."</i> So the North Star rising while this fall is read as manufacturing false confidence. <b>It was measuring nothing until 9 September:</b> <span>needs-review</span> was in the counted set for good reason, but both halves were computed from an event <span>/needs-review</span> never fires. <b>A guardrail can be correctly configured and still measure nothing — the set was right; the event stream it was filtered against was not.</b></p>
+<p>Situation Resolution Share = resolved journeys from situation branches ÷ all resolved journeys.</p>
+<p>Honest-Exit only reads verdicts, so it cannot see the cheapest way to raise a resolution count: <b>declaring more pages resolutions.</b> Not hypothetical — two lookup-table entries on 7 Sep grew the reachable numerator by two pages with no product change.</p>
+<p>Stale Citation Share = resolved journeys citing a bank row past its 182-day window ÷ journeys citing any bank.</p>
+<p>The bank table is the hardest part of this product to copy, and it goes out of date without announcing it. Each row carries its own verification date.</p>
+<p><b>Events, and what they currently read</b></p>
+<p><b>Twelve events, fixed in one list so a typo cannot create a new funnel:</b> <span>flow_started</span>, <span>question_answered</span>, <span>outcome_reached</span>, <span>actionable_result_viewed</span>, <span>landing_viewed</span>, <span>bank_selected</span>, <span>readiness_checked</span>, <span>demand_checked</span>, <span>sheet_printed</span>, <span>exported_to_email</span>, <span>survey_answered</span>, <span>feedback_helpful</span>. <b>Not instrumentable by design:</b> what a family does after closing the tab. Two sources of our own traffic are excluded at the write — developer machines, and the email export's own page render, which would otherwise fire a full set of events every time someone emailed themselves a copy.</p>
+<p>Read from the live endpoint on 10 September. The counts move as the team keeps testing, so these are a snapshot; the same public URL shows current figures.</p>
+<div class="tbl"><table>
+  <tbody>
+    <tr>
+      <td>
+        
+      </td>
+      <td>
+        
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Landing visits · journeys started · resolved</p>
+      </td>
+      <td>
+        <p><b>168 · 24 · 20</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Resolution Rate (the OMTM, cohort)</p>
+      </td>
+      <td>
+        <p><b>83.3%</b> — 20 of 24</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Next-Step Action Rate</p>
+      </td>
+      <td>
+        <p><b>12.5%</b> — 2 of 16 eligible</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Honest-Exit · Situation Share · Stale Citation</p>
+      </td>
+      <td>
+        <p><b>43.8%</b> · <b>35%</b> · <b>0%</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Median time to resolution · distinct visitors</p>
+      </td>
+      <td>
+        <p><b>6 seconds</b> · <b>26</b> browsers</p>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p><b>Whose traffic this is, stated before anyone reads a rate off it: our own.</b> These are the team's clicks against production while building and checking the flow — local development is excluded at the write, so testing the live site is the only way to test it. The six-second median gives it away: no grieving family reads a verdict page in six seconds. <b>What the numbers prove is the pipeline, not the product.</b> Every formula and guardrail computes correctly against real rows, which could not be verified while the table read zero. What they do not prove is that anybody has used this.</p>
+<p><b>This quarter's constraint</b></p>
+<p>OMTM: Resolution Rate, not the North Star itself — journeys started in a window that went on to resolve ÷ journeys started in that window.</p>
+<p>At MVP stage a low completion rate means the journey is broken, and spending to bring more people to a broken journey wastes the spend. Start volume measures demand; Resolution Rate measures whether the core experience works. <b>It stayed the OMTM through a stretch where it read N/A</b> — a hierarchy that reshuffles according to how much data exists moves every time traffic does. It now reads 83.3%, and that is not yet evidence of anything: a cohort rate computed on people who already know the answer tests the arithmetic, not the journey.</p>
+<p><b>13. Build &amp; Deployment</b></p>
+<p><b>The integrity model — the part that is not allowed to fail</b></p>
+<div class="tbl"><table>
+  <tbody>
+    <tr>
+      <td>
+        
+      </td>
+      <td>
+        
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>The product</b></p>
+      </td>
+      <td>
+        <p><b>https://adhikaar-gamma.vercel.app</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><b>Live metrics, no sign-in</b></p>
+      </td>
+      <td>
+        <p><b>https://adhikaar-gamma.vercel.app/metrics</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Source</p>
+      </td>
+      <td>
+        <p>github.com/manyatamanocha/adhikaar</p>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p>Both links are public and need no account — not as a convenience, but because a claimant at a bank counter cannot be asked to register first. It is also the answer to the most common failure of a submitted MVP: a reviewer who cannot get past a login sees the claims and never the thing itself. <span>/metrics</span> renders this document's own metric definitions from Adhikaar's own database, so every number in §12 can be checked without a vendor account.</p>
+<p><b>Stack.</b> Next.js 16.3.4 (App Router, server components), React 19.2.8, TypeScript 5, Tailwind 4. Supabase for the analytics table, Node's built-in crypto for the <span>/admin</span> cookie, <span>groq-sdk</span> for Saathi. Email export adds <span>puppeteer-core</span> with a slim serverless Chromium build, and Brevo sends the mail.</p>
+<p><b>Five API routes and one table, and none of them holds a claim.</b> <span>/api/saathi</span> proxies a question to Groq; <span>/api/events</span> records one analytics row; <span>/api/metrics</span> reads it; <span>/api/admin/login</span> signs a cookie; <span>/api/export-email</span> renders a verdict to PDF and sends it. The wizard's own state — every question, every answer — is never written down at either end. Database credentials are server-side variables that never enter the browser bundle, checked directly in the deployed bundle.</p>
+<p><b>`/api/export-email` is the one route that takes something a reader typed.</b> The address is used for one send and written to no table. Two guards matter: the page to render is only accepted when it points back at Adhikaar's own site, without which anyone could fetch any page on the internet through our server; and sends are limited to five an hour from one address.</p>
+<p><b>One weakness, named rather than left to be found.</b> <span>/api/events</span> is open to anyone and has to be: it is called from a visitor's browser on their first page view, so any password protecting it would have to be sent to that browser. Every row is validated — a flat object, at most 12 keys, values only strings, finite numbers or booleans — and one address gets 300 events an hour. That makes casual forgery tedious, not impossible, and <b>no public analytics endpoint can do better.</b></p>
+<p><b>How it was verified — and what is still weak</b></p>
+<p><b>53 automated tests, all passing</b>, across four files: every route the questions can take plus an exhaustive sweep asserting no unsafe combination reaches a favourable verdict (18); every metric formula against hand-built events, including the Honest-Exit bug (16); the row-to-event mapping and the write-side validators against hostile shapes (12); the admin cookie's sign-and-verify round trip (7). Beyond the suite: all 8 outcome branches walked by hand with their RBI attribution spot-checked, and every route confirmed returning 200 or an intentional redirect.</p>
+<p><b>Deployment is automatic for code and not for configuration</b>, and that distinction has broken production three times — analytics, the assistant, and the email export. In every case the code was correct, the dashboard looked right, and nothing raised an error. The rule this section exists to state: <b>a deployment is not a release until something outside the code has watched it behave correctly.</b></p>
+<p><b>What would break first if forty strangers arrived at once</b>, in order: the 300-per-hour event limit, which would silently drop events from people sharing one office connection, so the numbers under-report rather than the product breaking; then email export under concurrency, since each send starts a real browser for 8–10 seconds; then bank coverage, where a claimant at a ninth bank gets correct RBI guidance and no bank-specific policy. <b>Nothing on that list corrupts an answer.</b> The claim journey works entirely from the web address and keeps no shared state, so load cannot degrade it. <b>Not tested: more than one person using it at the same time.</b></p>
+<p><b>14. Launch, Growth Loop &amp; Iteration</b></p>
+<p>The product is real, live and measurable — §13 proved that. What is still open is whether anyone has actually used it, how it would spread if they did, and what is left to do because of that gap. This closing section is those three questions, answered honestly rather than projected.</p>
+<p><b>The growth loop, built from the architecture rather than added to it</b></p>
+<p>Because Adhikaar keeps the whole journey in the web address (§11), every journey — including a half-finished one — is already a shareable link, with no separate share feature. <span>arrived_via: shared_link</span> fires whenever a visitor's first page view already carries answers, which is the closest thing to a retention signal a once-per-lifetime product can honestly have: the person does not come back, but the link does, carried to whoever else in the family is handling the paperwork.</p>
+<p><b>The reach lever already shipped:</b> five <span>/learn</span> articles targeting the specific queries this problem generates — the same queries §4 found returning the pre-2026 wrong answer. Hindi and Kannada across the whole flow is the same lever applied to language rather than search term.</p>
+<p><b>Launch status, stated honestly</b></p>
+<p>The product is live at a real production URL. <span>/api/metrics</span> reports <b>168 landing visits, 24 journeys started and 20 resolved</b> — but §12 states whose traffic that is, and it is ours. <b>The number of real claimants who have used Adhikaar is zero.</b></p>
+<p>What can be claimed is verification, not traction: <b>all 53 automated tests pass</b>, all 8 outcome branches were walked by hand and their citations checked, every branch was confirmed reachable on the live URL, and the metric pipeline computes correctly against real rows.</p>
+<p><b>This is a different claim from §6's primary research, and the two should not be read as contradicting each other.</b> Five people used the product directly during the interviews and reported what changed for them — real usage, recorded in §6. None of it happened on the production deployment, so none was counted twice. "Nobody has been measured using the live site" and "five people have used the product and told us what they thought" are both true.</p>
+<p><b>Measured against a standard shipped-product rubric, stated plainly.</b> Such a rubric asks for real user numbers, a full funnel built from real events, screenshots of real usage, and a product change made because of observed behaviour. None of it can be answered from evidence yet. This section does not simulate it. What is true today is narrower: the flow is built, tested, deployed and measured correctly; what a real cohort would do with it is the question this document cannot yet answer.</p>
+
+<p><b>Iteration backlog, carried forward with the evidence that raised each item</b></p>
+<div class="tbl"><table>
+  <tbody>
+    <tr>
+      <td>
+        <p><b>Item</b></p>
+      </td>
+      <td>
+        <p><b>Why it's open</b></p>
+      </td>
+      <td>
+        <p><b>Priority signal</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Add the unreviewed-translation disclosure to the verdict-page dictionary</p>
+      </td>
+      <td>
+        <p>The three smaller dictionaries carry it; the largest one, which holds the legal text, does not (§11)</p>
+      </td>
+      <td>
+        <p>One line</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Finish the logo mark</p>
+      </td>
+      <td>
+        <p>Four directions rejected as too abstract; a warmer, more literal brief was agreed and never drawn to a conclusion (§11)</p>
+      </td>
+      <td>
+        <p>Not blocking; the current badge ships</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Instrument Activation Rate as a metric distinct from the North Star</p>
+      </td>
+      <td>
+        <p>Would need a genuinely new, earlier-firing event; not yet built</p>
+      </td>
+      <td>
+        <p>Deferred behind the OMTM (§12)</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>FD-specific verdict note — "your fixed deposit can be closed early, without penalty, on death"</p>
+      </td>
+      <td>
+        <p>Discussed for <span>deposit-fd</span>/<span>deposit-both</span> claimants, deprioritised when the wizard-restructure work took precedence</p>
+      </td>
+      <td>
+        <p>Low effort, not yet scheduled</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Bank coverage beyond the current 8</p>
+      </td>
+      <td>
+        <p>§10 — coverage is explicitly an "upgradeable metric," per the design doc's own reasoning for shipping without full coverage</p>
+      </td>
+      <td>
+        <p>Ongoing, not launch-blocking</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Real-user data collection</p>
+      </td>
+      <td>
+        <p>§12, §14</p>
+      </td>
+      <td>
+        <p>The actual current constraint — every other item is secondary to getting the link in front of real claimants</p>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p><b>Three items have left this table and only one of them was finished in the ordinary sense.</b> The counter-mode instrumentation gap closed because counter mode was removed; the propagation-source gap closed because it shipped; the Brevo configuration, the <span>/privacy</span> disclosure and the stale <span>property_blacklist</span> test all closed because they were fixed within a day of being written down. The suite is now green at 53 of 53.</p>
+<p><b>This quarter's real question</b></p>
+<p>Not "how many families has this reached" — that number is still honestly zero. What changed since the last draft is that the instrument is now proven: every metric computes correctly end to end, on real rows, and the one guardrail that was measuring nothing has been fixed, with a test to keep it fixed. <b>A working instrument reading zero is a different position from an untested one reading zero.</b></p>
+<p>The question the product is built to answer first is the one §12 names as this quarter's OMTM: <b>does the journey itself carry a real person to a resolved state</b>, before any acquisition spend is justified in finding out.</p>
+
+
+<p><a class="back" href="./">← Back to portfolio</a></p></main></body></html>
