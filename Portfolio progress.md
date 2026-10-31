@@ -1,8 +1,38 @@
 # Portfolio progress
 
 Project: Manyata's AI Product Manager portfolio. Started 28 Oct 2026 (one long session).
-Status on 28 Oct 2026 (last updated at the end of the first session): the site is **live and public** at `https://manyata-manocha.vercel.app` (Vercel). The private Claude preview (version 41) is older and out of date. The open items are at the end.
+Status: the site is **live and public** at `https://manyata-manocha.vercel.app` (Vercel). See "Latest status" below. The private Claude preview (version 41) is older and out of date.
 For the technical details, see `HANDOFF-for-Codex.md` in this folder.
+
+## Latest status (1 Nov 2026, commit f70bdc7)
+
+This section replaces older notes below where they disagree.
+
+**Where it is now**
+- Live site: `https://manyata-manocha.vercel.app`. Source folder: `final/`. A push to `main` on GitHub (`manyatamanocha/manyata-manocha`) deploys it. The older `site/` folder and build scripts are not the live source.
+- Saved copy of the live site: `Final version - 1 Nov 2026/` (49 files). It is a frozen copy. Do not edit or deploy from it. If the site changes, export it again with `git archive origin/main final`.
+- The separate Projects page is gone. `/projects` redirects to the Work section on the landing page.
+
+**What changed on 31 Oct and 1 Nov**
+- **Hero:** new t-shirt photo (`img/hero-tshirt.webp`) in the gold frame. The three intro lines are now one paragraph at one size. On screens up to 860px the photo sits below the intro.
+- **Colour:** the hero sky fades into a light sky-blue tint (`#dcedfa`) on the landing page and all 6 project pages. The resume and PRD pages keep their own style.
+- **About:** heading made smaller and text justified. The text was expanded and split into 2 paragraphs, with a line break before "I want to understand". The pink shirt photo is framed and sits far left. The mountain photo is 20% bigger, beside paragraph 2. The sofa cartoon is beside the heading.
+- **Contact:** rebuilt as "Let's Talk?" with the tagline, the peeking cartoon, and a bar with LinkedIn, the email address and Resume. Heading and buttons are 40% smaller. The Copy button is removed. The footer line is bold and 15% bigger, and it sits right under the bar.
+
+**Decisions to keep**
+- Email button: orange, shows `manyata126@gmail.com`, and opens an email. No Copy button. Parallel sessions changed this several times, so ask before touching it.
+- The resume page has no email address.
+- No phone number anywhere on the site.
+
+**Still open (optional)**
+- On phones the footer line wraps onto 3 lines, with "2026" alone on the last line.
+- At tablet widths around 768px the Contact cartoon is only about 5px below the Experience cards.
+- The old hero image `img/hero-cutout.png` is still used by two preview pages.
+- Paragraph spacing and the About `.ab-text` rules in `index.html` have old leftovers that no longer do anything.
+
+**Working notes**
+- More than one session edits `final/` at once. Check `git status` and `git diff --cached --stat` before each commit, and commit only your own change.
+- Test layout changes at phone, tablet and desktop widths. Absolute positioning in About and Contact breaks easily.
 
 ## Where things are
 
