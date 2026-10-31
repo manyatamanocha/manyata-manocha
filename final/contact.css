@@ -8,7 +8,7 @@
 .contact .ct-sub { position: absolute; z-index: 2; left: 6.4%; top: calc(18% + clamp(47px, 7.56vw, 107px)); max-width: 24em; margin: 0; font: 600 clamp(15px, 1.5vw, 20px)/1.4 var(--sans); color: rgba(15, 27, 61, .72); }
 .ct-peek { position: absolute; z-index: 1; right: calc(var(--pw) * -0.124); bottom: clamp(96px, 11vw, 150px); width: var(--pw); height: auto; --pw: clamp(120px, 14.5vw, 210px); pointer-events: none; }
 .ct-mark { position: absolute; z-index: 2; pointer-events: none; }
-.ct-bar { position: absolute; z-index: 3; left: 6%; width: 52.8%; bottom: 7%; display: flex; gap: clamp(8px, 1.44vw, 20px); padding: clamp(10px, 1.44vw, 19px) clamp(10px, 2.04vw, 28px); border-radius: 999px; background: #fffdf9; box-shadow: 0 10px 30px -12px rgba(15, 27, 61, .28), inset 0 0 0 1px rgba(15, 27, 61, .05); }
+.ct-bar { position: absolute; z-index: 3; left: 6%; width: 52.8%; bottom: 27%; display: flex; gap: clamp(8px, 1.44vw, 20px); padding: clamp(10px, 1.44vw, 19px) clamp(10px, 2.04vw, 28px); border-radius: 999px; background: #fffdf9; box-shadow: 0 10px 30px -12px rgba(15, 27, 61, .28), inset 0 0 0 1px rgba(15, 27, 61, .05); }
 .ct-btn { flex: 1 1 0; display: flex; align-items: center; justify-content: center; gap: 8px; min-height: clamp(44px, 3.84vw, 55px); border-radius: 999px; font: 600 clamp(14px, 1.2vw, 17px) var(--sans); text-decoration: none; transition: transform .2s cubic-bezier(.2,.8,.2,1), box-shadow .2s cubic-bezier(.2,.8,.2,1); }
 .ct-btn:hover { transform: translateY(-3px); }
 .ct-btn:focus-visible { outline: 3px solid var(--ct-ink); outline-offset: 3px; }
@@ -25,13 +25,13 @@
   .contact .ct-title { left: 7%; top: 12%; font-size: clamp(24px, 8.1vw, 50px); }
   .contact .ct-sub { top: calc(12% + clamp(32px, 9vw, 54px)); max-width: 9.5em; font-size: 15px; }
   .ct-peek { --pw: clamp(100px, 26vw, 170px); bottom: 150px; }
-  .ct-bar { left: 4%; width: min(92%, 300px); bottom: 5%; gap: 8px; padding: 8px; }
+  .ct-bar { left: 4%; width: min(92%, 300px); bottom: 20%; gap: 8px; padding: 8px; }
   .ct-btn { gap: 6px; min-height: 44px; font-size: 14px; }
 }
 @media (max-width: 560px) {
   .ct-panel { min-height: 600px; }
   .ct-peek { bottom: 215px; }
-  .ct-bar { flex-direction: column; border-radius: 34px; padding: 14px; }
+  .ct-bar { bottom: 12%; flex-direction: column; border-radius: 34px; padding: 14px; }
   .ct-btn { flex: none; width: 100%; font-size: 17px; }
 }
 @media (prefers-reduced-motion: reduce) { .ct-btn { transition: none; } .ct-btn:hover { transform: none; } }
