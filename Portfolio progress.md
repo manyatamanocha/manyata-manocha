@@ -19,6 +19,8 @@ This section replaces older notes below where they disagree.
 - **About:** heading made smaller and text justified. The text was expanded and split into 2 paragraphs, with a line break before "I want to understand". The pink shirt photo is framed and sits far left. The mountain photo is 20% bigger, beside paragraph 2. The sofa cartoon is beside the heading.
 - **Contact:** rebuilt as "Let's Talk?" with the tagline, the peeking cartoon, and a bar with LinkedIn, the email address and Resume. Heading and buttons are 40% smaller. The Copy button is removed. The footer line is bold and 15% bigger, and it sits right under the bar.
 
+- **How I work is replaced by "How I got into product" (1 Nov):** four cards in time order (Banking, Finance and data, Fraud and risk at PwC, Building AI products) with what was learned, how it was used in product work, numbers and skill tags, plus a "Where I can help" strip. The laptop cartoon stays on it (`.how-pic`, anchored to `.path`). The "Learned" and "In product" lines started as Claude drafts, approved by Manyata. Two lines are left out until Manyata supplies the words: an "In product" example for Finance and data, and "Curious about next".
+
 **Decisions to keep**
 - Email button: orange, shows `manyata126@gmail.com`, and opens an email. No Copy button. Parallel sessions changed this several times, so ask before touching it.
 - The resume page has no email address.
