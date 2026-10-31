@@ -40,4 +40,11 @@
   .ct-bar { bottom: 12%; flex-direction: column; border-radius: 34px; padding: 14px; }
   .ct-btn { flex: none; width: 100%; font-size: 17px; }
 }
+/* desktop: a shorter panel, so there is less empty space between the bar and the footer line */
+@media (min-width: 861px) {
+  .ct-panel { min-height: clamp(430px, 35vw, 520px); }
+  .ct-bar { bottom: 8%; }
+  .ct-peek { bottom: clamp(10px, 1.4vw, 20px); }
+  .ct-mark[style*="left:3.4%"] { top: 56% !important; }
+}
 @media (prefers-reduced-motion: reduce) { .ct-btn { transition: none; } .ct-btn:hover { transform: none; } }
