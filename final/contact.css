@@ -19,7 +19,7 @@
 .ct-mail { border: 2px solid var(--ct-orange); background: var(--ct-orange); color: #fff; }
 .ct-mail:hover { box-shadow: 0 8px 18px -8px rgba(228, 111, 58, .7); }
 .ct-resume { border: 2px solid var(--ct-ink); background: var(--ct-ink); color: #fff; }
-.contact .foot { margin-top: 0; font-weight: 700; }
+.contact .foot { margin-top: 0; font-weight: 700; font-size: 18.4px; }
 .ct-resume:hover { box-shadow: 0 8px 18px -8px rgba(15, 27, 61, .55); }
 .ct-mailgroup { flex: 1.5 1 0; display: flex; gap: clamp(6px, .8vw, 10px); min-width: 0; }
 .ct-mailgroup .ct-mail { flex: 1 1 auto; min-width: 0; white-space: nowrap; }
