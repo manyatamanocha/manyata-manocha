@@ -1,6 +1,7 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="description" content="Manyata Manocha, AI Product Manager. Six products from research and PRD to build and metrics."><meta property="og:title" content="Manyata Manocha, AI Product Manager"><meta property="og:description" content="Manyata Manocha, AI Product Manager. Six products from research and PRD to build and metrics."><style>body{margin:0}img{max-width:100%}</style></head><body><title>Manyata Manocha Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="strip.css">
 <style>
   /* Sky theme: painted-sky gradient top, white paper below; mono display type; white boxes with black border + hard shadow. */
   :root {
@@ -475,7 +476,7 @@
   .home-work.arriving { animation: work-arrive .9s cubic-bezier(.2,.7,.2,1) both; }
   @keyframes work-arrive { from { opacity: 0; transform: translateY(80px); } to { opacity: 1; transform: none; } }
   @media (prefers-reduced-motion: reduce) { .sky-hero, .sky-hero.leaving, .home-work.arriving { transition: none; animation: none; transform: none; } }
-</style><section class="home-work" id="work" aria-labelledby="work-title"><div class="sec-head"><h2 id="work-title">Projects</h2><a class="back" href="projects.html">See all projects →</a></div><ul class="tiles"><li><a class="tile" href="project-pwc.html"><div class="thumb big">67%</div><div class="tile-body"><span class="tile-cat">Product work at PwC</span><h3>Risk Screening Dashboard</h3><p>A risk dashboard for a healthcare client.</p></div></a></li><li><a class="tile" href="project-adhikaar.html"><div class="thumb"><img src="img/adhikaar-t.webp" width="640" height="400" alt="" decoding="async"></div><div class="tile-body"><span class="tile-cat">Government · Banking</span><h3>Adhikaar</h3><p>Free guidance that helps a family claim the bank deposits of a person who has died, using the RBI&#x27;s own rules.</p></div></a></li><li><a class="tile" href="project-vantage.html"><div class="thumb"><img src="img/vantage-t.webp" width="640" height="400" alt="" decoding="async"></div><div class="tile-body"><span class="tile-cat">Learning · AI</span><h3>Vantage</h3><p>An AI learning app that trains client-facing consultants to judge which AI approach fits a client problem.</p></div></a></li><li><a class="tile" href="project-shravan.html"><div class="thumb"><img src="img/shravan-t.webp" width="640" height="400" alt="" decoding="async"></div><div class="tile-body"><span class="tile-cat">Interview practice · Voice AI</span><h3>The Shravan&#x27;s Round</h3><p>A 20-minute AI voice mock interview for product manager candidates, with real Indian PM cases and a score card.</p></div></a></li><li><a class="tile" href="project-hamsty.html"><div class="thumb phone"><img src="img/hamsty.webp" width="400" height="790" alt="" decoding="async"></div><div class="tile-body"><span class="tile-cat">Personal product · In build</span><h3>Hamsty</h3><p>A voucher wallet. It collects vouchers from pictures and Gmail, reminds people before they expire, and lets them give unused ones away.</p></div></a></li><li><a class="tile" href="project-teammates.html"><div class="thumb flow">Lead or failed payment → AI agent → person</div><div class="tile-body"><span class="tile-cat">Hackathon · Payments</span><h3>AI Teammates</h3><p>Two AI agents for a payments company: one turns a sales lead into a payment, one fixes a failed payment. Both hand off to a person at set limits.</p></div></a></li></ul></section>
+</style><section class="home-work" id="work" aria-labelledby="work-title"><div class="sec-head"><h2 id="work-title">Projects</h2><a class="back" href="projects.html">See all projects →</a></div><section class="strip" id="strip" aria-label="Projects you can drag through"><div class="strip-track" id="strip-track"></div></section></section>
   <section class="how" aria-labelledby="how-title">
     <div class="sec-head"><h2 id="how-title">How I work</h2></div>
     <div class="how-grid">
@@ -616,4 +617,5 @@
       requestAnimationFrame(step);
     });
   })();
-</script></body></html>
+</script><script src="strip.js"></script>
+</body></html>
