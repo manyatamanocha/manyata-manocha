@@ -16,7 +16,7 @@
 .ab-bl { --x: -80px; --d: .25s; bottom: 8%; left: 7%; width: clamp(100px, 12.5vw, 180px); }
 .ab-br { --x: 80px; --d: .3s; bottom: 8%; right: 7%; width: clamp(143px, 19.9vw, 286px); }
 /* on wide screens the photo sits in the empty space beside the second paragraph, level with its first line */
-@media (min-width: 861px) { .ab-p2 { max-width: min(calc(34 * clamp(16px, 2vw, 21.6px)), 50vw); } .ab-p2 .ab-br { top: 0; bottom: auto; right: auto; left: calc(100% + 24px); } }
+@media (min-width: 861px) { .ab-p2 { max-width: min(calc(34 * clamp(16px, 2vw, 21.6px)), 50vw); } .ab-p2 .ab-br { top: 0; bottom: auto; right: auto; left: calc(100% + 40px); transform: scale(1.2); transform-origin: top left; } }
 @media (max-width: 860px) {
   .about.ab { gap: 48px; padding-block: 230px 200px; }
   .ab-pic.frame { padding: 6px; }
