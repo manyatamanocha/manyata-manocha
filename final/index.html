@@ -322,7 +322,7 @@
   .hero-copy .where { font: 700 var(--mono); font-size: clamp(11px, 1.53vw, 15px); margin-top: 18px; color: var(--ink); line-height: 1.4; font-weight: 700; }
   .availability { display: inline-flex; align-items: center; gap: 10px; background: #f0f0f0; padding: 10px 20px; border-radius: 24px; margin-top: 18px; font-size: 16px; font-weight: 500; color: var(--ink); }
   .availability .dot { width: 10px; height: 10px; background: #4a9d6f; border-radius: 50%; flex-shrink: 0; }
-  @media (min-width: 861px) { .hero-copy { top: -30px; } }
+  @media (min-width: 861px) { .hero-copy { top: -30px; } .hero-copy .lede { max-width: calc(100% - clamp(321px, 32.1vw, 445px) - clamp(20px, 5vw, 80px) - 24px); } }
   /* Separate body and arm layers: the face never changes between poses. */
   .peek { position: absolute; z-index: 2; right: calc(50% - 50vw); top: -110px; height: clamp(420px, 44vw, 620px); aspect-ratio: 917 / 1716;
     padding: 0; border: 0; background: none; cursor: pointer; transform-origin: right bottom; }
