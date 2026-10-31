@@ -1,0 +1,55 @@
+/* My Journey to Product on the home page. Same look as the Journey page; every class starts with jn- so nothing else on the home page is touched. */
+.jny { --ease: cubic-bezier(0.32, 0.72, 0, 1); max-width: 1120px; margin: 0 auto; padding: clamp(60px, 8vw, 110px) clamp(0px, 2vw, 20px) clamp(40px, 6vw, 80px); }
+.jny .jn-title { margin: 0 0 24px; font: 700 clamp(1.5rem, 6.2vw, 5.4rem)/1 var(--mono); letter-spacing: -0.05em; white-space: nowrap; color: var(--ink); }
+.jny .jn-title span { color: var(--sun); }
+.jn-path { position: relative; padding: 40px 0 20px; }
+.jn-line, .jn-fill { position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; margin-left: -1px; border-radius: 2px; }
+.jn-line { background: linear-gradient(180deg, rgba(22,22,22,0), rgba(22,22,22,.28) 6%, rgba(22,22,22,.28) 94%, rgba(22,22,22,0)); }
+.jn-fill { background: linear-gradient(180deg, #f4a259, var(--sun)); transform-origin: 50% 0; transform: scaleY(0); will-change: transform; box-shadow: 0 0 14px rgba(228,111,58,.55); }
+.jn-plane { position: absolute; left: 50%; top: 0; width: 40px; height: 40px; margin: -20px 0 0 -20px; z-index: 3; will-change: transform; pointer-events: none; }
+.jn-plane svg { display: block; width: 100%; height: 100%; transform: rotate(10deg); }
+.jn-stages { list-style: none; margin: 0; padding: 0; }
+.jn-stage { position: relative; display: flex; margin-bottom: 20px; }
+@media (min-width: 861px) { .jn-stage { margin-bottom: -96px; } }
+.jn-stage:last-child { margin-bottom: 0; }
+.jn-stage:nth-child(odd) { justify-content: flex-start; }
+.jn-stage:nth-child(even) { justify-content: flex-end; }
+.jn-node { position: absolute; left: 50%; top: 44px; width: 20px; height: 20px; margin: -10px 0 0 -10px; border-radius: 50%; background: #e9f4fc; z-index: 2;
+  box-shadow: 0 0 0 1.5px rgba(22,22,22,.45); transition: background .6s var(--ease), box-shadow .6s var(--ease), transform .6s var(--ease); }
+.jn-stage.jn-reached .jn-node { background: var(--sun); box-shadow: 0 0 0 5px rgba(228,111,58,.25), 0 0 0 1.5px var(--ink); transform: scale(1.1); }
+.jn-card { position: relative; width: calc(50% - 56px); }
+.jn-card::after { content: ""; position: absolute; top: 44px; width: 40px; height: 1px; background: rgba(22,22,22,.35); }
+.jn-stage:nth-child(odd) .jn-card::after { left: 100%; }
+.jn-stage:nth-child(even) .jn-card::after { right: 100%; }
+.jn-shell { padding: 8px; background: rgba(255,255,255,.42); border-radius: 32px; box-shadow: 0 0 0 1px rgba(255,255,255,.7), 0 40px 70px -40px rgba(22,50,90,.55); }
+.jn-core { padding: 28px 30px 30px; background: var(--paper); border-radius: 24px; box-shadow: inset 0 1px 0 rgba(255,255,255,1), 0 1px 2px rgba(22,50,90,.06); font: 400 17px/1.65 var(--sans); color: var(--ink); }
+.jn-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.jn-idx { font: 700 15px/1 var(--mono); color: var(--sun); letter-spacing: .08em; }
+.jn-when { padding: 7px 12px; font: 500 12px/1 var(--sans); letter-spacing: .06em; text-transform: uppercase; background: #f1f6fa; border-radius: 999px; color: #33414f; }
+.jn-core h2 { margin: 26px 0 0; font: 700 clamp(22px, 2.6vw, 30px)/1.15 var(--mono); letter-spacing: -0.035em; }
+.jn-where { margin: 10px 0 0; font-weight: 600; font-size: 15px; color: var(--dim); }
+.jn-text { margin: 16px 0 0; font-size: 16.5px; line-height: 1.65; color: #2b3640; }
+.jn-where + .jn-text { margin-top: 18px; }
+.jn-core a { font-weight: 600; text-decoration-thickness: 1.5px; text-underline-offset: 4px; text-decoration-color: var(--sun); }
+/* scroll reveal: transform and opacity only; without scripts everything just shows */
+.jny.jn-on .jn-card { opacity: 0; transform: translate3d(0, 56px, 0); transition: opacity 1s var(--ease), transform 1s var(--ease); }
+.jny.jn-on .jn-stage.jn-seen .jn-card { opacity: 1; transform: none; }
+.jny.jn-on .jn-core > * { opacity: 0; transform: translate3d(0, 14px, 0); transition: opacity .9s var(--ease), transform .9s var(--ease); }
+.jny.jn-on .jn-stage.jn-seen .jn-core > * { opacity: 1; transform: none; }
+.jny.jn-on .jn-stage.jn-seen .jn-core > :nth-child(2) { transition-delay: .12s; }
+.jny.jn-on .jn-stage.jn-seen .jn-core > :nth-child(3) { transition-delay: .2s; }
+.jny.jn-on .jn-stage.jn-seen .jn-core > :nth-child(4) { transition-delay: .28s; }
+.jny.jn-on .jn-stage.jn-seen .jn-core > :nth-child(5) { transition-delay: .36s; }
+@media (max-width: 860px) {
+  .jn-line, .jn-fill { left: 20px; }
+  .jn-plane { left: 20px; width: 34px; height: 34px; margin: -17px 0 0 -17px; }
+  .jn-node { left: 20px; top: 40px; }
+  .jn-stage, .jn-stage:nth-child(odd), .jn-stage:nth-child(even) { justify-content: flex-end; }
+  .jn-card { width: calc(100% - 52px); }
+  .jn-card::after { display: none; }
+  .jn-core { padding: 24px 22px 26px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .jny.jn-on .jn-card, .jny.jn-on .jn-core > * { opacity: 1; transform: none; transition: none; }
+  .jn-node { transition: none; }
+}
