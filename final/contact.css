@@ -1,11 +1,11 @@
 /* contact: a soft cream panel with the heading, a bar with LinkedIn and Email, and a girl peeking in from the right edge */
 .contact { --ct-ink: #0f1b3d; --ct-orange: #e46f3a; --ct-cream: #fbf6ee; padding-block: 10px 30px; }
-.ct-panel { position: relative; overflow: hidden; min-height: clamp(520px, 44vw, 640px); border-radius: 30px; background: var(--ct-cream); border: 1px solid rgba(15, 27, 61, .08); box-shadow: 0 18px 40px -26px rgba(15, 27, 61, .35); }
+.ct-panel { position: relative; overflow: hidden; width: 100vw; margin-left: calc(50% - 50vw); min-height: clamp(520px, 44vw, 640px); background: transparent; }
 .ct-clouds { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
-.contact .ct-title { position: absolute; z-index: 2; left: 7%; top: 18%; margin: 0; font: 800 clamp(48px, 8.6vw, 124px)/1 "Playfair Display", Georgia, serif; letter-spacing: -0.03em; color: var(--ct-ink); }
+.contact .ct-title { position: absolute; z-index: 2; left: 6%; top: 18%; margin: 0; font: 800 clamp(48px, 8.6vw, 124px)/1 "Playfair Display", Georgia, serif; letter-spacing: -0.03em; color: var(--ct-ink); }
 .ct-title em { position: relative; font-style: normal; color: var(--ct-orange); white-space: nowrap; }
 .ct-title em::after { content: ""; position: absolute; left: -4%; right: -6%; bottom: -.06em; z-index: -1; height: .16em; border-radius: 40px; background: #fbd8bd; transform: rotate(-2deg); }
-.contact .ct-sub { position: absolute; z-index: 2; left: 7.4%; top: calc(18% + clamp(78px, 12.6vw, 178px)); max-width: 24em; margin: 0; font: 600 clamp(15px, 1.5vw, 20px)/1.4 var(--sans); color: rgba(15, 27, 61, .72); }
+.contact .ct-sub { position: absolute; z-index: 2; left: 6.4%; top: calc(18% + clamp(78px, 12.6vw, 178px)); max-width: 24em; margin: 0; font: 600 clamp(15px, 1.5vw, 20px)/1.4 var(--sans); color: rgba(15, 27, 61, .72); }
 .ct-peek { position: absolute; z-index: 1; right: calc(var(--pw) * -0.124); bottom: clamp(96px, 11vw, 150px); width: var(--pw); height: auto; --pw: clamp(120px, 14.5vw, 210px); pointer-events: none; }
 .ct-mark { position: absolute; z-index: 2; pointer-events: none; }
 .ct-bar { position: absolute; z-index: 3; left: 6%; right: 6%; bottom: 7%; display: flex; gap: clamp(12px, 2.4vw, 34px); padding: clamp(14px, 2.4vw, 32px) clamp(14px, 3.4vw, 46px); border-radius: 999px; background: #fffdf9; box-shadow: 0 10px 30px -12px rgba(15, 27, 61, .28), inset 0 0 0 1px rgba(15, 27, 61, .05); }
@@ -21,7 +21,7 @@
 .ct-copy .c-mail { font: 600 clamp(14px, 1.6vw, 17px) var(--sans); color: var(--dim); }
 .ct-copy .copy { box-shadow: none; border-width: 1px; border-radius: 999px; padding: 6px 14px; background: #fff; }
 @media (max-width: 860px) {
-  .ct-panel { min-height: 520px; border-radius: 24px; }
+  .ct-panel { min-height: 520px; }
   .contact .ct-title { left: 7%; top: 12%; font-size: clamp(40px, 13.5vw, 84px); }
   .contact .ct-sub { top: calc(12% + clamp(54px, 15vw, 90px)); max-width: 9.5em; font-size: 15px; }
   .ct-peek { --pw: clamp(100px, 26vw, 170px); bottom: 150px; }

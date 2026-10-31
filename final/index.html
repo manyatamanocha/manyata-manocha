@@ -365,6 +365,7 @@
   /* hero photo: frame with "Based in" tag, right side of text */
   .sky-hero { grid-template-columns: minmax(0, 1fr) auto; column-gap: 40px; position: relative; }
   .hero-photo-wrap { position: absolute; right: clamp(20px, 5vw, 80px); top: 50%; transform: translateY(-50%) rotate(-1deg); width: clamp(321px, 32.1vw, 445px); z-index: 1; }
+  @media (max-width: 860px) { .hero-photo-wrap { position: relative; top: auto; right: auto; transform: rotate(-1deg); width: min(100%, 380px); margin: 32px auto 0; } .location-tag { left: -6px; } }
   .hero-cutout { display: block; width: 100%; height: auto; padding: 16px 16px 24px 16px; background: #f5f1ed; border: 4px solid #c9a227; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2), inset 0 0 20px rgba(255, 255, 255, 0.6); overflow: hidden; }
   .hero-cutout img { width: 100%; height: auto; display: block; }
   .deco { position: absolute; pointer-events: none; }
@@ -550,9 +551,9 @@
   <footer class="contact" id="contact">
     <div class="ct-panel">
       <svg class="ct-clouds" viewBox="0 0 1646 956" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
-        <path d="M-10 640C-10 560 50 500 130 520C160 440 250 410 320 450C380 400 470 410 510 470C590 470 630 540 600 610L612 720L-10 790Z" fill="#d8eaf8" stroke="#bcd9ef" stroke-width="3" stroke-dasharray="7 6"/>
-        <path d="M1110 340C1110 250 1190 190 1270 210C1320 160 1410 170 1450 230C1530 220 1620 280 1656 350L1656 560L1290 610C1230 570 1120 550 1110 340Z" fill="#d8eaf8" stroke="#bcd9ef" stroke-width="3" stroke-dasharray="7 6"/>
-        <path d="M1250 590C1270 520 1350 490 1410 520C1470 460 1570 470 1656 520L1656 760L1230 760Z" fill="#f7f1e6" stroke="#eadfcb" stroke-width="3" stroke-dasharray="7 6"/>
+        <path d="M-10 640C-10 560 50 500 130 520C160 440 250 410 320 450C380 400 470 410 510 470C590 470 630 540 600 610L612 720L-10 790Z" fill="#eef6fc" stroke="#ffffff" stroke-width="3" stroke-dasharray="7 6"/>
+        <path d="M1110 340C1110 250 1190 190 1270 210C1320 160 1410 170 1450 230C1530 220 1620 280 1656 350L1656 560L1290 610C1230 570 1120 550 1110 340Z" fill="#eef6fc" stroke="#ffffff" stroke-width="3" stroke-dasharray="7 6"/>
+        <path d="M1250 590C1270 520 1350 490 1410 520C1470 460 1570 470 1656 520L1656 760L1230 760Z" fill="#f9fcfe" stroke="#ffffff" stroke-width="3" stroke-dasharray="7 6"/>
       </svg>
       <svg class="ct-mark" style="left:52.6%;top:13%;width:4.6%" viewBox="0 0 80 90" fill="none" stroke="#e46f3a" stroke-width="7" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M12 8L24 42"/><path d="M42 28L66 52"/><path d="M62 78L80 82" transform="translate(-14 -22)"/></svg>
       <svg class="ct-mark" style="left:60%;top:30%;width:4.4%" viewBox="0 0 80 90" fill="none" stroke="#0f1b3d" stroke-width="5" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M30 6L8 56"/><path d="M52 24L24 62"/><path d="M64 52L40 70"/></svg>
