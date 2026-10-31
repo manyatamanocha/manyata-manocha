@@ -8,6 +8,7 @@
 .ab-p2 .ab-text { max-width: none; margin: 0; }
 .ab-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .ab > .btn { position: relative; z-index: 1; }
+.ab > .ab-journey { margin-top: calc(-1 * clamp(24px, 3vw, 44px)); }
 .ab-pic { position: absolute; margin: 0; transition: opacity .9s cubic-bezier(.25,.1,.25,1), translate .9s cubic-bezier(.25,.1,.25,1); transition-delay: var(--d, 0s); }
 .ab-pic img { display: block; width: 100%; height: auto; }
 .ab-pic.waiting { opacity: 0; translate: var(--x) 0; }
