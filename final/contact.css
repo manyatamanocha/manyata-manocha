@@ -15,10 +15,10 @@
 .ct-btn svg { width: 1.5em; height: 1.5em; flex: none; }
 .ct-in { border: 2px solid var(--ct-ink); background: #fff; color: var(--ct-ink); }
 .ct-in:hover { box-shadow: 0 8px 18px -8px rgba(15, 27, 61, .4); }
+.ct-mail span { overflow-wrap: anywhere; }
 .ct-mail { border: 2px solid var(--ct-orange); background: var(--ct-orange); color: #fff; }
 .ct-mail:hover { box-shadow: 0 8px 18px -8px rgba(228, 111, 58, .7); }
 .contact .ct-copy { justify-content: center; margin-top: 22px; }
-.ct-copy .c-mail { font: 600 clamp(14px, 1.6vw, 17px) var(--sans); color: var(--dim); }
 .ct-copy .copy { box-shadow: none; border-width: 1px; border-radius: 999px; padding: 6px 14px; background: #fff; }
 @media (max-width: 860px) {
   .ct-panel { min-height: 520px; }
@@ -27,5 +27,11 @@
   .ct-peek { --pw: clamp(100px, 26vw, 170px); bottom: 150px; }
   .ct-bar { left: 4%; width: min(92%, 300px); bottom: 5%; gap: 8px; padding: 8px; }
   .ct-btn { gap: 6px; min-height: 44px; font-size: 14px; }
+}
+@media (max-width: 560px) {
+  .ct-panel { min-height: 600px; }
+  .ct-peek { bottom: 215px; }
+  .ct-bar { flex-direction: column; border-radius: 34px; padding: 14px; }
+  .ct-btn { flex: none; width: 100%; font-size: 17px; }
 }
 @media (prefers-reduced-motion: reduce) { .ct-btn { transition: none; } .ct-btn:hover { transform: none; } }
