@@ -46,7 +46,8 @@
   .hero-copy p { font-size: 16px; max-width: 30em; margin: 24px 0 0; color: #23303d; }
   .btns { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 32px; }
   .btns .btn { padding: 15.6px 28.8px; font-size: 21.6px; }   /* hero buttons 20% bigger */
-  @media (max-width: 480px) { .btns .btn { padding: 13px 24px; font-size: 18px; } }   /* phones: keep both side by side */
+  @media (min-width: 861px) and (max-width: 1399px) { .btns { max-width: 520px; } }   /* three buttons: the third wraps below instead of reaching the photo */
+  @media (max-width: 480px) { .btns .btn { padding: 13px 20px; font-size: 16.5px; } }   /* phones: keep both side by side */
   .btn, .pill-link { display: inline-flex; align-items: center; gap: 10px; padding: 13px 24px; font: 600 18px var(--mono); text-decoration: none; color: var(--ink);
     transition: transform .15s cubic-bezier(.2,.8,.2,1), box-shadow .15s cubic-bezier(.2,.8,.2,1); }
   .btn:hover, .pill-link:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 var(--line); }
@@ -397,7 +398,7 @@
       <h1>Hello,<br><span class="nm1">I'm Manyata Manocha</span></h1>
       <p class="lede">A finance professional, building products<br>I turn messy problems into momentum.</p>
       <div class="availability"><span class="dot"></span><span>Available for work</span></div>
-      <div class="btns"><a class="btn" href="#work">View my work</a><a class="btn" href="resume.html">Resume ↗</a></div>
+      <div class="btns"><a class="btn" href="#work">View my work</a><a class="btn" href="resume.html">Resume ↗</a><a class="btn" href="timeline.html">My Journey to Product →</a></div>
     </div>
     <div class="hero-photo-wrap">
       <img class="hero-cutout" src="img/hero-tshirt.webp" width="1086" height="1448" alt="Manyata Manocha">
