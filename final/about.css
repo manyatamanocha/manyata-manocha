@@ -21,7 +21,7 @@
   .about.ab { gap: 48px; padding-block: 230px 200px; }
   .ab-pic.frame { padding: 6px; }
   .ab-tl, .ab-tr { top: 24px; }
-  .ab-p2 { position: static; }
+  .ab-p2 .ab-br { position: static; margin: 28px 0 0 auto; }
   .ab-bl, .ab-br { bottom: 24px; }
 }
 @media (prefers-reduced-motion: reduce) { .ab-pic { transition: none; } }
