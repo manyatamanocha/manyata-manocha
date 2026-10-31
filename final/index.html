@@ -30,9 +30,12 @@
   /* nav */
   .nav { display: flex; justify-content: flex-end; align-items: center; gap: 16px; padding-block: 26px; }
   .brand { font-family: var(--mono); font-weight: 700; text-decoration: none; font-size: 17px; }
-  .links { display: flex; gap: 26px; font-size: 18px; font-weight: 500; }
-  .links a { text-decoration: none; }
-  .links a:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .links { display: flex; gap: 16px; font-size: 20.7px; font-weight: 600; }   /* 15% bigger */
+  .links a { text-decoration: none; color: var(--ink); background: var(--paper); border: 2px solid var(--line); box-shadow: 4px 4px 0 var(--line); padding: 8px 18px; line-height: 1.2;
+    transition: transform .15s cubic-bezier(.2,.8,.2,1), box-shadow .15s cubic-bezier(.2,.8,.2,1); }
+  .links a:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--line); }
+  .links a:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--line); }
+  .links a:last-child { background: #e46f3a; color: #fff; }   /* Resume stands out */
 
   /* hero */
   .sky-hero { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); align-items: center; min-height: max(520px, calc(100vh - 86px)); min-height: max(520px, calc(100svh - 86px)); padding-block: 72px 40px; }
@@ -42,6 +45,8 @@
   .sky-hero h1 .nm1 { white-space: nowrap; }
   .hero-copy p { font-size: 16px; max-width: 30em; margin: 24px 0 0; color: #23303d; }
   .btns { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 32px; }
+  .btns .btn { padding: 15.6px 28.8px; font-size: 21.6px; }   /* hero buttons 20% bigger */
+  @media (max-width: 480px) { .btns .btn { padding: 13px 24px; font-size: 18px; } }   /* phones: keep both side by side */
   .btn, .pill-link { display: inline-flex; align-items: center; gap: 10px; padding: 13px 24px; font: 600 18px var(--mono); text-decoration: none; color: var(--ink);
     transition: transform .15s cubic-bezier(.2,.8,.2,1), box-shadow .15s cubic-bezier(.2,.8,.2,1); }
   .btn:hover, .pill-link:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 var(--line); }
