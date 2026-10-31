@@ -1,0 +1,9 @@
+/* project posters: a 3 by 2 grid of square tiles, each a full-bleed poster of the project */
+.posters { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(12px, 1.6vw, 22px); margin: 0; padding: 0; list-style: none; }
+.poster { display: block; aspect-ratio: 1; overflow: hidden; border: 2px solid var(--line); border-radius: 24px; transition: transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .25s cubic-bezier(.2,.8,.2,1); }
+.poster img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.poster:hover { transform: translateY(-5px); box-shadow: 0 5px 0 var(--line); }
+.poster:focus-visible { outline: 3px solid var(--sun); outline-offset: 3px; }
+@media (max-width: 860px) { .posters { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .posters { grid-template-columns: minmax(0, 1fr); } .poster { border-radius: 18px; } }
+@media (prefers-reduced-motion: reduce) { .poster { transition: none; } .poster:hover { transform: none; } }
