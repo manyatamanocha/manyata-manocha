@@ -221,11 +221,6 @@
 
   #about-title { font-size: clamp(15.4px, 2.17vw, 28px); }
   .ab-text { text-align: justify; text-justify: inter-word; hyphens: auto; }
-  .ab-text.reveal { animation: reveal-fade 1.5s ease-out forwards; }
-  @keyframes reveal-fade {
-    0% { opacity: 0.5; }
-    100% { opacity: 1; }
-  }
   .about-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 36px; }
   .lead { font-size: 19px; margin: 0 0 22px; }
   .tl { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
@@ -625,16 +620,24 @@
 </script><script>
   (function() {
     var aboutText = document.getElementById('about-text');
-    if (!aboutText || !window.IntersectionObserver) return;
-    var observer = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('reveal');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.3 });
-    observer.observe(aboutText);
+    if (!aboutText) return;
+    var originalText = aboutText.innerText;
+    var section = aboutText.closest('section');
+
+    function updateTypewriter() {
+      var rect = section.getBoundingClientRect();
+      var sectionHeight = rect.height;
+      var windowHeight = window.innerHeight;
+      var scrollProgress = 1 - (rect.top / (windowHeight + sectionHeight));
+      scrollProgress = Math.max(0, Math.min(1, scrollProgress));
+
+      var charsToShow = Math.floor(originalText.length * scrollProgress);
+      var displayText = originalText.substring(0, charsToShow);
+      aboutText.innerText = displayText;
+    }
+
+    window.addEventListener('scroll', updateTypewriter, { passive: true });
+    updateTypewriter();
   })();
 </script><script src="about.js"></script>
 </body></html>
