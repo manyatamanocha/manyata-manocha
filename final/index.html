@@ -1,7 +1,7 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="description" content="Manyata Manocha, AI Product Manager. Six products from research and PRD to build and metrics."><meta property="og:title" content="Manyata Manocha, AI Product Manager"><meta property="og:description" content="Manyata Manocha, AI Product Manager. Six products from research and PRD to build and metrics."><style>body{margin:0}img{max-width:100%}</style></head><body><title>Manyata Manocha Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="mosaic.css">
+<link rel="stylesheet" href="stack.css"><link rel="stylesheet" href="about.css">
 <style>
   /* Sky theme: painted-sky gradient top, white paper below; mono display type; white boxes with black border + hard shadow. */
   :root {
@@ -478,7 +478,7 @@
   .home-work.arriving { animation: work-arrive .9s cubic-bezier(.2,.7,.2,1) both; }
   @keyframes work-arrive { from { opacity: 0; transform: translateY(80px); } to { opacity: 1; transform: none; } }
   @media (prefers-reduced-motion: reduce) { .sky-hero, .sky-hero.leaving, .home-work.arriving { transition: none; animation: none; transform: none; } }
-</style><section class="home-work" id="work" aria-labelledby="work-title"><div class="mos-row"><div class="mos-side"><h2 id="work-title">Projects</h2><p>Six products from research and PRD to build and metrics.</p><a class="back" href="projects.html">See all projects →</a></div><section class="mos" id="mosaic" aria-label="Project tiles"></section></div></section>
+</style><section class="home-work" id="work" aria-labelledby="work-title"><div class="sec-head"><h2 id="work-title">Projects</h2><a class="back" href="projects.html">See all projects →</a></div><section class="stack" id="stack" aria-label="Projects"></section></section>
   <section class="how" aria-labelledby="how-title">
     <div class="sec-head"><h2 id="how-title">How I work</h2></div>
     <div class="how-grid">
@@ -488,19 +488,16 @@
 </div>
 
 <div class="wrap">
-  <section class="about" id="about" aria-labelledby="about-title">
-    <div class="sec-head"><h2 id="about-title">About Me</h2></div>
-    <div class="exp-grid">
-      <div class="exp-col">
-        <p class="lead">A Delhite currently in Bengaluru, building AI products that solve real problems. I love watching movies and series, always hunting for the next good show, though I'm picky.<br>Dance is in my blood and music makes my day.<br>I'm curious about the world, the small and big things around us.<br>I like to understand why people think the way they do, which makes me observant.<br>Talkative (probably too much :p), and I enjoy diving into conversations about product, life, and honestly, everything.</p>
-      </div>
-      <div class="exp-col">
-      <div class="about-collage">
-        <div class="collage-pic collage-pink"><img src="img/portrait-about.webp" alt="Manyata" loading="lazy"></div>
-        <div class="collage-pic collage-black"><img src="img/about-mountain.jpg" alt="Manyata on mountain" loading="lazy"></div>
-      </div>
-      </div>
+  <section class="about ab" id="about" aria-labelledby="about-title">
+    <figure class="frame ab-pic ab-tl"><img src="img/portrait-about.webp" alt="Manyata" loading="lazy"></figure>
+    <figure class="ab-pic ab-bl"><img src="img/laptop.webp" alt="" loading="lazy"></figure>
+    <figure class="frame ab-pic ab-tr"><img src="img/about-mountain.jpg" alt="" loading="lazy"></figure>
+    <figure class="ab-pic ab-br"><img src="img/sofa.webp" alt="" loading="lazy"></figure>
+    <div class="ab-copy">
+      <h2 id="about-title">About Me</h2>
+      <p class="ab-text" id="about-text">A Delhite currently in Bengaluru, building AI products that solve real problems. I love watching movies and series, always hunting for the next good show, though I'm picky.<br>Dance is in my blood and music makes my day.<br>I'm curious about the world, the small and big things around us.<br>I like to understand why people think the way they do, which makes me observant.<br>Talkative (probably too much :p), and I enjoy diving into conversations about product, life, and honestly, everything.</p>
     </div>
+    <a class="btn" href="#contact">Contact me</a>
   </section>
 
   <section class="experience" id="experience" aria-labelledby="exp-title">
@@ -619,5 +616,5 @@
       requestAnimationFrame(step);
     });
   })();
-</script><script src="mosaic.js"></script>
+</script><script src="stack.js"></script><script src="about.js"></script>
 </body></html>

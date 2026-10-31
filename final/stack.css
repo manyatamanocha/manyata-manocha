@@ -1,0 +1,41 @@
+/* project stack: sticky cards that pile up and shrink a little as the next one slides over them */
+.stack { --top: 28px; --step: 18px; --card: min(640px, calc(100svh - 146px)); }
+.stack-slot { position: sticky; top: calc(var(--top) + var(--i) * var(--step)); height: max(85vh, calc(var(--card) + 32px)); }
+.stack-card { display: grid; grid-template-rows: auto minmax(0, 1fr); gap: 20px; height: var(--card); min-height: 460px; padding: clamp(16px, 2vw, 28px); overflow: hidden; background: var(--paper); border: 2px solid var(--line); box-shadow: 5px 5px 0 var(--line); transform-origin: 50% 0; will-change: transform; }
+.stack-head { display: flex; flex-wrap: wrap; align-items: center; gap: 12px clamp(14px, 2vw, 28px); }
+.stack-num { font: 700 clamp(44px, 7vw, 96px)/1 var(--mono); letter-spacing: -0.02em; color: var(--sun); }
+.stack-title { flex: 1 1 240px; min-width: 0; display: grid; gap: 4px; }
+.stack-title span { font: 400 14px/1.3 var(--mono); color: var(--dim); }
+.stack-title h3 { margin: 0; font-size: clamp(22px, 3vw, 40px); line-height: 1.1; }
+.stack-btns { display: flex; flex-wrap: wrap; gap: 14px; }
+.stack-btns .btn { padding: 11px 20px; font-size: 16px; }
+.stack-grid { display: grid; grid-template-columns: 2fr 3fr; grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 14px; min-height: 0; }
+.stack-main { grid-column: 2; grid-row: 1 / 3; min-height: 0; overflow: hidden; border: 2px solid var(--line); }
+.stack-main img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 0; }
+.stack-main.tall { background: #f0e1fb; }
+.stack-main.tall img { object-fit: contain; object-position: 50% 50%; }
+.stack-main.big, .stack-main.flow, .stack-stat { display: grid; align-content: center; gap: 4px; min-height: 0; overflow: hidden; }
+.stack-main.big { justify-items: center; background: #fff3e6; text-align: center; }
+.stack-main.big b { font: 700 clamp(72px, 13vw, 180px)/1 var(--mono); color: var(--sun); }
+.stack-main.big span { font-size: 18px; font-weight: 500; }
+.stack-main.flow { padding: 20px; background: #e6f3ec; font: 700 clamp(18px, 2.4vw, 30px)/1.35 var(--mono); text-align: center; }
+.stack-stat { padding: 12px 18px; background: #fff3e6; border: 2px solid var(--line); }
+.stack-stat:nth-child(2) { background: #e6f3ec; }
+.stack-stat b { font: 700 clamp(24px, 3.4vw, 44px)/1.1 var(--mono); }
+.stack-stat span { font-size: 15px; line-height: 1.4; color: var(--dim); }
+@media (max-width: 640px) {
+  .stack { --top: 16px; --step: 10px; --card: min(620px, calc(100svh - 92px)); }
+  .stack-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: minmax(0, 1fr) auto; gap: 10px; }
+  .stack-main { grid-column: 1 / 3; grid-row: 1; }
+  .stack-stat { padding: 8px 10px; }
+  .stack-stat b { font-size: 20px; }
+  .stack-stat span { font-size: 12px; }
+  .stack-card { gap: 12px; }
+  .stack-head { flex-wrap: wrap; gap: 8px 12px; }
+  .stack-num { font-size: 38px; }
+  .stack-title { flex: 1 1 0; }
+  .stack-title span { font-size: 12px; }
+  .stack-title h3 { font-size: 19px; }
+  .stack-btns { flex: 1 0 100%; gap: 12px; }
+  .stack-btns .btn { padding: 6px 12px; font-size: 13px; }
+}
