@@ -8,15 +8,11 @@
   var fill = document.getElementById('fill');
   var plane = document.getElementById('plane');
   var deep = document.getElementById('deep');
-  var counter = document.getElementById('counter');
-  var cNum = document.getElementById('cnum');
-  var cBar = document.getElementById('cbar');
   var stages = [].slice.call(document.querySelectorAll('.stage'));
   var clouds = [].slice.call(document.querySelectorAll('.cloud'));
-  var total = stages.length;
 
   var pathTop = 0, pathH = 0, nodeY = [], vh = 0, docMax = 1;
-  var reachedCount = -1, counterOn = false, ticking = false;
+  var reachedCount = -1, ticking = false;
 
   function measure() {
     vh = window.innerHeight;
@@ -56,13 +52,7 @@
     if (count !== reachedCount) {
       reachedCount = count;
       stages.forEach(function (s, k) { s.classList.toggle('reached', k < count); });
-      if (count > 0) {
-        cNum.textContent = (count < 10 ? '0' : '') + count + ' / ' + (total < 10 ? '0' : '') + total;
-        cBar.style.transform = 'scaleX(' + (count / total).toFixed(3) + ')';
-      }
     }
-    var on = y + vh * 0.55 > pathTop;
-    if (on !== counterOn) { counterOn = on; counter.classList.toggle('on', on); }
 
     // the sky gets deeper as you scroll: opacity only
     deep.style.opacity = Math.min(1, y / docMax).toFixed(3);
