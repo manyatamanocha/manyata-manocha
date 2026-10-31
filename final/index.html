@@ -195,7 +195,7 @@
   /* about */
   .about { padding-block: 0 70px; }
   .ab-br { }
-  .ab-tl { margin-top: 40px; transform: scale(1.15); }
+  .ab-tl { margin-top: 60px; transform: scale(1.15) translateX(-25px) translateY(15px); }
   .exp-col { display: flex; flex-direction: column; gap: 28px; min-width: 0; }
   .exp-col .info-box { margin-top: 0; }
   .exp-col .coffee-pic { height: clamp(300px, 32vw, 470px); }
@@ -619,28 +619,6 @@
       }
       requestAnimationFrame(step);
     });
-  })();
-</script><script>
-  (function() {
-    var aboutText = document.getElementById('about-text');
-    if (!aboutText) return;
-    var originalText = aboutText.innerText;
-    var section = aboutText.closest('section');
-
-    function updateTypewriter() {
-      var rect = section.getBoundingClientRect();
-      var sectionHeight = rect.height;
-      var windowHeight = window.innerHeight;
-      var scrollProgress = 1 - (rect.top / (windowHeight + sectionHeight));
-      scrollProgress = Math.max(0, Math.min(1, scrollProgress));
-
-      var charsToShow = Math.floor(originalText.length * scrollProgress);
-      var displayText = originalText.substring(0, charsToShow);
-      aboutText.innerText = displayText;
-    }
-
-    window.addEventListener('scroll', updateTypewriter, { passive: true });
-    updateTypewriter();
   })();
 </script><script src="about.js"></script>
 </body></html>
