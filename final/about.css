@@ -11,7 +11,7 @@
 .ab-pic img { display: block; width: 100%; height: auto; }
 .ab-pic.waiting { opacity: 0; translate: var(--x) 0; }
 .ab-tl { --x: -80px; --d: .1s; top: 4%; left: 2%; width: clamp(120px, 14.6vw, 210px); rotate: -3deg; }
-.ab-tr { --x: 80px; --d: .15s; top: 4%; right: 2%; width: clamp(120px, 14.6vw, 210px); rotate: 3deg; }
+.ab-tr { --x: 80px; --d: .15s; top: 4%; right: 2%; width: clamp(144px, 17.5vw, 252px); rotate: 3deg; }
 .ab-bl { --x: -80px; --d: .25s; bottom: 8%; left: 7%; width: clamp(100px, 12.5vw, 180px); }
 .ab-br { --x: 80px; --d: .3s; bottom: 8%; right: 7%; width: clamp(110px, 15.3vw, 220px); }
 /* on wide screens the photo sits up in the empty space beside the second paragraph */
