@@ -98,8 +98,8 @@ a:focus-visible { outline: 3px solid var(--sun); outline-offset: 3px; border-rad
 .counter .bar i { display: block; height: 100%; background: var(--sun); transform-origin: 0 50%; transform: scaleX(0); transition: transform .8s var(--ease); }
 
 /* end */
-.end { padding: clamp(100px, 14vw, 200px) 0 40px; text-align: center; }
-.end h2 { margin: 22px 0 0; font: 700 clamp(2.2rem, 6.5vw, 4.6rem)/1 var(--mono); letter-spacing: -0.045em; }
+.end { padding: clamp(10px, 2vw, 30px) 0 40px; text-align: center; }
+.end h2 { margin: 0; font: 700 clamp(2.2rem, 6.5vw, 4.6rem)/1 var(--mono); letter-spacing: -0.045em; }
 .end .eyebrow { display: inline-block; margin: 0; }
 .end-btns { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 40px; }
 .cta { display: inline-flex; align-items: center; gap: 16px; padding: 10px 10px 10px 26px; border-radius: 999px; text-decoration: none; font: 600 17px/1 var(--sans);
