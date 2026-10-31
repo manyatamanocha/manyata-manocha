@@ -38,8 +38,8 @@ a:focus-visible { outline: 3px solid var(--sun); outline-offset: 3px; border-rad
 .intro { display: flex; flex-direction: column; justify-content: center; padding: 120px 0 20px; }
 .eyebrow { align-self: flex-start; margin: 0 0 28px; padding: 7px 14px; font: 500 11px/1 var(--sans); letter-spacing: .22em; text-transform: uppercase;
   background: rgba(255,255,255,.55); border-radius: 999px; box-shadow: 0 0 0 1px rgba(22,22,22,.08); }
-.intro h1 { margin: 0; font: 700 clamp(3.2rem, 11vw, 8.4rem)/.92 var(--mono); letter-spacing: -0.05em; }
-.intro h1 span { display: block; color: var(--sun); }
+.intro h1 { margin: 0; font: 700 clamp(1.5rem, 6.2vw, 5.4rem)/1 var(--mono); letter-spacing: -0.05em; white-space: nowrap; }
+.intro h1 span { color: var(--sun); }
 .lede { margin: 34px 0 0; max-width: 29em; font-size: clamp(18px, 2vw, 22px); line-height: 1.55; color: #26323f; }
 @media (min-width: 861px) { .lede { max-width: none; white-space: nowrap; font-size: min(21px, 1.9vw); } }
 
