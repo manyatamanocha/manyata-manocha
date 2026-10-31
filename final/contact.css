@@ -8,7 +8,7 @@
 .contact .ct-sub { position: absolute; z-index: 2; left: 6.4%; top: calc(18% + clamp(47px, 7.56vw, 107px)); max-width: 24em; margin: 0; font: 600 clamp(18px, 1.8vw, 24px)/1.4 var(--sans); color: rgba(15, 27, 61, .72); }
 .ct-peek { position: absolute; z-index: 1; right: calc(var(--pw) * -0.124); bottom: clamp(96px, 11vw, 150px); width: var(--pw); height: auto; --pw: clamp(120px, 14.5vw, 210px); pointer-events: none; }
 .ct-mark { position: absolute; z-index: 2; pointer-events: none; }
-.ct-bar { position: absolute; z-index: 3; left: 6%; width: 52.8%; bottom: 27%; display: flex; gap: clamp(8px, 1.44vw, 20px); padding: clamp(10px, 1.44vw, 19px) clamp(10px, 2.04vw, 28px); border-radius: 999px; background: #fffdf9; box-shadow: 0 10px 30px -12px rgba(15, 27, 61, .28), inset 0 0 0 1px rgba(15, 27, 61, .05); }
+.ct-bar { position: absolute; z-index: 3; left: 6%; width: max(52.8%, 670px); bottom: 27%; display: flex; gap: clamp(8px, 1.44vw, 20px); padding: clamp(10px, 1.44vw, 19px) clamp(10px, 2.04vw, 28px); border-radius: 999px; background: #fffdf9; box-shadow: 0 10px 30px -12px rgba(15, 27, 61, .28), inset 0 0 0 1px rgba(15, 27, 61, .05); }
 .ct-btn { flex: 1 1 0; display: flex; align-items: center; justify-content: center; gap: 8px; min-height: clamp(44px, 3.84vw, 55px); border-radius: 999px; font: 600 clamp(14px, 1.2vw, 17px) var(--sans); text-decoration: none; transition: transform .2s cubic-bezier(.2,.8,.2,1), box-shadow .2s cubic-bezier(.2,.8,.2,1); }
 .ct-btn:hover { transform: translateY(-3px); }
 .ct-btn:focus-visible { outline: 3px solid var(--ct-ink); outline-offset: 3px; }
@@ -18,8 +18,11 @@
 .ct-mail span { overflow-wrap: anywhere; }
 .ct-mail { border: 2px solid var(--ct-orange); background: var(--ct-orange); color: #fff; }
 .ct-mail:hover { box-shadow: 0 8px 18px -8px rgba(228, 111, 58, .7); }
-.contact .ct-copy { justify-content: center; margin-top: 22px; }
-.ct-copy .copy { box-shadow: none; border-width: 1px; border-radius: 999px; padding: 6px 14px; background: #fff; }
+.ct-mailgroup { flex: 1.5 1 0; display: flex; gap: clamp(6px, .8vw, 10px); min-width: 0; }
+.ct-mailgroup .ct-mail { flex: 1 1 auto; min-width: 0; white-space: nowrap; }
+.ct-copybtn { flex: none; min-height: clamp(44px, 3.84vw, 55px); padding: 0 clamp(12px, 1.4vw, 20px); border: 2px solid var(--ct-orange); border-radius: 999px; background: #fff; color: var(--ct-orange); font: 700 clamp(13px, 1.1vw, 16px) var(--sans); cursor: pointer; transition: background .2s, color .2s; }
+.ct-copybtn:hover { background: var(--ct-orange); color: #fff; }
+.ct-copybtn:focus-visible { outline: 3px solid var(--ct-ink); outline-offset: 3px; }
 @media (max-width: 860px) {
   .ct-panel { min-height: 520px; }
   .contact .ct-title { left: 7%; top: 12%; font-size: clamp(24px, 8.1vw, 50px); }
@@ -27,6 +30,12 @@
   .ct-peek { --pw: clamp(100px, 26vw, 170px); bottom: 150px; }
   .ct-bar { left: 4%; width: min(92%, 300px); bottom: 20%; gap: 8px; padding: 8px; }
   .ct-btn { gap: 6px; min-height: 44px; font-size: 14px; }
+}
+@media (max-width: 860px) {
+  .ct-bar { flex-direction: column; border-radius: 34px; padding: 14px; width: min(92%, 400px); }
+  .ct-btn { flex: none; width: 100%; font-size: 16px; }
+  .ct-mailgroup { flex: none; width: 100%; }
+  .ct-mailgroup .ct-mail { width: auto; }
 }
 @media (max-width: 560px) {
   .ct-panel { min-height: 600px; }
