@@ -179,7 +179,8 @@
   .how .sec-head { margin-bottom: 18px; }
   .how-pic { margin-left: auto; width: clamp(150px, 16vw, 200px); height: auto; display: block; pointer-events: none; }
   .home-work .sec-head { position: relative; }
-  .home-work .how-pic { position: absolute; right: 3%; bottom: -24px; margin: 0; z-index: 2; }   /* sits on top of the project cards, beside the Projects heading */
+  .home-work .how-pic { position: absolute; right: 3%; bottom: -24px; margin: 0; z-index: 2; }
+  @media (min-width: 1280px) { .home-work .how-pic { bottom: -38px; } }   /* sits on top of the project cards, beside the Projects heading */
 
   /* quote */
   .quote { padding: 0 max(20px, env(safe-area-inset-left, 0px)) 110px; }
