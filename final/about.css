@@ -1,5 +1,5 @@
 /* about: big centred heading, four pictures that slide in from the corners, text that lights up as you scroll */
-.about.ab { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: clamp(64px, 8vw, 96px); min-height: 100vh; padding-block: 80px; overflow-x: clip; text-align: center; }
+.about.ab { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: clamp(64px, 8vw, 96px); min-height: 100vh; padding-block: 80px; text-align: center; }
 .ab-copy { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: clamp(40px, 5vw, 64px); }
 .ab #about-title { margin: 0; font-size: clamp(2.25rem, 9vw, 120px); line-height: 1; letter-spacing: -0.03em; text-transform: uppercase; }
 .ab-text { max-width: 560px; margin: 0; font-size: clamp(16px, 2vw, 21.6px); font-weight: 500; line-height: 1.65; }
